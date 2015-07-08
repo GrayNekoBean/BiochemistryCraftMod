@@ -12,7 +12,7 @@ public class BCCBlockBase extends Block{
 		// TODO 自动生成的构造函数存根
 	}
 	
-	public void setItem(String str){
+	public void setBlock(String str){
 		this.setBlockName(str);
 		this.setBlockTextureName(BiochemistryCraft.NAME + this.getUnlocalizedName() );
 		GameRegistry.registerBlock(this,this.getUnlocalizedName());
