@@ -14,7 +14,7 @@ public class BCCBlockBase extends Block{
 	
 	public void setBlock(String str){
 		this.setBlockName(str);
-		this.setBlockTextureName(BiochemistryCraft.NAME + this.getUnlocalizedName() );
+		this.setBlockTextureName(BiochemistryCraft.NAME +":"+ this.getUnlocalizedName() );
 		GameRegistry.registerBlock(this,this.getUnlocalizedName());
 		
 	}

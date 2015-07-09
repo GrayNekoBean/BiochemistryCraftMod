@@ -1,10 +1,16 @@
 package cn.BiochemistryCraft;
 
+import cn.BiochemistryCraft.Register.BCCEntityRegister;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 
 
@@ -25,18 +31,21 @@ public class BiochemistryCraft {
 	
 	
 	@EventHandler
-	public void preLoad(){
+	public void preLoad(FMLPreInitializationEvent event){
 		
+		BCCRegisterBlock.blockRegisterInit();
+		BCCRegisterItem.ItemRegisterInit();
+		BCCEntityRegister.EntityRegisterInit();
 		
 	}
 
 	@EventHandler
-	public void load(){
+	public void load(FMLInitializationEvent event){
 		
 	}
 	
 	@EventHandler
-	public void postInit(){
+	public void postInit(FMLPostInitializationEvent event){
 		
 	}
 	
