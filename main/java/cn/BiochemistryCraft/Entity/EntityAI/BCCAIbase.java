@@ -19,7 +19,7 @@ public class BCCAIbase extends EntityAIBase{
 	
 			@Override
 	public boolean shouldExecute() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return false;
 		
 	}
