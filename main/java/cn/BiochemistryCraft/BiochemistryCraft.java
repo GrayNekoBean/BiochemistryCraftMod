@@ -1,5 +1,7 @@
 package cn.BiochemistryCraft;
 
+import net.minecraft.creativetab.CreativeTabs;
+import cn.BiochemistryCraft.CreativeTab.BCCCreativeTab;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
@@ -29,9 +31,12 @@ public class BiochemistryCraft {
 	public static final String NAME="BioChemistryCraft";
 	public static final String Version="1.0.0";
 	
+	
 	public static BCCRegisterBlock blockregister;
 	public static BCCRegisterItem itemregister;
 	public static BCCEntityRegister entityregister;
+	
+	public static final CreativeTabs biocreativetab=new BCCCreativeTab("BiochemistryCraft");
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event){
 		

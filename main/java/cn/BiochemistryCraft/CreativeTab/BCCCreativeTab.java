@@ -1,19 +1,20 @@
 package cn.BiochemistryCraft.CreativeTab;
 
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class BCCCreativeTab extends CreativeTabs{
 
-	public BCCCreativeTab(int p_i1853_1_, String p_i1853_2_) {
-		super(60, "BiochemistryCraft");
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+	public BCCCreativeTab(String s) {
+		super(s);
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public Item getTabIconItem() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		return null;
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		return BCCRegisterItem.emptyneedle;
 	}
 
 }

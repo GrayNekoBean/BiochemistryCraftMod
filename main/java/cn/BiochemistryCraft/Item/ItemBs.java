@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.Item;
 
+import cn.BiochemistryCraft.BiochemistryCraft;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +18,7 @@ public class ItemBs extends Item{
 	public ItemBs( int xzs){
 		super();
 		this.xz = xzs;
-		this.setCreativeTab(CreativeTabs.tabTools);
+		this.setCreativeTab(BiochemistryCraft.biocreativetab);
 		//this.setUnlocalizedName(BloodKind[this.xz] + "blood");
 		this.setMaxStackSize(16);
 		this.setMaxDamage(1);

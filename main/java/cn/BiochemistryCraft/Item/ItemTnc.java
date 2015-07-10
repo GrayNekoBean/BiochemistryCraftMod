@@ -34,15 +34,16 @@ import net.minecraft.world.World;
 
 
 
-public class ItemTnc extends Item{
+public class ItemTnc extends BCCItemBase{
 	
 	public World world;
 	
 	public ItemTnc(){
 		super();
-		this.setTextureName("biomod:EmptyNeedle");
-		this.setCreativeTab(CreativeTabs.tabTools);
-		this.setUnlocalizedName("EmptyNeedle");
+		//this.setTextureName("biomod:EmptyNeedle");
+		//this.setCreativeTab(CreativeTabs.tabTools);
+		//this.setUnlocalizedName("EmptyNeedle");
+		this.setItem("EmptyNeedle", true);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(1);
 		//GameRegistry.registerItem(this, "空针筒");
