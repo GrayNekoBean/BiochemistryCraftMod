@@ -18,7 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
  
-public class BCCGeneMonster extends EntityMob implements IBiology{
+public class BCCGeneMonster extends EntityMob{
 
 	public boolean whether;
 	public Entity attacker;
@@ -26,17 +26,13 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	public double followRange=30.0d;
 	public int health=20;
 	public double moveSpeed=0.26f;
-	public float mutateProbly;
-	public float Infectivity;
 	
 	
 	public BCCGeneMonster(World p_i1738_1_) {
 		super(p_i1738_1_);
-		
-		
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½
 	}
-	//¹ÖÎïÊÇ·ñ»áÖ÷¶¯¹¥»÷
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public boolean isActiveAttack(boolean yes){
 		return this.whether = yes;
 		
@@ -73,7 +69,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		
 	}
 	
-	//¿ì½Ý·½·¨£¬Ê¹ÓÃÒ»°ã¹ÖÎïAI
+	//ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½AI
 	public void useNormalMobAI(){
 		 this.tasks.addTask(0, new EntityAISwimming(this));
 	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
@@ -86,7 +82,15 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	      
 	}
 	
-
+	public boolean isVariationing(){
+		
+		return false;
+		
+	}
+	
+	public float variationProblity(float f){
+		return f;
+	}
 	
 	public void setHealth(int healthy){
 		this.health=healthy;
@@ -104,30 +108,6 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	public void setSpeed(double speed){
 		this.moveSpeed=speed;
 	}
-	@Override
-	public boolean canMutate() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		return true;
-	}
-	@Override
-	public void SetMutationProbly(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		mutateProbly=par1;
-		
-	}
-	@Override
-	public void setInfectivity(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		Infectivity=par1;
-		
-	}
 	
-	public float getMutationProbly(){
-		return mutateProbly;
-		
-	}
-	
-public float getInfectivity(){
-	return Infectivity;
-}
+
 }

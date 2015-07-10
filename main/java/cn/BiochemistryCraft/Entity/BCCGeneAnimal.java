@@ -4,35 +4,17 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
 
-public class BCCGeneAnimal extends EntityAnimal implements IBiology{
+public class BCCGeneAnimal extends EntityAnimal{
 
 	public BCCGeneAnimal(World p_i1681_1_) {
 		super(p_i1681_1_);
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
-	}
-
-	@Override
-	public boolean canMutate() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		return false;
-	}
-
-	@Override
-	public void SetMutationProbly(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		
-	}
-
-	@Override
-	public void setInfectivity(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		
 	}
 
 }
