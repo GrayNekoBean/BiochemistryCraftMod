@@ -1,26 +1,18 @@
 package cn.BiochemistryCraft.Register;
 
 public class BCCEntityRegister {
-	
-	//�·�Ϊģ���÷���
-	static{
-		
+	public BCCEntityRegister()
+	{
 		
 	}
 	
-	//�·�Ϊrender�÷���
-	static{
-		
-	}
-	//�·�Ϊentity�÷���
-	static{
-		
-	}
-	public static void EntityRegisterInit(){
+	public void EntityRegisterInit()
+	{
 		
 	}
 
-	public static void EntityRenderRegisterInit(){
-		
+	public void EntityRenderRegisterInit()
+	{
+				
 	}
 }
