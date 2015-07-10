@@ -12,7 +12,7 @@ public class BlockBioDirt extends BCCBlockBase{
 		
 		
 		// TODO Auto-generated constructor stub
-		this.setBlock("BioDirt");
+		this.setBlock("BioDirt",true);
 		//this.setBlockName("BioDirt");
 		//this.setBlockTextureName("biomod:BioDirt");
 		this.setHardness(0.5f);

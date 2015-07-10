@@ -1,21 +1,19 @@
 package cn.BiochemistryCraft.Item;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import net.minecraft.item.Item;
 
-public class BCCitemBase extends Item{
-
-	public BCCitemBase(){
-		
+public class BCCItemBase extends Item {
+	public BCCItemBase()
+	{
+		//TODO 物品数据
 	}
 	
-	
-	public void setItem(String str){
+	protected void setItem(String str,boolean hasCreativeTab)
+	{
 		this.setUnlocalizedName(str);
-		this.setTextureName(BiochemistryCraft.NAME + ":"+this.getUnlocalizedName() );
-		GameRegistry.registerItem(this,this.getUnlocalizedName());
-		
+		this.setTextureName(BiochemistryCraft.MODID+":"+str);
+		if(hasCreativeTab)
+			this.setCreativeTab(BiochemistryCraft.biocreativetab);
 	}
-	
 }

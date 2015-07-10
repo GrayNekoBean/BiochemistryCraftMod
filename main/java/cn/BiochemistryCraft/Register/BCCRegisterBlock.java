@@ -6,18 +6,21 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class BCCRegisterBlock {
-	//静态变量置放区
-public static Block biodirt= new BlockBioDirt(Material.gourd);
+	
+	public static Block biodirt;
+	
+	public BCCRegisterBlock()
+	{
+		biodirt = new BlockBioDirt(Material.grass);
+	}
 	
 	
 	
 	
-	
-	//方块注册区
-	public static void blockRegisterInit(){
+	public void blockRegisterInit(){
 		
 		//this.example=new exampleBlock();
-		GameRegistry.registerBlock(biodirt, "生化泥土");
+		GameRegistry.registerBlock(biodirt, "BioDirt");
 		
 		
 	}

@@ -1,10 +1,13 @@
 package cn.BiochemistryCraft.proxy;
 
+import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 
 public class BCCclientProxy extends BCCcommonProxy{
-
-public void preInit(){
+	
+	
+	
+	public void preInit(){
 		super.preInit();
 	}
 	
@@ -17,8 +20,8 @@ public void preInit(){
 	}
 	
 	public void registerRenderThings(){
-	super.registerRenderThings();
-	BCCEntityRegister.EntityRenderRegisterInit();
+		super.registerRenderThings();
+		BiochemistryCraft.entityregister.EntityRenderRegisterInit();
 	}
 	
 	public void registerSound(){
