@@ -4,25 +4,19 @@ import cn.BiochemistryCraft.BiochemistryCraft;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 
 public class BCCBlockBase extends Block{
 
-	public BCCBlockBase(Material m) {
-		super(m);
-		// TODO æ–¹å—çš„æ•°æ®
+	protected BCCBlockBase(Material p_i45394_1_) {
+		super(p_i45394_1_);
+		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
 	}
-	
 	
 	public void setBlock(String str){
 		this.setBlockName(str);
-		this.setBlockTextureName(BiochemistryCraft.MODID +":" + str);
+		this.setBlockTextureName(BiochemistryCraft.NAME +":"+ this.getUnlocalizedName() );
+		GameRegistry.registerBlock(this,this.getUnlocalizedName());
+		
 	}
 
-	public void setBlock(String str,CreativeTabs c){
-		this.setBlockName(str);
-		this.setBlockTextureName(BiochemistryCraft.MODID +":" + str);
-		this.setCreativeTab(c);
-	}
-	
 }

@@ -2,25 +2,49 @@ package cn.BiochemistryCraft.Register;
 
 public class BCCEntityRegister {
 	
-	//锟铰凤拷为模锟斤拷锟矫凤拷锟斤拷
-	static{
+	//下方为模型置放区
 		
-		
-	}
 	
-	//锟铰凤拷为render锟矫凤拷锟斤拷
-	static{
-		
-	}
-	//锟铰凤拷为entity锟矫凤拷锟斤拷
-	static{
-		
-	}
+	
+	
+	
+	
+	
+	//下方为render置放区
+	
+	
+	
+	
+	
+	
+	//下方为entity置放区
+	
+	
+	
+	
+	
+	
 	public static void EntityRegisterInit(){
+		
+		
+		
+		
+		
+		
 		
 	}
 
 	public static void EntityRenderRegisterInit(){
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 }

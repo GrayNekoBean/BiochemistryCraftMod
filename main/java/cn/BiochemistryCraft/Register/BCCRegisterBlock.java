@@ -1,15 +1,23 @@
 package cn.BiochemistryCraft.Register;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import cn.BiochemistryCraft.Block.BlockBioDirt;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
 public class BCCRegisterBlock {
-	//ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
-	//public static Block example;
+	//¾²Ì¬±äÁ¿ÖÃ·ÅÇø
+public static Block biodirt= new BlockBioDirt(Material.gourd);
 	
 	
 	
 	
-	//ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
+	
+	//·½¿é×¢²áÇø
 	public static void blockRegisterInit(){
+		
 		//this.example=new exampleBlock();
+		GameRegistry.registerBlock(biodirt, "Éú»¯ÄàÍÁ");
 		
 		
 	}

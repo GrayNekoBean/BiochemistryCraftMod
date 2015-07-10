@@ -13,7 +13,7 @@ public class BCCitemBase extends Item{
 	
 	public void setItem(String str){
 		this.setUnlocalizedName(str);
-		this.setTextureName(BiochemistryCraft.NAME + this.getUnlocalizedName() );
+		this.setTextureName(BiochemistryCraft.NAME + ":"+this.getUnlocalizedName() );
 		GameRegistry.registerItem(this,this.getUnlocalizedName());
 		
 	}
