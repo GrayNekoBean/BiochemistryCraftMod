@@ -15,11 +15,13 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
  
 public class BCCGeneMonster extends EntityMob implements IBiology{
 
+	private static final boolean mutated_ = false;
 	public boolean whether;
 	public Entity attacker;
 	public double attackDamage=2.0d;
@@ -28,15 +30,17 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	public double moveSpeed=0.26f;
 	public float mutateProbly;
 	public float Infectivity;
-	
+	public float contaminateValue;
+	public float immuneValue;
+	public boolean mutated;
 	
 	public BCCGeneMonster(World p_i1738_1_) {
 		super(p_i1738_1_);
 		
 		
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
-	//¹ÖÎïÊÇ·ñ»áÖ÷¶¯¹¥»÷
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public boolean isActiveAttack(boolean yes){
 		return this.whether = yes;
 		
@@ -73,8 +77,9 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		
 	}
 	
-	//¿ì½İ·½·¨£¬Ê¹ÓÃÒ»°ã¹ÖÎïAI
-	public void useNormalMobAI(){
+	//ï¿½ï¿½İ·ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½AI
+	public void useNormalMobAI(boolean par1){
+		if(par1){
 		 this.tasks.addTask(0, new EntityAISwimming(this));
 	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
 	        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
@@ -83,10 +88,24 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	        this.tasks.addTask(8, new EntityAILookIdle(this));
 	        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 	        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-	      
+		}
+		
+		else
+		{
+			
+		}
 	}
 	
-
+	@Override
+	public boolean isAIEnabled(){
+		return mutated;
+		
+	}
+	
+public boolean isMutate(){
+	return whether;
+	
+}
 	
 	public void setHealth(int healthy){
 		this.health=healthy;
@@ -106,28 +125,69 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	}
 	@Override
 	public boolean canMutate() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return true;
 	}
 	@Override
 	public void SetMutationProbly(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mutateProbly=par1;
 		
 	}
 	@Override
-	public void setInfectivity(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+	public void setInfectivity(float par1) {//è®¾ç½®æ„ŸæŸ“å€¼
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Infectivity=par1;
 		
 	}
+	
+	public void setContaminateValue(float par1){//è®¾ç½®ä¼ æŸ“å€¼
+		this.contaminateValue=par1;
+		
+	}
+	
+	public void setImmuneValue(float par1){//è®¾ç½®å…ç–«å€¼
+		this.immuneValue=par1;
+	}
+	
+	
 	
 	public float getMutationProbly(){
 		return mutateProbly;
 		
 	}
 	
-public float getInfectivity(){
+public float getInfectivityValue(){     
 	return Infectivity;
 }
+
+public float getContaminateValue(){
+	return contaminateValue;
+}
+
+public float getImmuneValue(){
+	return this.immuneValue;
+}
+
+public void writeEntityToNBT(NBTTagCompound tag){//è¯»å†™nbt
+	super.writeEntityToNBT(tag);
+	tag.setFloat("Infectivity", Infectivity);
+	tag.setFloat("contaminateValue", contaminateValue);
+	tag.setFloat("immuneValue", immuneValue);
+	tag.setBoolean("mutated", mutated_);
+	
+}
+
+public void readEntityFromNBT(NBTTagCompound nbttag){
+	super.readEntityFromNBT(nbttag);
+	this.setImmuneValue(nbttag.getFloat("immuneValue"));
+	this.setContaminateValue(nbttag.getFloat("contaminateValue"));
+	this.setInfectivity(nbttag.getFloat("Infectivity"));
+	
+	
+	
+}
+
+
+
 }
