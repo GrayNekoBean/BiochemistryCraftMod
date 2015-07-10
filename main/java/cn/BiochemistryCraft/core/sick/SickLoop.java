@@ -14,7 +14,7 @@ public class SickLoop extends TimerTask{
 	public float probly=0.8f;
 	public EntityPlayer player;
 	public int strong=1;
-	
+	public Potion theEffect;
 	
 	public SickLoop(){
 		
@@ -35,10 +35,25 @@ public class SickLoop extends TimerTask{
 	public void sickUpdate(){
 		
 		if(this.rnd.nextInt((int)(60*60*3/probly))==10){
-			player.addPotionEffect(new PotionEffect(Potion.poison.id,strong*this.rnd.nextInt(250)*62,0));
+			//player.addPotionEffect(new PotionEffect(Potion.poison.id,strong*this.rnd.nextInt(250)*62,0));
+			this.sickEffect(this.player);
 			
 		}
 		
+	}
+	
+	public void sickEffect(EntityPlayer player){
+		
+		
+	}
+	
+	public void setProbly(float par1){
+		
+		this.probly=par1;
+	}
+	
+	public float getProbly(){
+		return 1.0F;
 	}
 	
 	

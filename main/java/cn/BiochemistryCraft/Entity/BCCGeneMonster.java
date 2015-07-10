@@ -18,7 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
  
-public class BCCGeneMonster extends EntityMob{
+public class BCCGeneMonster extends EntityMob implements IBiology{
 
 	public boolean whether;
 	public Entity attacker;
@@ -26,10 +26,14 @@ public class BCCGeneMonster extends EntityMob{
 	public double followRange=30.0d;
 	public int health=20;
 	public double moveSpeed=0.26f;
+	public float mutateProbly;
+	public float Infectivity;
 	
 	
 	public BCCGeneMonster(World p_i1738_1_) {
 		super(p_i1738_1_);
+		
+		
 		// TODO 自动生成的构造函数存根
 	}
 	//怪物是否会主动攻击
@@ -82,15 +86,7 @@ public class BCCGeneMonster extends EntityMob{
 	      
 	}
 	
-	public boolean isVariationing(){
-		
-		return false;
-		
-	}
-	
-	public float variationProblity(float f){
-		return f;
-	}
+
 	
 	public void setHealth(int healthy){
 		this.health=healthy;
@@ -108,6 +104,30 @@ public class BCCGeneMonster extends EntityMob{
 	public void setSpeed(double speed){
 		this.moveSpeed=speed;
 	}
+	@Override
+	public boolean canMutate() {
+		// TODO 自动生成的方法存根
+		return true;
+	}
+	@Override
+	public void SetMutationProbly(float par1) {
+		// TODO 自动生成的方法存根
+		mutateProbly=par1;
+		
+	}
+	@Override
+	public void setInfectivity(float par1) {
+		// TODO 自动生成的方法存根
+		Infectivity=par1;
+		
+	}
 	
-
+	public float getMutationProbly(){
+		return mutateProbly;
+		
+	}
+	
+public float getInfectivity(){
+	return Infectivity;
+}
 }
