@@ -1,8 +1,11 @@
 package cn.BiochemistryCraft;
 
-import cn.BiochemistryCraft.Register.BCCEntityRegister;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import cn.BiochemistryCraft.proxy.BCCBlockProxy;
+import cn.BiochemistryCraft.Block.BlockBioDirt;
+import cn.BiochemistryCraft.CreativeTab.BCCCreativeTab;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -11,6 +14,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 
 
@@ -23,20 +27,22 @@ public class BiochemistryCraft {
 	
 	@SidedProxy(clientSide="cn.BiochemistryCraft.proxy.BCCclientProxy",serverSide="cn.BiochemistryCraft.proxy.BCCcommonProxy")
 		public static BCCcommonProxy proxy;
+
+
 	
 	
 	public static final String MODID="biomod";
 	public static final String NAME="BioChemistryCraft";
 	public static final String Version="1.0.0";
+	//public static final CreativeTabs creativetab = new BCCCreativeTab("BiochemistryCraft");
 	
+	
+	public static BCCBlockProxy blockproxy;
 	
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event){
-		
-		BCCRegisterBlock.blockRegisterInit();
-		BCCRegisterItem.ItemRegisterInit();
-		BCCEntityRegister.EntityRegisterInit();
-		
+		blockproxy=new BCCBlockProxy();
+		blockproxy.init();
 	}
 
 	@EventHandler

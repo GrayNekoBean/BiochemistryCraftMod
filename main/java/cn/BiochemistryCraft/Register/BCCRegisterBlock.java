@@ -1,18 +1,13 @@
 package cn.BiochemistryCraft.Register;
 
-import net.minecraft.block.Block;
-
 public class BCCRegisterBlock {
-	//¾²Ì¬±äÁ¿ÖÃ·ÅÇø
-	static{
-	// Block example;
-	}
+	//ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+	//public static Block example;
 	
 	
 	
 	
-	
-	//·½¿é×¢²áÇø
+	//ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
 	public static void blockRegisterInit(){
 		//this.example=new exampleBlock();
 		
