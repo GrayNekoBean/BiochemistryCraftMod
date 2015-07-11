@@ -1,6 +1,7 @@
 package cn.BiochemistryCraft.Block;
 
 import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.GUI.GUIID;
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -27,7 +28,7 @@ public class BlockBioExtracter extends BlockContainer{
                   int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
                   float par8, float par9) {
            // TODO Auto-generated method stub
-            par5EntityPlayer.openGui(BiochemistryCraft.instance, 2027, par1World, par2, par3, par4);
+            par5EntityPlayer.openGui(BiochemistryCraft.instance, GUIID.BioExtracter, par1World, par2, par3, par4);
           
 
      return true;

@@ -4,6 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cn.BiochemistryCraft.CreativeTab.BCCCreativeTab;
+import cn.BiochemistryCraft.GUI.BioGuiHandler;
 import cn.BiochemistryCraft.GUI.ContainerBioExtracter;
 import cn.BiochemistryCraft.GUI.GUIBioExtracter;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
@@ -25,7 +26,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid=BiochemistryCraft.MODID,name=BiochemistryCraft.NAME,version=BiochemistryCraft.Version)
 
-public class BiochemistryCraft implements IGuiHandler{
+public class BiochemistryCraft{
 	
 	@Instance(BiochemistryCraft.MODID)
 	public static BiochemistryCraft instance;
@@ -57,7 +58,7 @@ public class BiochemistryCraft implements IGuiHandler{
 		itemregister.ItemRegisterInit();
 		entityregister.EntityRegisterInit();
 		
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, this);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 	}
 
 	@EventHandler
@@ -70,25 +71,5 @@ public class BiochemistryCraft implements IGuiHandler{
 		
 	}
 
-	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
-			int x, int y, int z) {
-		// TODO 自动生成的方法存根
-		 switch(ID){
-		 case 2027:
-			return new ContainerBioExtracter(player.inventory, (TileentityBioExtracter)player.worldObj.getTileEntity(x, y, z));
-		 }
-		 return null;
-	}
-
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
-			int x, int y, int z) {
-		switch(ID){
-		 case 2027:
-			return new GUIBioExtracter(player.inventory, (TileentityBioExtracter)player.worldObj.getTileEntity(x, y, z));
-		 }
-		// TODO 自动生成的方法存根
-		return null;
-	}
+	
 }
