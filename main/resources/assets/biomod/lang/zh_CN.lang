@@ -1,6 +1,7 @@
 tile.BioDirt.name=生化泥土
 
 item.EmptyNeedle.name=空针筒
+item.EmptyNeedle.lore=吸取血液中......
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒
@@ -24,3 +25,5 @@ item.SlimeBloodNeedle.name=史莱姆血针筒
 item.SpiderBloodNeedle.name=蜘蛛血针筒
 item.WitchBloodNeedle.name=女巫血针筒
 item.ZombieBloodNeedle.name=僵尸血针筒
+
+itemGroup.BiochemistryCraft=生物化学

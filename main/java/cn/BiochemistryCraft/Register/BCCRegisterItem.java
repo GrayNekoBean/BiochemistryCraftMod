@@ -41,6 +41,10 @@ public class BCCRegisterItem {
 		{
 			bloodgr[i]=new ItemBs(i);
 			bloodgr[i].setUnlocalizedName(ItemBs.getxzsmean(i)+"Needle");
+			if(i<11)
+				bloodgr[i].setTextureName("biomod:AnimalNeedle");
+			else
+				bloodgr[i].setTextureName("biomod:MonsterNeedle");
 		}
 		emptyneedle = new ItemTnc();
 	}

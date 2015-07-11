@@ -9,10 +9,4 @@ this is a mod  :Biochemistry craft
 
 希望大家支持我，如果有意加入，请联系我QQ：473394780或加QQ群：317205878，也可以联系我email：473394780@qq.com
 
-English
-
-There have no too much things I needs to say,this mod is still developing on some base classes.
-
-BiochemistryCraft Mod ,the main theme of this mod is biology,now I plan to add more animals and plants,some gene test,and sick system,etc.
-
-hope everyone can suppport me,if you want to join,you can add my QQ:473394780 or add this QQ group:317205878,and you can also find me with my email: 473394780@qq.com
+然而我们现在正在努力工作中-----

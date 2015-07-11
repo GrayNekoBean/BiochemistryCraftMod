@@ -1,6 +1,7 @@
 tile.BioDirt.name=BioDirt
 
 item.EmptyNeedle.name=EmptyNeedle
+item.EmptyNeedle.lore=Vampiring
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle
@@ -24,3 +25,5 @@ item.SlimeBloodNeedle.name=SlimeBloodNeedle
 item.SpiderBloodNeedle.name=SpiderBloodNeedle
 item.WitchBloodNeedle.name=WitchBloodNeedle
 item.ZombieBloodNeedle.name=ZombieBloodNeedle
+
+itemGroup.BiochemistryCraft=BiochemistryCraft

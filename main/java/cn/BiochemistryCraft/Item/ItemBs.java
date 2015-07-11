@@ -22,7 +22,6 @@ public class ItemBs extends Item{
 		//this.setUnlocalizedName(BloodKind[this.xz] + "blood");
 		this.setMaxStackSize(16);
 		this.setMaxDamage(1);
-		
 	}
 	public static String getxzsmean(int xz){
 		switch(xz){
