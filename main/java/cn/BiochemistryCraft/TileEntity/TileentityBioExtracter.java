@@ -9,79 +9,118 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 	
 	
 	private ItemStack stack[]=new ItemStack[3];
+	private int i=0;
 
+	
+	
+	@Override
+    public void updateEntity() {
+           // TODO Auto-generated method stub
+           super.updateEntity();
+           //System.out.println("Hello GUI"+(i++));
+    }
+	
 	@Override
 	public int getSizeInventory() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return 0;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int p_70301_1_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 
 	@Override
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		return null;
+	public ItemStack decrStackSize(int par1, int par2) {
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (this.stack[par1] != null)
+        {
+        	ItemStack var3;
+
+        	if (this.stack[par1].stackSize <= par2)
+        	{
+        		var3 = this.stack[par1];
+        		this.stack[par1] = null;
+        		return var3;
+        	}
+        	else
+        	{
+        		var3 = this.stack[par1].splitStack(par2);
+	        
+        		if (this.stack[par1].stackSize == 0)
+        		{
+        			this.stack[par1] = null;
+        		}
+	
+        		return var3;
+        	}
+        }
+        else
+        {
+        	return null;
+        }
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+	public void setInventorySlotContents(int var1, ItemStack var2) {
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		this.stack[var1] = var2;
+        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
+        {
+                var2.stackSize = this.getInventoryStackLimit();
+        }
 		
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return true;
 	}
 
 	@Override
 	public void openInventory() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return false;
 	}
-	
 	
 	
 

@@ -1,4 +1,5 @@
 tile.BioDirt.name=BioDirt
+tile.BioExtracter.name=BioExtracter
 
 item.EmptyNeedle.name=EmptyNeedle
 item.EmptyNeedle.lore=Vampiring
@@ -27,3 +28,5 @@ item.WitchBloodNeedle.name=WitchBloodNeedle
 item.ZombieBloodNeedle.name=ZombieBloodNeedle
 
 itemGroup.BiochemistryCraft=BiochemistryCraft
+
+gui.Extracter.name=BioExtracter

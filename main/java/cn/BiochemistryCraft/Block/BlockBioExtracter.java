@@ -1,21 +1,45 @@
 package cn.BiochemistryCraft.Block;
 
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockBioExtracter extends BlockContainer{
 
-	protected BlockBioExtracter(Material p_i45386_1_) {
-		super(p_i45386_1_);
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+	public BlockBioExtracter(Material m) {
+		super(m);
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½
+		this.setBlockName("BioExtracter");
+		this.setBlockTextureName("biomod:BioExtracter");
+		this.setCreativeTab(BiochemistryCraft.biocreativetab);
+		this.setHarvestLevel("shavel", 3);
+		this.setStepSound(Block.soundTypeWood);
+		this.setHardness(2F);
+		this.setBlockBounds(0.25F, 0.25F,0.25F, 0.75F, 0.75F,0.75F);
 	}
+	@Override
+    public boolean onBlockActivated(World par1World, int par2, int par3,
+                  int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
+                  float par8, float par9) {
+           // TODO Auto-generated method stub
+            par5EntityPlayer.openGui(BiochemistryCraft.instance, 2027, par1World, par2, par3, par4);
+          
 
+     return true;
+    }
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		return null;
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		return new TileentityBioExtracter();
 	}
-
+	
+	public boolean isOpaqueCube()
+    {
+        return false;
+    }
 }

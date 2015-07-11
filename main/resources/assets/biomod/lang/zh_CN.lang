@@ -1,4 +1,5 @@
 tile.BioDirt.name=生化泥土
+tile.BioExtracter.name=生化提取器
 
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
@@ -27,3 +28,5 @@ item.WitchBloodNeedle.name=女巫血针筒
 item.ZombieBloodNeedle.name=僵尸血针筒
 
 itemGroup.BiochemistryCraft=生物化学
+
+gui.Extracter.name=生化提取器
