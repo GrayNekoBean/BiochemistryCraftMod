@@ -46,5 +46,14 @@ public class GUIBioExtracter extends GuiContainer{
 	         this.drawTexturedModalRect(this.guiLeft + 81, this.guiTop + 37 + (int)(14 - 14 * ((float)b / maxBurnTime)),
 	        		 176, (int)(14 - 14 * ((float)b / maxBurnTime)), 14, (int)(14 * ((float)b / maxBurnTime)));
 	     }
+	     
+	     int out = tile.outputTime; // 取得Tile内的燃料燃烧时间
+	     float maxOutputTime = 100F;// 取得最大燃料燃烧时间，用float，不用的话得不出百分比
+	     if (b > 0 && maxBurnTime > 0) // 确定描绘的时机
+	     {
+	         // 描绘火焰图像
+	         this.drawTexturedModalRect(this.guiLeft + 76, this.guiTop + 20,
+	        		 176, 14, (int)(24*((float)out/maxOutputTime)), 16);
+	     }
     }
 }
