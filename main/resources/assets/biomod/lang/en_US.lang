@@ -27,6 +27,29 @@ item.SpiderBloodNeedle.name=SpiderBloodNeedle
 item.WitchBloodNeedle.name=WitchBloodNeedle
 item.ZombieBloodNeedle.name=ZombieBloodNeedle
 
+item.CowBloodEssence.name=CowBloodEssence
+item.PigBloodEssence.name=PigBloodEssence
+item.ChickenBloodEssence.name=ChickenBloodEssence
+item.WolfBloodEssence.name=WolfBloodEssence
+item.HumanBloodEssence.name=HumanBloodEssence
+item.BatBloodEssence.name=BatBloodEssence
+item.HorseBloodEssence.name=HorseBloodEssence
+item.MushroomBloodEssence.name=MushroomBloodEssence
+item.CatBloodEssence.name=CatBloodEssence
+item.SheepBloodEssence.name=SheepBloodEssence
+item.SquidBloodEssence.name=SquidBloodEssence
+item.CavespiderBloodEssence.name=CavespiderBloodEssence
+item.CreeperBloodEssence.name=CreeperBloodEssence
+item.EndermanBloodEssence.name=EndermanBloodEssence
+item.GhostBloodEssence.name=GhostBloodEssence
+item.MagmacubeBloodEssence.name=MagmacubeBloodEssence
+item.PigzombieBloodEssence.name=PigzombieBloodEssence
+item.SilverfishBloodEssence.name=SilverfishBloodEssence
+item.SlimeBloodEssence.name=SlimeBloodEssence
+item.SpiderBloodEssence.name=SpiderBloodEssence
+item.WitchBloodEssence.name=WitchBloodEssence
+item.ZombieBloodEssence.name=ZombieBloodEssence
+
 itemGroup.BiochemistryCraft=BiochemistryCraft
 
 gui.Extracter.name=BioExtracter

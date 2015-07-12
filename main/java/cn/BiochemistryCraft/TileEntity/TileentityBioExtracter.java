@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.TileEntity;
 
+import cn.BiochemistryCraft.GUI.CraftingBioExtracter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,6 +25,7 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 	private ItemStack tstack[]=new ItemStack[3];
 	//private int i=0;
 	public int tableBurnTime = 0;
+	public int outputTime = 0;
 	public int maxBurnTime = 0;
 	
 	
@@ -32,25 +34,19 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
            // TODO Auto-generated method stub
            super.updateEntity();
            //System.out.println("Hello GUI"+(i++));
+           ItemStack output = null;
            if(tableBurnTime > 0)
            {
                    // 取得修复的物品
-                   ItemStack repairItem = getStackInSlot(0);
+                   ItemStack bioItem = getStackInSlot(0);
                    // 取得修复好的物品
                    ItemStack outputItem = getStackInSlot(1);
                    // 确定开始修复的条件之一：修复物品槽不为空，已修复物品槽为空
-                   if(repairItem != null && outputItem == null)
+                   if(bioItem != null && outputItem == null)
                    {
-                           // 判断被修复的物品是否为工具或武器
-                           if(repairItem.getItem() instanceof ItemTool || repairItem.getItem() instanceof ItemArmor)
-                           {
-                                   // 判断物品是否要修理
-                                   if(repairItem.getItemDamage() > 0)
-                                   {
-                                           // 修复物品
-                                           repairItem.setItemDamage(repairItem.getItemDamage() - 1);
-                                   }
-                           }
+                	   output=CraftingBioExtracter.getBioItem(bioItem);
+                	   if(output!=null)
+                		   outputTime++;
                    }
                    // 减少燃烧时间
                    tableBurnTime -= 1;
@@ -60,43 +56,40 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
            else // 没有燃料的情况下
            {
                    // 如果有被修复的物品
-                   if(getStackInSlot(0) != null)
+                   if(getStackInSlot(0) != null && CraftingBioExtracter.getBioItem(getStackInSlot(0)) != null && getStackInSlot(2)!=null)
                    {
                            // 取得燃料槽的物品
                            ItemStack burnItem = getStackInSlot(2);
                            // 取得物品的燃烧值
-                       int getBurnTime = getItemBurnTime(burnItem);
+                       int getBurnTime = CraftingBioExtracter.getBioTime(burnItem);
                        // 判断物品是否能燃烧
                        if(getBurnTime > 0)
                        {
-                               maxBurnTime = getBurnTime;
-                               tableBurnTime = getBurnTime;
-                               // 如果燃烧物品为岩浆桶
-                               if(burnItem.getItem() == Items.lava_bucket)
-                               {
-                                       // 取得空桶
-                                       setInventorySlotContents(2, new ItemStack(Items.bucket, 1));
-                               }
-                               else
-                               {
-                                       // 其他物品就减少
-                                       if(burnItem.stackSize - 1 > 0)
-                                       {
-                                               burnItem.stackSize--;
-                                               setInventorySlotContents(2, burnItem);
-                                       }
-                                       else
-                                       {
-                                               setInventorySlotContents(2, null);
-                                       }
-                               }
+                           maxBurnTime = getBurnTime;
+                           tableBurnTime = getBurnTime;
+                           // 如果燃烧物品为岩浆桶
+                                   // 其他物品就减少
+                           if(burnItem.stackSize - 1 > 0)
+                           {
+                                   burnItem.stackSize--;
+                                   setInventorySlotContents(2, burnItem);
+                           }
+                           else
+                           {
+                                   setInventorySlotContents(2, null);
+                           }
                        }
                    }
            }
-           if(getStackInSlot(0)!=null && getStackInSlot(0).getItemDamage()==0)
+           if(outputTime>=100)
            {
-              setInventorySlotContents(1,getStackInSlot(0));
-              setInventorySlotContents(0,null);
+        	  ItemStack bioItem = getStackInSlot(0);
+              setInventorySlotContents(1,output);
+              if(--bioItem.stackSize>0)
+            	  setInventorySlotContents(0,bioItem);
+              else
+            	  setInventorySlotContents(0,null);
+              outputTime=0;
            }
     }
 	
