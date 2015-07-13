@@ -1,6 +1,8 @@
 package cn.BiochemistryCraft.TileEntity;
 
 import cn.BiochemistryCraft.GUI.CraftingBioExtracter;
+import cn.BiochemistryCraft.Item.ItemBs;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -98,7 +100,9 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 	            	  setInventorySlotContents(0,bioItem);
 	              else
 	            	  setInventorySlotContents(0,null);
+	            	  
 	              outputTime=0;
+	              
 	           }
 	           if(getStackInSlot(0)==null)
 	        	   outputTime=0;   

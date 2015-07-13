@@ -51,6 +51,8 @@ public class ItemTnc extends BCCItemBase{
 	
     public boolean itemInteractionForEntity(ItemStack i, EntityPlayer e, EntityLivingBase el)
     {
+    	i.stackSize-=1;
+    	el.setHealth(el.getHealth()-2F);
     	if(!el.worldObj.isRemote){
     		if(el instanceof EntityCow){		
     			el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0), 1.0F);
