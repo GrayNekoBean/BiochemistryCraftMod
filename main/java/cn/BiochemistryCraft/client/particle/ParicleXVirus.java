@@ -1,6 +1,8 @@
 package cn.BiochemistryCraft.client.particle;
 
 import net.minecraft.client.particle.EntityFX;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class ParicleXVirus extends EntityFX{
@@ -13,6 +15,16 @@ public class ParicleXVirus extends EntityFX{
 		this.setRBGColorF(148, 0, 211);
 		this.setSize(2.0f,1.75f);
 		this.particleAlpha = 0.2f;
+		// TODO �Զ����ɵĹ��캯�����
+	}
+@Override
+	public void onCollideWithPlayer(EntityPlayer player){
+	super.onCollideWithPlayer(player);
 	}
 
+public void applyEntityCollision(Entity entity){
+	
+	super.applyEntityCollision(entity);
+	
+}
 }
