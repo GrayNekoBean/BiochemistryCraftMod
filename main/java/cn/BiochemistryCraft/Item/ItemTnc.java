@@ -53,67 +53,110 @@ public class ItemTnc extends BCCItemBase{
     {
     	if(!el.worldObj.isRemote){
     		if(el instanceof EntityCow){		
-    			this.getBlood(e,i, BCCRegisterItem.cowblood);
+    			el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0), 1.0F);
+	    		i.stackSize--;
     			return true;
     		}else if(el instanceof EntityPig){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.pigblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[1], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityChicken){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.chickenblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[2], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityWolf){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.wolfblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[3], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityPlayer){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.playerblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[4], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityBat){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.batblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[5], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityHorse){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.horseblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[6], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityMooshroom){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.mushroomblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[7], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityOcelot){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.ocelotblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[8], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntitySheep){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.sheepblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[9], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntitySquid){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.squidblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[10], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityCaveSpider){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.cavespiderblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[11], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityCreeper){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.creeperblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[12], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityEnderman){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.endermanblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[13], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityGhast){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.ghostblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[14], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityMagmaCube){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.magmacubeblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[15], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityPigZombie){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.pigzombieblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[16], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntitySilverfish){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.silverfishblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[17], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntitySlime){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.slimeblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[18], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntitySpider){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.spiderblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[19], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityWitch){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.witchblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[20], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else if(el instanceof EntityZombie){
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.zombieblood, 1, 0), 1.0F);
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[21], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
 	    	}else{
-	    		el.entityDropItem( new ItemStack(BCCRegisterItem.cowblood, 1, 0), 1.0F);
-    	}
-}
-    	
-        return true;
+	    		el.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[1], 1, 0), 1.0F);
+	    		i.stackSize--;
+	    		return true;
+	    		}
+    		}
+    	return false;
     }
     
-    public boolean getBlood(EntityPlayer player,ItemStack itemstack,Item item){
+    public boolean getBlood(EntityPlayer player,ItemStack itemUse,ItemStack itemGive){
     	  //ItemStack itemstack = player.inventory.getCurrentItem();
 
-          if (itemstack != null)
+          if (itemUse != null)
           {
               //if (itemstack.stackSize-- == 1)
               //{
-        	  itemstack.stackSize=0;
-                  player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(item));
+                  player.inventory.setInventorySlotContents(player.inventory.currentItem, itemGive);
               //}
               //else if (!player.inventory.addItemStackToInventory(new ItemStack(item)))
               //{
