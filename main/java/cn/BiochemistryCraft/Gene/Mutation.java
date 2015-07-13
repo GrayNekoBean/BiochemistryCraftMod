@@ -3,9 +3,9 @@ package cn.BiochemistryCraft.Gene;
 import net.minecraft.entity.EntityLiving;
 import cn.BiochemistryCraft.Entity.BCCGeneAnimal;
 import cn.BiochemistryCraft.Entity.BCCGeneMonster;
-import cn.BiochemistryCraft.core.sick.SickLoop;
+import cn.BiochemistryCraft.core.sick.Sick;
 
-public class Mutation extends SickLoop{
+public class Mutation extends Sick{
 	
 	
 	public float probly;
