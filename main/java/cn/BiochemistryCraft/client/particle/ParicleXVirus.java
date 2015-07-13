@@ -5,10 +5,14 @@ import net.minecraft.world.World;
 
 public class ParicleXVirus extends EntityFX{
 
-	protected ParicleXVirus(World p_i1218_1_, double p_i1218_2_,
-			double p_i1218_4_, double p_i1218_6_) {
+	public float maxage=16.0f/(this.worldObj.rand.nextFloat()*0.8f)+2.0f;
+	
+	protected ParicleXVirus(World p_i1218_1_, double p_i1218_2_,double p_i1218_4_, double p_i1218_6_,float age) {
 		super(p_i1218_1_, p_i1218_2_, p_i1218_4_, p_i1218_6_);
-		// TODO 自动生成的构造函数存根
+		this.maxage=age=this.particleAge;
+		this.setRBGColorF(148, 0, 211);
+		this.setSize(2.0f,1.75f);
+		this.particleAlpha = 0.2f;
 	}
 
 }
