@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.BiochemistryCraft.Entity.IBiology;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -16,14 +17,16 @@ public class Sick extends TimerTask{
 	public EntityLiving entity;
 	public int strong=1;
 	public Potion theEffect;
-	
-	public Sick(){
+	public boolean gotSick;
+	//=========================================================================================
+	public static Sick sickCold=new Sick("cold",1);
+	public Sick(String name,int strong){
 		
 	}
 	
 	public void setTimer(){
 		Timer sickTimer=new Timer();
-		sickTimer.schedule(new Sick(), 1000);
+		sickTimer.schedule(new Sick(null, strong), 1000);
 	}
 	
 	@Override
@@ -34,11 +37,16 @@ public class Sick extends TimerTask{
 		
 	}
 	public void sickUpdate(){
-		
+		if(((IBiology)entity).getSick(this)==true){
+			this.sickEffect(entity);
+		}
 		if(this.rnd.nextInt((int)(60*60*3/probly))==10){
 			//player.addPotionEffect(new PotionEffect(Potion.poison.id,strong*this.rnd.nextInt(250)*62,0));
-			this.sickEffect(this.entity);
+			this.gotSick=true;
 			
+		}
+		if(gotSick==true){
+			this.sickEffect(entity);
 		}
 		
 	}
