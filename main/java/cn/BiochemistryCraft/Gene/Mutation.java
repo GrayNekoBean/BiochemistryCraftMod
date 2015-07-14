@@ -8,6 +8,11 @@ import cn.BiochemistryCraft.core.sick.Sick;
 public class Mutation extends Sick{
 	
 	
+	public Mutation(String name, int strong) {
+		super(name, strong);
+		// TODO 自动生成的构造函数存根
+	}
+
 	public float probly;
 	public BCCGeneMonster mob;
 	public BCCGeneAnimal animal;

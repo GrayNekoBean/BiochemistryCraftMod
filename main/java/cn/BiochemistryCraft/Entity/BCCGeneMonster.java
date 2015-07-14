@@ -1,5 +1,7 @@
 package cn.BiochemistryCraft.Entity;
 
+import cn.BiochemistryCraft.Gene.InfectSource;
+import cn.BiochemistryCraft.core.sick.Sick;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -39,13 +41,6 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		
 		
 		// TODO �Զ����ɵĹ��캯�����
-	}
-	public BCCGeneMonster(World w,double x,double y,double z)
-	{
-		super(w);
-		this.posX=x;
-		this.posY=y;
-		this.posZ=z;
 	}
 	//�����Ƿ����������
 	public boolean isActiveAttack(boolean yes){
@@ -105,7 +100,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	
 	@Override
 	public boolean isAIEnabled(){
-		return mutated;
+		return true;
 		
 	}
 	
@@ -135,13 +130,11 @@ public boolean isMutate(){
 		// TODO �Զ����ɵķ������
 		return true;
 	}
-	@Override
 	public void SetMutationProbly(float par1) {
 		// TODO �Զ����ɵķ������
 		mutateProbly=par1;
 		
 	}
-	@Override
 	public void setInfectivity(float par1) {//设置感染值
 		// TODO �Զ����ɵķ������
 		Infectivity=par1;
@@ -193,6 +186,21 @@ public void readEntityFromNBT(NBTTagCompound nbttag){
 	
 	
 	
+}
+@Override
+public Entity getEntity() {
+	// TODO 自动生成的方法存根
+	return this;
+}
+@Override
+public boolean getInfect(InfectSource source, Entity entity) {
+	// TODO 自动生成的方法存根
+	return false;
+}
+@Override
+public boolean getSick(Sick sick) {
+	// TODO 自动生成的方法存根
+	return false;
 }
 
 
