@@ -40,6 +40,13 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		
 		// TODO �Զ����ɵĹ��캯�����
 	}
+	public BCCGeneMonster(World w,double x,double y,double z)
+	{
+		super(w);
+		this.posX=x;
+		this.posY=y;
+		this.posZ=z;
+	}
 	//�����Ƿ����������
 	public boolean isActiveAttack(boolean yes){
 		return this.whether = yes;

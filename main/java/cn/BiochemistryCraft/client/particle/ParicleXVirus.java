@@ -17,14 +17,12 @@ public class ParicleXVirus extends EntityFX{
 		this.particleAlpha = 0.2f;
 		// TODO �Զ����ɵĹ��캯�����
 	}
-@Override
+	@Override
 	public void onCollideWithPlayer(EntityPlayer player){
-	super.onCollideWithPlayer(player);
+		super.onCollideWithPlayer(player);
 	}
 
-public void applyEntityCollision(Entity entity){
-	
-	super.applyEntityCollision(entity);
-	
-}
+	public void applyEntityCollision(Entity entity){
+		super.applyEntityCollision(entity);
+	}
 }

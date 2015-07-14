@@ -3,6 +3,7 @@ tile.BioExtracter.name=BioExtracter
 
 item.EmptyNeedle.name=EmptyNeedle
 item.EmptyNeedle.lore=Vampiring
+item.BioBrain.name=BioBrain
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle

@@ -3,6 +3,7 @@ tile.BioExtracter.name=生化提取器
 
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
+item.BioBrain.name=生化核心
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒

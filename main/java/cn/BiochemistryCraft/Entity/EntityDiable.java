@@ -21,6 +21,14 @@ public class EntityDiable  extends BCCGeneMonster implements IBiology{
 		// TODO 自动生成的构造函数存根
 	}
 	
+	public EntityDiable(World w,double x,double y,double z){
+		super(w,x,y,z);
+		this.useNormalMobAI(true);//是否快捷使用一般的怪物AI
+		this.setHealth(25);//设置生命值
+		this.setAttack(3.0f);//设置攻击力
+		this.SetMutationProbly(prob);
+	}
+	
 	protected void addRandomArmor(){//给怪物添加装备
 		Item rndItem = null;
 		switch(this.worldObj.rand.nextInt(10)){

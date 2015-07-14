@@ -1,6 +1,9 @@
 package cn.BiochemistryCraft.Item;
 
+import com.sun.xml.internal.stream.Entity;
+
 import cpw.mods.fml.common.registry.GameRegistry;
+import cn.BiochemistryCraft.Entity.EntityDiable;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -51,6 +54,8 @@ public class ItemTnc extends BCCItemBase{
 	
     public boolean itemInteractionForEntity(ItemStack i, EntityPlayer e, EntityLivingBase el)
     {
+    	//EntityDiable entity=new EntityDiable(e.worldObj,e.posX,e.posY,e.posZ);
+    	//e.worldObj.spawnEntityInWorld(entity);
     	if(!el.worldObj.isRemote){
     		if(el instanceof EntityCow){		
     			e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0), 1.0F);

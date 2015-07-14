@@ -28,7 +28,7 @@ public class BCCEntityRegister {
 
 	public void EntityRenderRegisterInit()
 	{
-				EntityRegistry.registerModEntity(EntityDiable.class, "Le Diable", 500, BiochemistryCraft.instance, 64, 64, true);
-				RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
+		EntityRegistry.registerModEntity(EntityDiable.class, "Le Diable", 500, BiochemistryCraft.instance, 64, 64, true);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
 	}
 }

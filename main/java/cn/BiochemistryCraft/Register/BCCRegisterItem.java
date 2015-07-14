@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 public class BCCRegisterItem {
 	
 	public static Item emptyneedle;
+	public static Item biobrain;
 	
 	public static Item cowblood;
 	public static Item pigblood;
@@ -80,12 +81,14 @@ public class BCCRegisterItem {
 				bloodes[i].setTextureName("biomod:MonsterEssence");
 		}
 		emptyneedle = new ItemTnc();
+		biobrain = new ItemBioBrain();
 	}
 	
 	public void ItemRegisterInit(){
 		
 		
 		GameRegistry.registerItem(emptyneedle, "EmptyNeedle");
+		GameRegistry.registerItem(biobrain, "BioBrain");
 		
 		for(int i=0;i<22;i++)
 		{
