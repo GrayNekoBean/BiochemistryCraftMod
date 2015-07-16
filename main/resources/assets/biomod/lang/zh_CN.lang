@@ -1,5 +1,7 @@
 tile.BioDirt.name=生化泥土
 tile.BioExtracter.name=生化提取器
+tile.Acid.name=酸
+item.AcidWand.name=酸之法杖
 
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......

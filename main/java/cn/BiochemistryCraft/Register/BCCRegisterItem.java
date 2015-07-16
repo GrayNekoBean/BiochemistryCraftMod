@@ -3,11 +3,13 @@ package cn.BiochemistryCraft.Register;
 import cn.BiochemistryCraft.Item.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 
 public class BCCRegisterItem {
 	
 	public static Item emptyneedle;
 	public static Item biobrain;
+	public static Item acidwand;
 	
 	public static Item cowblood;
 	public static Item pigblood;
@@ -82,6 +84,7 @@ public class BCCRegisterItem {
 		}
 		emptyneedle = new ItemTnc();
 		biobrain = new ItemBioBrain();
+		acidwand = new ItemAcidWand();
 	}
 	
 	public void ItemRegisterInit(){
@@ -89,6 +92,7 @@ public class BCCRegisterItem {
 		
 		GameRegistry.registerItem(emptyneedle, "EmptyNeedle");
 		GameRegistry.registerItem(biobrain, "BioBrain");
+		GameRegistry.registerItem(acidwand, "AcidWand");
 		
 		for(int i=0;i<22;i++)
 		{

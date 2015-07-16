@@ -57,6 +57,8 @@ public class BiochemistryCraft{
 		blockregister.blockRegisterInit();
 		itemregister.ItemRegisterInit();
 		entityregister.EntityRegisterInit();
+		entityregister.EntityRenderRegisterInit();
+		
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 	}

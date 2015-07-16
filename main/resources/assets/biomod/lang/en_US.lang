@@ -1,9 +1,11 @@
 tile.BioDirt.name=BioDirt
 tile.BioExtracter.name=BioExtracter
+tile.Acid.name=Acid
 
 item.EmptyNeedle.name=EmptyNeedle
 item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
+item.AcidWand.name=AcidWand
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle

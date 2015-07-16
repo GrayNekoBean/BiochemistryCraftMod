@@ -33,6 +33,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 
@@ -56,6 +57,7 @@ public class ItemTnc extends BCCItemBase{
     {
     	//EntityDiable entity=new EntityDiable(e.worldObj,e.posX,e.posY,e.posZ);
     	//e.worldObj.spawnEntityInWorld(entity);
+    	el.attackEntityFrom(DamageSource.cactus, 2F);
     	if(!el.worldObj.isRemote){
     		if(el instanceof EntityCow){		
     			e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0), 1.0F);
@@ -145,13 +147,10 @@ public class ItemTnc extends BCCItemBase{
 	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[21], 1, 0), 1.0F);
 	    		i.stackSize--;
 	    		return true;
-	    	}else{
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[1], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
-	    		}
-    		}
+	    	}
+    	}
     	return false;
+    	
     }
     
     public boolean getBlood(EntityPlayer player,ItemStack itemUse,ItemStack itemGive){
