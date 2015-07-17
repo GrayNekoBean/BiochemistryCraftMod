@@ -40,6 +40,7 @@ public class BCCRegisterBlock {
 		//this.example=new exampleBlock();
 		GameRegistry.registerBlock(biodirt, "BioDirt");
 		GameRegistry.registerBlock(bioextracter, "BioExtracter");
+		GameRegistry.registerBlock(acid, "Acid");
 		
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));
