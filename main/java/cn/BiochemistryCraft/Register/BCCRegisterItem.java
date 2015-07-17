@@ -1,9 +1,10 @@
 package cn.BiochemistryCraft.Register;
 
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Item.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 
 public class BCCRegisterItem {
 	
@@ -57,12 +58,17 @@ public class BCCRegisterItem {
 	public static Item witchbloodessence;
 	public static Item zombiebloodessence;
 	
+	public static ItemHerbs fireGrass;
+	public static ItemHerbs coolGrass;
+	
 	public static Item[] bloodgr = {cowblood, pigblood, chickenblood, wolfblood, playerblood, batblood, horseblood, mushroomblood, ocelotblood, sheepblood, squidblood,
 		cavespiderblood, creeperblood, endermanblood, ghostblood, magmacubeblood, pigzombieblood, silverfishblood, slimeblood, spiderblood, witchblood, zombieblood};
 	public static Item[] bloodes = {cowbloodessence, pigbloodessence, chickenbloodessence, wolfbloodessence, playerbloodessence,
 		batbloodessence, horsebloodessence, mushroombloodessence, ocelotbloodessence, sheepbloodessence, squidbloodessence,
 		cavespiderbloodessence, creeperbloodessence, endermanbloodessence, ghostbloodessence, magmacubebloodessence,
 		pigzombiebloodessence, silverfishbloodessence, slimebloodessence, spiderbloodessence, witchbloodessence, zombiebloodessence};
+	
+	public static Item[] herbsArray = {fireGrass, coolGrass};
 	
 	public BCCRegisterItem()
 	{
@@ -82,6 +88,14 @@ public class BCCRegisterItem {
 			else
 				bloodes[i].setTextureName("biomod:MonsterEssence");
 		}
+		
+		for(int i = 0; i <= 1; i++){
+			herbsArray[i] = new ItemHerbs(BCCRegisterBlock.herbsCorpArray[i], BCCRegisterBlock.biodirt, i);
+			herbsArray[i].setCreativeTab(BiochemistryCraft.biocreativetab);
+			herbsArray[i].setUnlocalizedName(ItemHerbs.getName(i));
+			herbsArray[i].setTextureName(BiochemistryCraft.MODID+":"+ItemHerbs.getName(i));
+		}
+		
 		emptyneedle = new ItemTnc();
 		biobrain = new ItemBioBrain();
 		acidwand = new ItemAcidWand();
@@ -100,6 +114,9 @@ public class BCCRegisterItem {
 			GameRegistry.registerItem(bloodes[i], ItemBloodEssence.getxzsmean(i));
 		}
 		
+		for(int i = 0; i <= 1; i++){
+			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
+		}
 	}
 		
 	}

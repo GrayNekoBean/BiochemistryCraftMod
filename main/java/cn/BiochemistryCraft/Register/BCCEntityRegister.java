@@ -34,4 +34,5 @@ public class BCCEntityRegister {
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
 	}
+
 }

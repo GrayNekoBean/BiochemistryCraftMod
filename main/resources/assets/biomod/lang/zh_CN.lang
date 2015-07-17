@@ -53,6 +53,9 @@ item.SpiderBloodNeedle.name=蜘蛛血针筒
 item.WitchBloodNeedle.name=女巫血针筒
 item.ZombieBloodNeedle.name=僵尸血针筒
 
+item.fireGrass.name=火炎草
+item.coolGrass.name=清凉草
+
 itemGroup.BiochemistryCraft=生物化学
 
 gui.Extracter.name=生化提取器

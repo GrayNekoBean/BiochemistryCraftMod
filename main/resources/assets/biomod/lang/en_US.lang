@@ -53,6 +53,9 @@ item.SpiderBloodEssence.name=SpiderBloodEssence
 item.WitchBloodEssence.name=WitchBloodEssence
 item.ZombieBloodEssence.name=ZombieBloodEssence
 
+item.fireGrass.name=Fire Grass
+item.coolGrass.name=Cool Grass
+
 itemGroup.BiochemistryCraft=BiochemistryCraft
 
 gui.Extracter.name=BioExtracter
