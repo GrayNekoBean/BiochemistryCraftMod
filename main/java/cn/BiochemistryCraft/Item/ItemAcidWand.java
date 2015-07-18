@@ -2,6 +2,7 @@ package cn.BiochemistryCraft.Item;
 
 
 import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Entity.EntityBioPig;
 import cn.BiochemistryCraft.Entity.EntityDiable;
 import cn.BiochemistryCraft.Entity.Throwable.EntityAcid;
 import net.minecraft.block.material.Material;

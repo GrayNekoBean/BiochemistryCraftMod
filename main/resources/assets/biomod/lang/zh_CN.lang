@@ -59,3 +59,8 @@ item.coolGrass.name=清凉草
 itemGroup.BiochemistryCraft=生物化学
 
 gui.Extracter.name=生化提取器
+
+entity.biomod.EntityBioPig.name=生化小猪猪
+
+death.attack.acid=%1$s 被溶解了
+death.attack.acid.player=%1$s 在逃离 %2$s 时掉进了酸中

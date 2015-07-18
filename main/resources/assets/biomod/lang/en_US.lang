@@ -59,3 +59,8 @@ item.coolGrass.name=Cool Grass
 itemGroup.BiochemistryCraft=BiochemistryCraft
 
 gui.Extracter.name=BioExtracter
+
+entity.biomod.EntityBioPig.name=BioPig
+
+death.attack.acid=%1$s was dissolve  to death
+death.attack.acid.player=%1$s walked onto acid whilst trying to escape %2$s

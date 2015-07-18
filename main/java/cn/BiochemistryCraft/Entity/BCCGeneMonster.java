@@ -104,10 +104,10 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		
 	}
 	
-public boolean isMutate(){
-	return whether;
-	
-}
+	public boolean isMutate(){
+		return whether;
+		
+	}
 	
 	public void setHealth(int healthy){
 		this.health=healthy;
@@ -157,51 +157,51 @@ public boolean isMutate(){
 		
 	}
 	
-public float getInfectivityValue(){     
-	return Infectivity;
-}
-
-public float getContaminateValue(){
-	return contaminateValue;
-}
-
-public float getImmuneValue(){
-	return this.immuneValue;
-}
-
-public void writeEntityToNBT(NBTTagCompound tag){//读写nbt
-	super.writeEntityToNBT(tag);
-	tag.setFloat("Infectivity", Infectivity);
-	tag.setFloat("contaminateValue", contaminateValue);
-	tag.setFloat("immuneValue", immuneValue);
-	tag.setBoolean("mutated", mutated_);
+	public float getInfectivityValue(){     
+		return Infectivity;
+	}
 	
-}
-
-public void readEntityFromNBT(NBTTagCompound nbttag){
-	super.readEntityFromNBT(nbttag);
-	this.setImmuneValue(nbttag.getFloat("immuneValue"));
-	this.setContaminateValue(nbttag.getFloat("contaminateValue"));
-	this.setInfectivity(nbttag.getFloat("Infectivity"));
+	public float getContaminateValue(){
+		return contaminateValue;
+	}
 	
+	public float getImmuneValue(){
+		return this.immuneValue;
+	}
 	
+	public void writeEntityToNBT(NBTTagCompound tag){//读写nbt
+		super.writeEntityToNBT(tag);
+		tag.setFloat("Infectivity", Infectivity);
+		tag.setFloat("contaminateValue", contaminateValue);
+		tag.setFloat("immuneValue", immuneValue);
+		tag.setBoolean("mutated", mutated_);
+		
+	}
 	
-}
-@Override
-public Entity getEntity() {
-	// TODO 自动生成的方法存根
-	return this;
-}
-@Override
-public boolean getInfect(InfectSource source, Entity entity) {
-	// TODO 自动生成的方法存根
-	return false;
-}
-@Override
-public boolean getSick(Sick sick) {
-	// TODO 自动生成的方法存根
-	return false;
-}
+	public void readEntityFromNBT(NBTTagCompound nbttag){
+		super.readEntityFromNBT(nbttag);
+		this.setImmuneValue(nbttag.getFloat("immuneValue"));
+		this.setContaminateValue(nbttag.getFloat("contaminateValue"));
+		this.setInfectivity(nbttag.getFloat("Infectivity"));
+		
+		
+		
+	}
+	@Override
+	public Entity getEntity() {
+		// TODO 自动生成的方法存根
+		return this;
+	}
+	@Override
+	public boolean getInfect(InfectSource source, Entity entity) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+	@Override
+	public boolean getSick(Sick sick) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
 
 
 

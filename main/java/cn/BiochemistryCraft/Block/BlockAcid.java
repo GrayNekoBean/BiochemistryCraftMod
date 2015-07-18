@@ -2,6 +2,7 @@ package cn.BiochemistryCraft.Block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import cn.BiochemistryCraft.BCCDamageSource;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -63,7 +64,7 @@ public class BlockAcid extends Block{
     {
     	entity.motionX *= 0.4D;
     	entity.motionZ *= 0.4D;
-        entity.attackEntityFrom(DamageSource.cactus, 0.5F);
+        entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
     }
 	
 }
