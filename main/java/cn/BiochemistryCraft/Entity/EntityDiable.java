@@ -1,5 +1,8 @@
 package cn.BiochemistryCraft.Entity;
 
+import com.sun.xml.internal.stream.Entity;
+
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,6 +21,17 @@ public class EntityDiable  extends BCCGeneMonster implements IBiology{
 		this.setHealth(25);//设置生命值
 		this.setAttack(3.0f);//设置攻击力
 		this.SetMutationProbly(prob);//设置变异几率
+		// TODO 自动生成的构造函数存根
+	}
+	
+	public EntityDiable(World p_i1738_1_,EntityLivingBase e) {
+		
+		super(p_i1738_1_);
+		this.useNormalMobAI(true);//是否快捷使用一般的怪物AI
+		this.setHealth(25);//设置生命值
+		this.setAttack(3.0f);//设置攻击力
+		this.SetMutationProbly(prob);//设置变异几率
+		this.setPosition(e.posX, e.posY, e.posZ);
 		// TODO 自动生成的构造函数存根
 	}
 	

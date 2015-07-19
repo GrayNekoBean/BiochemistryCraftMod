@@ -1,8 +1,11 @@
 tile.BioDirt.name=BioDirt
 tile.BioExtracter.name=BioExtracter
+tile.Acid.name=Acid
 
 item.EmptyNeedle.name=EmptyNeedle
 item.EmptyNeedle.lore=Vampiring
+item.BioBrain.name=BioBrain
+item.AcidWand.name=AcidWand
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle
@@ -50,6 +53,14 @@ item.SpiderBloodEssence.name=SpiderBloodEssence
 item.WitchBloodEssence.name=WitchBloodEssence
 item.ZombieBloodEssence.name=ZombieBloodEssence
 
+item.fireGrass.name=Fire Grass
+item.coolGrass.name=Cool Grass
+
 itemGroup.BiochemistryCraft=BiochemistryCraft
 
 gui.Extracter.name=BioExtracter
+
+entity.biomod.EntityBioPig.name=BioPig
+
+death.attack.acid=%1$s was dissolve  to death
+death.attack.acid.player=%1$s walked onto acid whilst trying to escape %2$s

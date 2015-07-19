@@ -1,8 +1,11 @@
 tile.BioDirt.name=生化泥土
 tile.BioExtracter.name=生化提取器
+tile.Acid.name=酸
+item.AcidWand.name=酸之法杖
 
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
+item.BioBrain.name=生化核心
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒
@@ -50,6 +53,14 @@ item.SpiderBloodNeedle.name=蜘蛛血针筒
 item.WitchBloodNeedle.name=女巫血针筒
 item.ZombieBloodNeedle.name=僵尸血针筒
 
+item.fireGrass.name=火炎草
+item.coolGrass.name=清凉草
+
 itemGroup.BiochemistryCraft=生物化学
 
 gui.Extracter.name=生化提取器
+
+entity.biomod.EntityBioPig.name=生化小猪猪
+
+death.attack.acid=%1$s 被溶解了
+death.attack.acid.player=%1$s 在逃离 %2$s 时掉进了酸中

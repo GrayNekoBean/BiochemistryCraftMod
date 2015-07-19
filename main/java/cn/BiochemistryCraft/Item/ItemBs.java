@@ -47,8 +47,9 @@ public class ItemBs extends Item{
 			case 19: return "SpiderBlood";
 			case 20: return "WitchBlood";
 			case 21: return "ZombieBlood";
-			default: return "CowBlood";
+			
 		}
+		return "";
 	}
     //public IIcon getIcon(ItemStack s, int r, EntityPlayer p, ItemStack u, int ur)
     //{

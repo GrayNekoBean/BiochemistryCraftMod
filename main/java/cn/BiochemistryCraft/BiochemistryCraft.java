@@ -9,6 +9,7 @@ import cn.BiochemistryCraft.GUI.ContainerBioExtracter;
 import cn.BiochemistryCraft.GUI.GUIBioExtracter;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.Register.BCCRegisterEvent;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
@@ -43,6 +44,7 @@ public class BiochemistryCraft{
 	public static BCCRegisterBlock blockregister;
 	public static BCCRegisterItem itemregister;
 	public static BCCEntityRegister entityregister;
+	public static BCCRegisterEvent eventRegister = new BCCRegisterEvent();
 	//public static IGuiHandler guihandler;
 	
 	public static final CreativeTabs biocreativetab=new BCCCreativeTab("BiochemistryCraft");
@@ -57,13 +59,14 @@ public class BiochemistryCraft{
 		blockregister.blockRegisterInit();
 		itemregister.ItemRegisterInit();
 		entityregister.EntityRegisterInit();
+		entityregister.EntityRenderRegisterInit();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 	}
 
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		
+		eventRegister.eventRegisterInit();
 	}
 	
 	@EventHandler

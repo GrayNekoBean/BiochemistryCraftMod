@@ -1,5 +1,8 @@
 package cn.BiochemistryCraft.Entity;
 
+import cn.BiochemistryCraft.Gene.InfectSource;
+import cn.BiochemistryCraft.core.sick.Sick;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
@@ -8,31 +11,71 @@ public class BCCGeneAnimal extends EntityAnimal implements IBiology{
 
 	public BCCGeneAnimal(World p_i1681_1_) {
 		super(p_i1681_1_);
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 
 	@Override
 	public boolean canMutate() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		return false;
+	}
+
+	public void SetMutationProbly(float par1) {
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+	}
+
+	public void setInfectivity(float par1) {
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+	}
+
+	@Override
+	public Entity getEntity() {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return this;
+	}
+
+	@Override
+	public boolean getInfect(InfectSource source, Entity entity) {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		return false;
 	}
 
 	@Override
-	public void SetMutationProbly(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		
+	public float getContaminateValue() {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return 0.8f;
 	}
 
 	@Override
-	public void setInfectivity(float par1) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		
+	public float getMutationProbly() {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return 0;
+	}
+
+	@Override
+	public float getInfectivityValue() {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return 0;
+	}
+
+	@Override
+	public float getImmuneValue() {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return 0;
+	}
+
+	@Override
+	public boolean getSick(Sick sick) {
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		return false;
 	}
 
 }

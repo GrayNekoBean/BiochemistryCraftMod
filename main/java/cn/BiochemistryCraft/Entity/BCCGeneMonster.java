@@ -1,5 +1,7 @@
 package cn.BiochemistryCraft.Entity;
 
+import cn.BiochemistryCraft.Gene.InfectSource;
+import cn.BiochemistryCraft.core.sick.Sick;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -98,14 +100,14 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	
 	@Override
 	public boolean isAIEnabled(){
-		return mutated;
+		return true;
 		
 	}
 	
-public boolean isMutate(){
-	return whether;
-	
-}
+	public boolean isMutate(){
+		return whether;
+		
+	}
 	
 	public void setHealth(int healthy){
 		this.health=healthy;
@@ -128,13 +130,11 @@ public boolean isMutate(){
 		// TODO �Զ����ɵķ������
 		return true;
 	}
-	@Override
 	public void SetMutationProbly(float par1) {
 		// TODO �Զ����ɵķ������
 		mutateProbly=par1;
 		
 	}
-	@Override
 	public void setInfectivity(float par1) {//设置感染值
 		// TODO �Զ����ɵķ������
 		Infectivity=par1;
@@ -157,36 +157,51 @@ public boolean isMutate(){
 		
 	}
 	
-public float getInfectivityValue(){     
-	return Infectivity;
-}
-
-public float getContaminateValue(){
-	return contaminateValue;
-}
-
-public float getImmuneValue(){
-	return this.immuneValue;
-}
-
-public void writeEntityToNBT(NBTTagCompound tag){//读写nbt
-	super.writeEntityToNBT(tag);
-	tag.setFloat("Infectivity", Infectivity);
-	tag.setFloat("contaminateValue", contaminateValue);
-	tag.setFloat("immuneValue", immuneValue);
-	tag.setBoolean("mutated", mutated_);
+	public float getInfectivityValue(){     
+		return Infectivity;
+	}
 	
-}
-
-public void readEntityFromNBT(NBTTagCompound nbttag){
-	super.readEntityFromNBT(nbttag);
-	this.setImmuneValue(nbttag.getFloat("immuneValue"));
-	this.setContaminateValue(nbttag.getFloat("contaminateValue"));
-	this.setInfectivity(nbttag.getFloat("Infectivity"));
+	public float getContaminateValue(){
+		return contaminateValue;
+	}
 	
+	public float getImmuneValue(){
+		return this.immuneValue;
+	}
 	
+	public void writeEntityToNBT(NBTTagCompound tag){//读写nbt
+		super.writeEntityToNBT(tag);
+		tag.setFloat("Infectivity", Infectivity);
+		tag.setFloat("contaminateValue", contaminateValue);
+		tag.setFloat("immuneValue", immuneValue);
+		tag.setBoolean("mutated", mutated_);
+		
+	}
 	
-}
+	public void readEntityFromNBT(NBTTagCompound nbttag){
+		super.readEntityFromNBT(nbttag);
+		this.setImmuneValue(nbttag.getFloat("immuneValue"));
+		this.setContaminateValue(nbttag.getFloat("contaminateValue"));
+		this.setInfectivity(nbttag.getFloat("Infectivity"));
+		
+		
+		
+	}
+	@Override
+	public Entity getEntity() {
+		// TODO 自动生成的方法存根
+		return this;
+	}
+	@Override
+	public boolean getInfect(InfectSource source, Entity entity) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
+	@Override
+	public boolean getSick(Sick sick) {
+		// TODO 自动生成的方法存根
+		return false;
+	}
 
 
 

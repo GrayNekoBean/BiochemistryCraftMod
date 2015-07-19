@@ -1,6 +1,7 @@
 package cn.BiochemistryCraft.TileEntity;
 
 import cn.BiochemistryCraft.GUI.CraftingBioExtracter;
+import cn.BiochemistryCraft.GUI.CraftingGeneBench;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -19,7 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileentityBioExtracter extends TileEntity implements IInventory{
+public class TileentityGeneBench extends TileEntity implements IInventory{
 	
 	
 	private ItemStack tstack[]=new ItemStack[3];
@@ -27,83 +28,120 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 	public int tableBurnTime = 0;
 	public int outputTime = 0;
 	public int maxBurnTime = 0;
+	public int tableBioTime = 0;
+	public int maxBioTime = 0;
 	
 	
 	@Override
     public void updateEntity() {
            // TODO Auto-generated method stub
-           super.updateEntity();
-           //System.out.println("Hello GUI"+(i++));
-           ItemStack output = null;
-           if(tableBurnTime > 0)
-           {
-                   // 取得修复的物品
-                   ItemStack bioItem = getStackInSlot(0);
-                   // 取得修复好的物品
-                   ItemStack outputItem = getStackInSlot(1);
-                   // 确定开始修复的条件之一：修复物品槽不为空，已修复物品槽为空
-                   if(bioItem != null && (outputItem == null || outputItem.getItem() == CraftingBioExtracter.getBioItem(bioItem).getItem()))
-                   {
-                	   output=CraftingBioExtracter.getBioItem(bioItem);
-                	   if(output!=null)
-                		   outputTime++;
-                   }
-                   else
-                	   outputTime=0;
-                   // 减少燃烧时间
-                   tableBurnTime -= 1;
-                   
-                   
+	           super.updateEntity();
+	           //System.out.println("Hello GUI"+(i++));
+	           ItemStack output = null;
+	           if(tableBurnTime > 0 && tableBioTime > 0)
+	           {
+	                   // 取得修复的物品
+	                   ItemStack bioItem = getStackInSlot(0);
+	                   // 取得修复好的物品
+	                   ItemStack outputItem = getStackInSlot(1);
+	                   // 确定开始修复的条件之一：修复物品槽不为空，已修复物品槽为空
+	                   if(bioItem != null && outputItem == null)
+	                   {
+	                	   output=CraftingGeneBench.getBioItem(bioItem);
+	                	   if(output!=null)
+	                		   outputTime++;
+	                   }
+	                   else
+	                	   outputTime=0;
+	                   // 减少燃烧时间
+	                   tableBurnTime -= 1;
+	                   
+	                   
+	           }
+	           else // 没有燃料的情况下
+	           {
+	        	   if(tableBurnTime<=0)
+	        	   {
+		                   // 如果有被修复的物品
+	                   if(getStackInSlot(0) != null && CraftingBioExtracter.getBioItem(getStackInSlot(0)) != null && getStackInSlot(2)!=null)
+	                   {
+	                           // 取得燃料槽的物品
+	                       ItemStack burnItem = getStackInSlot(2);
+	                           // 取得物品的燃烧值
+	                       int getBurnTime = getItemBurnTime(burnItem);
+	                       // 判断物品是否能燃烧
+	                       if(getBurnTime > 0)
+	                       {
+	                           maxBurnTime = getBurnTime;
+	                           tableBurnTime = getBurnTime;
+	                           // 如果燃烧物品为岩浆桶
+	                                   // 其他物品就减少
+	                           if(burnItem.stackSize - 1 > 0)
+	                           {
+	                                   burnItem.stackSize--;
+	                                   setInventorySlotContents(2, burnItem);
+	                           }
+	                           else
+	                           {
+	                                   setInventorySlotContents(2, null);
+	                           }
+	                       }
+	                       else 
+	                    	   outputTime=0;
+	                   }
+	                   else
+	                	   outputTime=0;
+	        	   }
+	        	   if(tableBioTime<=0)
+	        	   {
+		                   // 如果有被修复的物品
+	                   if(getStackInSlot(0) != null && CraftingGeneBench.getBioItem(getStackInSlot(0)) != null && getStackInSlot(3)!=null)
+	                   {
+	                           // 取得燃料槽的物品
+	                       ItemStack burnItem = getStackInSlot(2);
+	                           // 取得物品的燃烧值
+	                       int getBurnTime = CraftingGeneBench.getBioTime(burnItem);
+	                       // 判断物品是否能燃烧
+	                       if(getBurnTime > 0)
+	                       {
+	                           maxBurnTime = getBurnTime;
+	                           tableBurnTime = getBurnTime;
+	                           // 如果燃烧物品为岩浆桶
+	                                   // 其他物品就减少
+	                           if(burnItem.stackSize - 1 > 0)
+	                           {
+	                                   burnItem.stackSize--;
+	                                   setInventorySlotContents(2, burnItem);
+	                           }
+	                           else
+	                           {
+	                                   setInventorySlotContents(2, null);
+	                           }
+	                       }
+	                       else 
+	                    	   outputTime=0;
+	                   }
+	                   else
+	                	   outputTime=0;
+	        	   }
+	           }
+	           if(outputTime>=100)
+	           {
+	        	  ItemStack bioItem = getStackInSlot(0);
+	        	  ItemStack returnItem = getStackInSlot(1);
+	        	  if(returnItem!=null)
+	        		  output.stackSize+=returnItem.stackSize;
+	              setInventorySlotContents(1,output);
+	              if(--bioItem.stackSize>0)
+	            	  setInventorySlotContents(0,bioItem);
+	              else
+	            	  setInventorySlotContents(0,null);
+	              outputTime=0;
+	           }
+	           if(getStackInSlot(0)==null)
+	        	   outputTime=0;   
            }
-           else // 没有燃料的情况下
-           {
-                   // 如果有被修复的物品
-               if(getStackInSlot(0) != null && CraftingBioExtracter.getBioItem(getStackInSlot(0)) != null && getStackInSlot(2)!=null)
-               {
-                       // 取得燃料槽的物品
-                       ItemStack burnItem = getStackInSlot(2);
-                       // 取得物品的燃烧值
-                   int getBurnTime = CraftingBioExtracter.getBioTime(burnItem);
-                   // 判断物品是否能燃烧
-                   if(getBurnTime > 0)
-                   {
-                       maxBurnTime = getBurnTime;
-                       tableBurnTime = getBurnTime;
-                       // 如果燃烧物品为岩浆桶
-                               // 其他物品就减少
-                       if(burnItem.stackSize - 1 > 0)
-                       {
-                               burnItem.stackSize--;
-                               setInventorySlotContents(2, burnItem);
-                       }
-                       else
-                       {
-                               setInventorySlotContents(2, null);
-                       }
-                   }
-                   else 
-                	   outputTime=0;
-               }
-               else
-            	   outputTime=0;
-           }
-           if(outputTime>=100)
-           {
-        	  ItemStack bioItem = getStackInSlot(0);
-        	  ItemStack returnItem = getStackInSlot(1);
-        	  if(returnItem!=null)
-        		  output.stackSize+=returnItem.stackSize;
-              setInventorySlotContents(1,output);
-              if(--bioItem.stackSize>0)
-            	  setInventorySlotContents(0,bioItem);
-              else
-            	  setInventorySlotContents(0,null);
-              outputTime=0;
-           }
-           if(getStackInSlot(0)==null)
-        	   outputTime=0;   
-	}
-		
+	
 	@Override
 	public int getSizeInventory() {
 		// TODO �Զ���ɵķ������
@@ -221,6 +259,8 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
         }
         this.tableBurnTime = par1NBTTagCompound.getShort("tableBurnTime");
         this.maxBurnTime = par1NBTTagCompound.getShort("maxBurnTime");
+        this.tableBioTime = par1NBTTagCompound.getShort("tableBioTime");
+        this.maxBioTime = par1NBTTagCompound.getShort("maxBioTime");
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
@@ -228,6 +268,8 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("maxBurnTime", (short)this.maxBurnTime);
+        par1NBTTagCompound.setShort("tableBioTime", (short)this.tableBioTime);
+        par1NBTTagCompound.setShort("maxBioTime", (short)this.maxBioTime);
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < this.tstack.length; ++var3)
         {
