@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityDiable  extends BCCGeneMonster implements IBiology{
+public class EntityDiable extends BCCGeneMonster implements IBiology{
 
 	public float prob=2.0f;
 	

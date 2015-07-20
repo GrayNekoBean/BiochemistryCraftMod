@@ -5,10 +5,17 @@ import net.minecraft.entity.Entity;
 import cn.BiochemistryCraft.core.sick.*;
 
 public interface IBiology {
-	 public Entity getEntity() ;
+	public Entity getEntity() ;
 	
-	 public boolean getSick(Sick sick);
-	 
+	public boolean isSick();
+	
+	@Deprecated
+	public boolean getSick(Sick sick);
+	
+	public void beSick(IIllness illness);
+	
+	public IIllness getDisease();
+	
 	public float getImmuneValue();
 	 
 	public boolean canMutate();

@@ -1,6 +1,7 @@
 package cn.BiochemistryCraft.Entity;
 
 import cn.BiochemistryCraft.Gene.InfectSource;
+import cn.BiochemistryCraft.core.sick.IIllness;
 import cn.BiochemistryCraft.core.sick.Sick;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -8,7 +9,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.world.World;
 
 public class BCCGeneAnimal extends EntityAnimal implements IBiology{
-
+    	private IIllness disease;
 	public BCCGeneAnimal(World p_i1681_1_) {
 		super(p_i1681_1_);
 		// TODO �Զ����ɵĹ��캯�����
@@ -76,6 +77,24 @@ public class BCCGeneAnimal extends EntityAnimal implements IBiology{
 	public boolean getSick(Sick sick) {
 		// TODO 自动生成的方法存根
 		return false;
+	}
+
+	@Override
+	public boolean isSick() {
+	    // TODO Auto-generated method stub
+	    return this.disease != null;
+	}
+
+	@Override
+	public void beSick(IIllness illness) {
+	    this.disease = illness;
+	    
+	}
+
+	@Override
+	public IIllness getDisease() {
+	    // TODO Auto-generated method stub
+	    return this.disease;
 	}
 
 }
