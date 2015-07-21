@@ -1,12 +1,23 @@
 package cn.BiochemistryCraft.core.sick;
 
+import java.util.UUID;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 
-public class SickCold extends Potion{
+public class SickCold extends Sick{
 
-	protected SickCold(int p_i1573_1_, boolean p_i1573_2_, int p_i1573_3_) {
-		super(p_i1573_1_, p_i1573_2_, p_i1573_3_);
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+	protected SickCold() {
+		super("cold",3,entity);
+		this.RegisterSick(this);
+		this.RegAttribute(SharedMonsterAttributes.maxHealth, (UUID.randomUUID()), 15.0d, 0);
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
+	}
+	
+	public void displayEffect(EntityLivingBase e){
+		super.displayEffect(e);
+		this.SetAttribute(SharedMonsterAttributes.maxHealth, 15.0d);
 	}
 
 }
