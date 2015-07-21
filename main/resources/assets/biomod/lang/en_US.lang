@@ -55,6 +55,10 @@ item.ZombieBloodEssence.name=ZombieBloodEssence
 
 item.fireGrass.name=Fire Grass
 item.coolGrass.name=Cool Grass
+item.plasmaBerry.name=Plasma Berry
+
+item.treeFruit.name=Tree Fruit
+item.treeFruitSapling.name=Tree Fruit Sapling
 
 itemGroup.BiochemistryCraft=BiochemistryCraft
 

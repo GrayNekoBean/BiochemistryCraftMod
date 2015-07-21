@@ -60,6 +60,10 @@ public class BCCRegisterItem {
 	
 	public static ItemHerbs fireGrass;
 	public static ItemHerbs coolGrass;
+	public static ItemHerbs plasmaBerry;
+	
+	public static Item treeFruit;
+	public static ItemTreeFruitSapling treeFruitSapling;
 	
 	public static Item[] bloodgr = {cowblood, pigblood, chickenblood, wolfblood, playerblood, batblood, horseblood, mushroomblood, ocelotblood, sheepblood, squidblood,
 		cavespiderblood, creeperblood, endermanblood, ghostblood, magmacubeblood, pigzombieblood, silverfishblood, slimeblood, spiderblood, witchblood, zombieblood};
@@ -68,7 +72,7 @@ public class BCCRegisterItem {
 		cavespiderbloodessence, creeperbloodessence, endermanbloodessence, ghostbloodessence, magmacubebloodessence,
 		pigzombiebloodessence, silverfishbloodessence, slimebloodessence, spiderbloodessence, witchbloodessence, zombiebloodessence};
 	
-	public static Item[] herbsArray = {fireGrass, coolGrass};
+	public static Item[] herbsArray = {fireGrass, coolGrass, plasmaBerry};
 	
 	public BCCRegisterItem()
 	{
@@ -89,8 +93,8 @@ public class BCCRegisterItem {
 				bloodes[i].setTextureName("biomod:MonsterEssence");
 		}
 		
-		for(int i = 0; i <= 1; i++){
-			herbsArray[i] = new ItemHerbs(BCCRegisterBlock.herbsCorpArray[i], BCCRegisterBlock.biodirt, i);
+		for(int i = 0; i <= 2; i++){
+			herbsArray[i] = new ItemHerbs(BCCRegisterBlock.herbsCorpArray[i], i);
 			herbsArray[i].setCreativeTab(BiochemistryCraft.biocreativetab);
 			herbsArray[i].setUnlocalizedName(ItemHerbs.getName(i));
 			herbsArray[i].setTextureName(BiochemistryCraft.MODID+":"+ItemHerbs.getName(i));
@@ -99,6 +103,9 @@ public class BCCRegisterItem {
 		emptyneedle = new ItemTnc();
 		biobrain = new ItemBioBrain();
 		acidwand = new ItemAcidWand();
+		
+		treeFruit = new ItemTreeFruit();
+		treeFruitSapling = new ItemTreeFruitSapling();
 	}
 	
 	public void ItemRegisterInit(){
@@ -107,6 +114,9 @@ public class BCCRegisterItem {
 		GameRegistry.registerItem(emptyneedle, "EmptyNeedle");
 		GameRegistry.registerItem(biobrain, "BioBrain");
 		GameRegistry.registerItem(acidwand, "AcidWand");
+		
+		GameRegistry.registerItem(treeFruit, "treeFruit");
+		GameRegistry.registerItem(treeFruitSapling, "treeFruitSapling");
 		
 		for(int i=0;i<22;i++)
 		{

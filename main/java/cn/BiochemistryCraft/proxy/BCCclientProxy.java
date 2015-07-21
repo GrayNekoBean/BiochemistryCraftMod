@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.proxy;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 
