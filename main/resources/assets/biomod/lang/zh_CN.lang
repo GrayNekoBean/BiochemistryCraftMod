@@ -54,7 +54,11 @@ item.WitchBloodNeedle.name=女巫血针筒
 item.ZombieBloodNeedle.name=僵尸血针筒
 
 item.fireGrass.name=火炎草
-item.coolGrass.name=清凉草
+item.coolGrass.name=寒霜草
+item.plasmaBerry.name=血浆莓
+
+item.treeFruit.name=树果
+item.treeFruitSapling.name=树果核
 
 itemGroup.BiochemistryCraft=生物化学
 

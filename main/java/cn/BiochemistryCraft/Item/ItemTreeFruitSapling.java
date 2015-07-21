@@ -1,31 +1,23 @@
 package cn.BiochemistryCraft.Item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemFood;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemHerbs extends ItemFood implements IPlantable{
-	private static final String[] herbsArray = new String[] {"fireGrass", "coolGrass", "plasmaBerry"};
-	
-	private Block cropBlock;
-	
-	public ItemHerbs(Block cropBlock, int id) {
-		super(2, 0.8F, false);
-		this.cropBlock = cropBlock;
+public class ItemTreeFruitSapling extends Item implements IPlantable{
+	public ItemTreeFruitSapling(){
+		setTextureName(BiochemistryCraft.MODID+":treeFruitSapling");
+		setCreativeTab(BiochemistryCraft.biocreativetab);
+		setUnlocalizedName("treeFruitSapling");
 	}
 	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10){
@@ -34,7 +26,7 @@ public class ItemHerbs extends ItemFood implements IPlantable{
 		}else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)){
             Block soil = par3World.getBlock(par4, par5, par6);
             if (soil != null && canPlaceBlockOn(soil) && par3World.isAirBlock(par4, par5 + 1, par6)) {
-                par3World.setBlock(par4, par5 + 1, par6, this.cropBlock);
+                par3World.setBlock(par4, par5 + 1, par6, BCCRegisterBlock.treeFruitSaplingBlock);
                 --par1ItemStack.stackSize;
                 return true;
             }else{
@@ -45,9 +37,13 @@ public class ItemHerbs extends ItemFood implements IPlantable{
         }
 	}
 	
+	private boolean canPlaceBlockOn(Block arg0){
+		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
+	}
+
 	@Override
 	public Block getPlant(IBlockAccess arg0, int arg1, int arg2, int arg3) {
-		return this.cropBlock;
+		return BCCRegisterBlock.treeFruitSaplingBlock;
 	}
 
 	@Override
@@ -59,13 +55,5 @@ public class ItemHerbs extends ItemFood implements IPlantable{
 	public EnumPlantType getPlantType(IBlockAccess arg0, int arg1, int arg2, int arg3) {
 		return EnumPlantType.Crop;
 	}
-	
-	public static String getName(int id){
-		return herbsArray[id];
-	}
-	
-	private boolean canPlaceBlockOn(Block arg0){
-		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
-	}
-	
+
 }
