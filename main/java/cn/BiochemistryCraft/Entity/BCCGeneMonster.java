@@ -1,7 +1,6 @@
 package cn.BiochemistryCraft.Entity;
 
 import cn.BiochemistryCraft.Gene.InfectSource;
-import cn.BiochemistryCraft.core.sick.IIllness;
 import cn.BiochemistryCraft.core.sick.Sick;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -24,7 +23,7 @@ import net.minecraft.world.World;
  
 public class BCCGeneMonster extends EntityMob implements IBiology{
 
-	private static final boolean mutated = false;
+	private static final boolean mutated_ = false;
 	public boolean whether;
 	public Entity attacker;
 	public double attackDamage=2.0d;
@@ -35,7 +34,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	public float Infectivity;
 	public float contaminateValue;
 	public float immuneValue;
-	private IIllness diease;
+	public boolean mutated;
 	
 	public BCCGeneMonster(World p_i1738_1_) {
 		super(p_i1738_1_);
@@ -175,7 +174,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		tag.setFloat("Infectivity", Infectivity);
 		tag.setFloat("contaminateValue", contaminateValue);
 		tag.setFloat("immuneValue", immuneValue);
-		tag.setBoolean("mutated", mutated);
+		tag.setBoolean("mutated", mutated_);
 		
 	}
 	
@@ -184,6 +183,9 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		this.setImmuneValue(nbttag.getFloat("immuneValue"));
 		this.setContaminateValue(nbttag.getFloat("contaminateValue"));
 		this.setInfectivity(nbttag.getFloat("Infectivity"));
+		
+		
+		
 	}
 	@Override
 	public Entity getEntity() {
@@ -199,19 +201,6 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	public boolean getSick(Sick sick) {
 		// TODO 自动生成的方法存根
 		return false;
-	}
-	@Override
-	public boolean isSick() {
-	    return diease != null;
-	}
-	@Override
-	public void beSick(IIllness illness) {
-	    this.diease = illness;
-	}
-	@Override
-	public IIllness getDisease() {
-	    // TODO Auto-generated method stub
-	    return diease;
 	}
 
 
