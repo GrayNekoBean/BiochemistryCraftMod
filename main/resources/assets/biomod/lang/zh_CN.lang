@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tile.BioDirt.name=生化泥土
 tile.BioExtracter.name=生化提取器
 tile.Acid.name=酸
@@ -63,4 +64,75 @@ gui.Extracter.name=生化提取器
 entity.biomod.EntityBioPig.name=生化小猪猪
 
 death.attack.acid=%1$s 被溶解了
+=======
+tile.BioDirt.name=生化泥土
+tile.BioExtracter.name=生化提取器
+tile.Acid.name=酸
+item.AcidWand.name=酸之法杖
+
+item.EmptyNeedle.name=空针筒
+item.EmptyNeedle.lore=吸取血液中......
+item.BioBrain.name=生化核心
+
+item.CowBloodNeedle.name=牛血针筒
+item.PigBloodNeedle.name=猪血针筒
+item.ChickenBloodNeedle.name=鸡血针筒
+item.WolfBloodNeedle.name=狼血针筒
+item.HumanBloodNeedle.name=人血针筒
+item.BatBloodNeedle.name=蝙蝠血针筒
+item.HorseBloodNeedle.name=马血针筒
+item.MushroomBloodNeedle.name=哞菇血针筒
+item.CatBloodNeedle.name=猫血针筒
+item.SheepBloodNeedle.name=羊血针筒
+item.SquidBloodNeedle.name=乌贼血针筒
+item.CavespiderBloodNeedle.name=洞穴蜘蛛血针筒
+item.CreeperBloodNeedle.name=苦力怕血针筒
+item.EndermanBloodNeedle.name=末影人血针筒
+item.GhostBloodNeedle.name=恶魂血针筒
+item.MagmacubeBloodNeedle.name=岩浆怪血针筒
+item.PigzombieBloodNeedle.name=僵尸猪人血针筒
+item.SilverfishBloodNeedle.name=虫血针筒
+item.SlimeBloodNeedle.name=史莱姆血针筒
+item.SpiderBloodNeedle.name=蜘蛛血针筒
+item.WitchBloodNeedle.name=女巫血针筒
+item.ZombieBloodNeedle.name=僵尸血针筒
+
+item.CowBloodEssence.name=牛血精华
+item.PigBloodEssence.name=猪血精华
+item.ChickenBloodEssence.name=鸡血精华
+item.WolfBloodEssence.name=狼血精华
+item.HumanBloodEssence.name=人血精华
+item.BatBloodEssence.name=蝙蝠血精华
+item.HorseBloodEssence.name=马血精华
+item.MushroomBloodEssence.name=哞菇血精华
+item.CatBloodEssence.name=猫血精华
+item.SheepBloodEssence.name=羊血精华
+item.SquidBloodEssence.name=乌贼血精华
+item.CavespiderBloodEssence.name=洞穴蜘蛛血精华
+item.CreeperBloodEssence.name=苦力怕血精华
+item.EndermanBloodEssence.name=末影人血精华
+item.GhostBloodEssence.name=恶魂血精华
+item.MagmacubeBloodEssence.name=岩浆怪血精华
+item.PigzombieBloodNeedle.name=僵尸猪人血针筒
+item.SilverfishBloodNeedle.name=虫血针筒
+item.SlimeBloodNeedle.name=史莱姆血针筒
+item.SpiderBloodNeedle.name=蜘蛛血针筒
+item.WitchBloodNeedle.name=女巫血针筒
+item.ZombieBloodNeedle.name=僵尸血针筒
+
+item.fireGrass.name=火炎草
+item.coolGrass.name=寒霜草
+item.plasmaBerry.name=血浆莓
+
+item.treeFruit.name=树果
+item.treeFruitSapling.name=树果核
+
+itemGroup.BiochemistryCraft=生物化学
+
+gui.Extracter.name=生化提取器
+
+entity.biomod.EntityBioPig.name=生化小猪猪
+
+death.attack.acid=%1$s 被溶解了
+>>>>>>> origin/master
 death.attack.acid.player=%1$s 在逃离 %2$s 时掉进了酸中

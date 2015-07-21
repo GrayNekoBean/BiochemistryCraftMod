@@ -10,6 +10,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Item.ItemHerbs;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -23,20 +24,19 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockHerbsCorps extends BlockCrops{
-	private static final String[] herbsArray = new String[] {"fireGrassCorp", "coolGrassCorp"};
-	private static Block soil;
-	
+	private static final String[] herbsArray = new String[] {"fireGrassCorp", "coolGrassCorp", "plasmaBerryCorp"};
+
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 	
-	public BlockHerbsCorps(int id, Block soil){
+	public BlockHerbsCorps(int id){
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         setTickRandomly(true);
         setBlockTextureName(BiochemistryCraft.MODID+":"+herbsArray[id]);
         setBlockName(herbsArray[id]);
-        this.soil = soil;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata){
 		if(metadata < 0 || metadata > 1){
@@ -88,6 +88,7 @@ public class BlockHerbsCorps extends BlockCrops{
 	    return getSeedItem();
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister arg0){
 	    this.iconArray = new IIcon[4];
@@ -101,12 +102,13 @@ public class BlockHerbsCorps extends BlockCrops{
 		return textureName;
 	}
 	
+	@Override
 	public void updateTick (World world, int x, int y, int z, Random random) {
-		if(world.getBlockLightValue(x, y, z) >= 6){
+		if(world.getBlockLightValue(x, y, z) >= 8){
 			if (world.getBlockMetadata(x, y, z) == 1) {
 				return;
 			}
-			if (random.nextInt(12) != 0) {
+			if ((world.getBlock(x,y,z)==BCCRegisterBlock.biodirt?random.nextInt(6):random.nextInt(12)) != 0) {
 				return;
 			}
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
@@ -118,7 +120,7 @@ public class BlockHerbsCorps extends BlockCrops{
 	}
 	
 	protected boolean canPlaceBlockOn(Block arg0){
-	    return arg0 == soil;
+		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
 	}
 	
 	public boolean canBlockStay(World arg0, int arg1, int arg2, int arg3){
