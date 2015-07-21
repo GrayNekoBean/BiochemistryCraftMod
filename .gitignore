@@ -213,3 +213,16 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/WindowsFormsApplication1.exe
+/eclipse/
+/gradle/
+/logs/
+/build.gradle
+/gradlew
+/gradlew.bat
+/runClient.exe
+
+*.fla
+*.properties
+.gradle/2.0/taskArtifacts/cache.properties.lock
+*.bin
