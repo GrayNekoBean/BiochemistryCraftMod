@@ -1,10 +1,24 @@
 package cn.BiochemistryCraft.Entity.Throwable;
 
-import net.minecraft.block.Block;
+import org.apache.logging.log4j.Level;
 
+import com.sun.org.apache.xerces.internal.xinclude.XInclude11TextReader;
+
+import cpw.mods.fml.common.FMLLog;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockCarrot;
+import net.minecraft.block.BlockDeadBush;
+import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockGrass;
+import net.minecraft.block.BlockPotato;
+import net.minecraft.block.BlockStem;
+import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
@@ -39,24 +53,39 @@ public class EntityAcid extends EntityThrowable{
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
 		// TODO 自动生成的方法存根
-		World world=this.worldObj;
-		if(mop.typeOfHit==MovingObjectType.ENTITY)
-		{
-			int x=MathHelper.floor_double(mop.entityHit.posX);
+	        if (!this.worldObj.isRemote)
+	        {
+/*			int x=MathHelper.floor_double(mop.entityHit.posX);
 			int y=MathHelper.floor_double(mop.entityHit.posY);
-			int z=MathHelper.floor_double(mop.entityHit.posZ);
-			Block acid=BCCRegisterBlock.acid;
-			world.setBlock(x, y, z, acid);
-			world.setBlock(x-1, y, z, acid);
-			world.setBlock(x+1, y, z, acid);
-			world.setBlock(x-1, y, z+1, acid);
-			world.setBlock(x+1, y, z+1, acid);
-			world.setBlock(x, y, z+1, acid);
-			world.setBlock(x-1, y, z-1, acid);
-			world.setBlock(x+1, y, z-1, acid);
-			world.setBlock(x, y, z-1, acid);
-		}
+			int z=MathHelper.floor_double(mop.entityHit.posZ);*/
+			int x = (int) Math.round(posX);
+			int y = (int) Math.round(posY);
+			int z = (int) Math.round(posZ);
+			Block acid = BCCRegisterBlock.acid;
+			for(int x1 = -1; x1 <= 1; x1++){
+				for(int y1 = -1; y1 <= 1; y1++){
+					for(int z1 = -1; z1 <= 1; z1++){
+					    int x2 = x + x1, y2 = y + y1 - 1, z2 = z + z1;
+					    if (worldObj.getBlock(x2, y2, z2) == Blocks.air){
+						if(worldObj.getBlock(x2, y2 - 1, z2).getMaterial().isSolid() && worldObj.getBlock(x2, y2 - 1, z2) != BCCRegisterBlock.acid){
+							worldObj.setBlock(x2, y2, z2, acid);
+							FMLLog.log(BiochemistryCraft.NAME, Level.DEBUG, "Pos " + x2 + "," + y2 + "," + z2 + " is set to acid");
+						}
+						else if (this.isPlants(worldObj.getBlock(x2, y2 - 1, z2))) {
+							worldObj.setBlock(x2, y2 - 1, z2, acid);
+						}
+						else{
+						    FMLLog.log(BiochemistryCraft.NAME, Level.DEBUG, "Pos " + (x2) + "," + (y2 - 1) + "," + (z2) + " is not solid");
+						}
+					    }
+					    else{
+						FMLLog.log(BiochemistryCraft.NAME, Level.DEBUG, "Pos " + (x2) + "," + (y2) + "," + (z2) + " is not air");
+					    }
+					}
+				}
+			}
 		this.setDead();
+	        }
 	}
 	protected float func_70182_d()
     {
@@ -67,5 +96,16 @@ public class EntityAcid extends EntityThrowable{
     protected float getGravityVelocity()
     {
         return this.gravity; 
+    }
+    
+    private boolean isPlants(Block block){
+	boolean flag = block instanceof BlockFlower;
+	boolean flag1 = block instanceof BlockDoublePlant;
+	boolean flag2 = block instanceof BlockDeadBush;
+	boolean flag3 = block instanceof BlockCarrot;
+	boolean flag4 = block instanceof BlockPotato;
+	boolean flag5 = block instanceof BlockBush;
+	boolean flag6 = block instanceof BlockStem;
+	return flag || flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
     }
 }
