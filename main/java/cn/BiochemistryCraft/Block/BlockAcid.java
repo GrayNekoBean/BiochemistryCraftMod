@@ -73,11 +73,11 @@ public class BlockAcid extends Block{
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
     }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
-	super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
-	Block under = p_149695_1_.getBlock(p_149695_2_, p_149695_3_ - 1, p_149695_4_);
-	if(!under.getMaterial().isSolid()){
-	    p_149695_1_.setBlockToAir(p_149695_2_, p_149695_3_, p_149695_4_);
-	}
+		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
+		Block under = p_149695_1_.getBlock(p_149695_2_, p_149695_3_ - 1, p_149695_4_);
+		if(!under.getMaterial().isSolid()){
+		    p_149695_1_.setBlockToAir(p_149695_2_, p_149695_3_, p_149695_4_);
+		}
     }
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
 	Block under = p_149674_1_.getBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_);

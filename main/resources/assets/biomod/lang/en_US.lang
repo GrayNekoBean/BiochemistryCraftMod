@@ -1,8 +1,10 @@
 tile.BioDirt.name=BioDirt
 tile.BioExtracter.name=BioExtracter
 tile.Acid.name=Acid
+tile.CStone.name=Corroded Stone
+tile.ADirt.name=Acidic Dirt
 
-item.EmptyNeedle.name=EmptyNeedle
+item.EmptyNeedle.name=Empty Needle
 item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
 item.AcidWand.name=AcidWand

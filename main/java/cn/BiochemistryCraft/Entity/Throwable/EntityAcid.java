@@ -1,14 +1,14 @@
 package cn.BiochemistryCraft.Entity.Throwable;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
+
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 
 public class EntityAcid extends EntityThrowable{
 	int damage = 4;
@@ -39,32 +39,24 @@ public class EntityAcid extends EntityThrowable{
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
 		// TODO 自动生成的方法存根
-	        if (!this.worldObj.isRemote)
-	        {
-/*			int x=MathHelper.floor_double(mop.entityHit.posX);
+		World world=this.worldObj;
+		if(mop.typeOfHit==MovingObjectType.ENTITY)
+		{
+			int x=MathHelper.floor_double(mop.entityHit.posX);
 			int y=MathHelper.floor_double(mop.entityHit.posY);
-			int z=MathHelper.floor_double(mop.entityHit.posZ);*/
-			int x = (int) posX;
-			int y = (int) posY;
-			int z = (int) posZ;
-			Block acid = BCCRegisterBlock.acid;
-			for(int x1 = -1; x1 <= 1; x1++){
-				for(int y1 = -1; y1 <= 1; y1++){
-					for(int z1 = -1; z1 <= 1; z1++){
-					    int x2 = x + x1, y2 = y + y1 - 1, z2 = z + z1;
-					    if (worldObj.getBlock(x2, y2, z2) == Blocks.air){
-						if(worldObj.getBlock(x2, y2 - 1, z2).getMaterial().isSolid() && worldObj.getBlock(x2, y2 - 1, z2) != BCCRegisterBlock.acid){
-							worldObj.setBlock(x2, y2, z2, acid);
-						}
-						else if (worldObj.getBlock(x2, y2 - 1, z2) instanceof BlockBush) {
-							worldObj.setBlock(x2, y2 - 1, z2, acid);
-						}
-					    }
-					}
-				}
-			}
+			int z=MathHelper.floor_double(mop.entityHit.posZ);
+			Block acid=BCCRegisterBlock.acid;
+			world.setBlock(x, y, z, acid);
+			world.setBlock(x-1, y, z, acid);
+			world.setBlock(x+1, y, z, acid);
+			world.setBlock(x-1, y, z+1, acid);
+			world.setBlock(x+1, y, z+1, acid);
+			world.setBlock(x, y, z+1, acid);
+			world.setBlock(x-1, y, z-1, acid);
+			world.setBlock(x+1, y, z-1, acid);
+			world.setBlock(x, y, z-1, acid);
+		}
 		this.setDead();
-	        }
 	}
 	protected float func_70182_d()
     {
@@ -76,15 +68,4 @@ public class EntityAcid extends EntityThrowable{
     {
         return this.gravity; 
     }
-    
-/*    private boolean isPlants(Block block){
-	boolean flag = block instanceof BlockFlower;
-	boolean flag1 = block instanceof BlockDoublePlant;
-	boolean flag2 = block instanceof BlockDeadBush;
-	boolean flag3 = block instanceof BlockCarrot;
-	boolean flag4 = block instanceof BlockPotato;
-	boolean flag5 = block instanceof BlockBush;
-	boolean flag6 = block instanceof BlockStem;
-	return flag || flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
-    }*/
 }
