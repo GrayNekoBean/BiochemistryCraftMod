@@ -4,6 +4,7 @@ import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Item.*;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public class BCCRegisterItem {
@@ -63,7 +64,9 @@ public class BCCRegisterItem {
 	public static ItemHerbs plasmaBerry;
 	
 	public static Item treeFruit;
-	public static ItemTreeFruitSapling treeFruitSapling;
+	public static Item treeFruitSapling;
+	public static Item goldenVineFruit;
+	public static Item gracilaria;
 	
 	public static Item[] bloodgr = {cowblood, pigblood, chickenblood, wolfblood, playerblood, batblood, horseblood, mushroomblood, ocelotblood, sheepblood, squidblood,
 		cavespiderblood, creeperblood, endermanblood, ghostblood, magmacubeblood, pigzombieblood, silverfishblood, slimeblood, spiderblood, witchblood, zombieblood};
@@ -106,6 +109,8 @@ public class BCCRegisterItem {
 		
 		treeFruit = new ItemTreeFruit();
 		treeFruitSapling = new ItemTreeFruitSapling();
+		//goldenVineFruit = new ItemGoldenVineFruit();
+		gracilaria = new ItemGracilaria();
 	}
 	
 	public void ItemRegisterInit(){
@@ -117,6 +122,8 @@ public class BCCRegisterItem {
 		
 		GameRegistry.registerItem(treeFruit, "treeFruit");
 		GameRegistry.registerItem(treeFruitSapling, "treeFruitSapling");
+		//GameRegistry.registerItem(goldenVineFruit, "goldenVineFruit");
+		GameRegistry.registerItem(gracilaria, "gracilaria");
 		
 		for(int i=0;i<22;i++)
 		{

@@ -28,12 +28,9 @@ public class BCCEntityRegister {
 	public void EntityRegisterInit()
 	{
 		GameRegistry.registerTileEntity(TileentityBioExtracter.class, "TileentityBioExtracter");
-		EntityRegistry.registerGlobalEntityID(EntityDiable.class, "Le_Diable", 500);
-		EntityRegistry.registerModEntity(EntityDiable.class, "Le_Diable", 500, BiochemistryCraft.instance, 64, 64, true);
-		EntityRegistry.registerGlobalEntityID(EntityAcid.class, "Acid", 402);
-		EntityRegistry.registerModEntity(EntityAcid.class, "Acid", 402, BiochemistryCraft.instance, 32, 32, true);
-		EntityRegistry.registerGlobalEntityID(EntityBioPig.class, "BioPig", 403);
-		EntityRegistry.registerModEntity(EntityBioPig.class, "BioPig", 403, BiochemistryCraft.instance, 32, 32, true);
+		EntityRegistry.registerModEntity(EntityDiable.class, "Le Diable", 500, BiochemistryCraft.instance, 64, 64, true);
+		EntityRegistry.registerModEntity(EntityAcid.class, "EntityAcid", 2, BiochemistryCraft.instance, 32, 32, true);
+		EntityRegistry.registerModEntity(EntityBioPig.class, "EntityBioPig", 3, BiochemistryCraft.instance, 32, 32, true);
 	}
 
 	public void EntityRenderRegisterInit()

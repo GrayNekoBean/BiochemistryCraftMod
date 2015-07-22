@@ -6,8 +6,10 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cn.BiochemistryCraft.world.gen.feature.WorldGenFruitTree;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -66,5 +68,15 @@ public class BlockTreeFruitSapling extends BlockBush{
 	    if ((!world.isRemote)){
 	          dropBlockAsItem(world, p_149690_2_, p_149690_3_, p_149690_4_, new ItemStack(BCCRegisterItem.treeFruitSapling, 1, 0));
 	    }
+	}
+	
+	@Override
+	protected boolean canPlaceBlockOn(Block arg0){
+		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
+	}
+	
+	@Override
+	public boolean canBlockStay(World arg0, int arg1, int arg2, int arg3){
+		return canPlaceBlockOn(arg0.getBlock(arg1, arg2 - 1, arg3));
 	}
 }

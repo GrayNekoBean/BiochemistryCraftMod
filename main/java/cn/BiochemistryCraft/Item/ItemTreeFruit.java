@@ -19,7 +19,6 @@ public class ItemTreeFruit extends ItemFood{
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player){
 	    if (!world.isRemote){
 	    	player.dropItem(BCCRegisterItem.treeFruitSapling, 1);
-	    	--stack.stackSize;
 	    }
 	}
 }

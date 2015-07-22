@@ -23,43 +23,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockHerbsCorps extends BlockCrops{
-	private static final String[] herbsArray = new String[] {"fireGrassCorp", "coolGrassCorp", "plasmaBerryCorp"};
-
+public class BlockGracilariaCorp extends BlockCrops{
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 	
-	public BlockHerbsCorps(int id){
+	public BlockGracilariaCorp(){
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         setTickRandomly(true);
-        setBlockTextureName(BiochemistryCraft.MODID+":"+herbsArray[id]);
-        setBlockName(herbsArray[id]);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata){
-		if(metadata < 0 || metadata > 1){
-			metadata = 1;
-		}
-		return iconArray[metadata];
+        setBlockTextureName(BiochemistryCraft.MODID+":gracilariaCorp");
+        setBlockName("gracilariaCorp");
 	}
 	
 	public int getRenderType(){	
-		return 6;
+		return 1;
 	}
 	
 	private Item getSeedItem(){
-		String str = getUnlocalizedName();
-		int j = 0;
-		for(int i = 0; i < herbsArray.length; i++){
-			if(str.equals("tile." + herbsArray[i])){
-				j = i;
-				break;
-			}
-		}
-		System.out.println(j);
-		return BCCRegisterItem.herbsArray[j];
+		return BCCRegisterItem.gracilaria;
     }
 	
 	private Item getCropItem(){
@@ -73,7 +53,7 @@ public class BlockHerbsCorps extends BlockCrops{
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune){
 		ArrayList<ItemStack> ret = new ArrayList();
 		ret.add(new ItemStack(getSeedItem(), 1, 0));
-		if (metadata >= 1) {
+		if (metadata >= 2) {
 	    	for (int i = 0; i < 3 + fortune; i++) {
 	    		if (world.rand.nextInt(5) <= metadata) {
 	    			ret.add(new ItemStack(getSeedItem(), 1, 0));
@@ -91,40 +71,43 @@ public class BlockHerbsCorps extends BlockCrops{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister arg0){
-	    this.iconArray = new IIcon[2];
+	    this.iconArray = new IIcon[3];
 	    for (int i = 0; i < this.iconArray.length; i++){
 	      this.iconArray[i] = arg0.registerIcon(getTextureName() + "_stage_" + i);
 	    }
 	}
 	
-	public String getTextureName(){
-		return textureName;
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int metadata){
+		if(metadata < 0 || metadata > 2){
+			metadata = 2;
+		}
+		return iconArray[metadata];
 	}
 	
 	@Override
-	public void updateTick (World world, int x, int y, int z, Random random) {
+	public void updateTick(World world, int x, int y, int z, Random random){
 		if(!canBlockStay(world, x, y, z)){
-			dropBlockAsItem(world, x, y, z, new ItemStack(getSeedItem(), 1));
+			dropBlockAsItem(world, x, y, z, new ItemStack(BCCRegisterItem.gracilaria, 1));
 		}else if(world.getBlockLightValue(x, y, z) >= 8){
-			if (world.getBlockMetadata(x, y, z) == 1) {
+			int metadata = world.getBlockMetadata(x, y, z);
+			if (metadata == 2) {
 				return;
 			}
-			if ((world.getBlock(x,y - 1,z)==BCCRegisterBlock.biodirt?random.nextInt(6):random.nextInt(12)) != 0) {
+			if (random.nextInt(12) != 0) {
 				return;
 			}
-			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+			metadata++;
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
 		}
     }
-
-	public static String getName(int id){
-		return herbsArray[id];
+	
+	protected boolean canPlaceBlockOn(Block block){
+		return block == Blocks.water;
 	}
 	
-	protected boolean canPlaceBlockOn(Block arg0){
-		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
-	}
-	
-	public boolean canBlockStay(World arg0, int arg1, int arg2, int arg3){
-		return canPlaceBlockOn(arg0.getBlock(arg1, arg2 - 1, arg3));
+	public boolean canBlockStay(World world, int x, int y, int z){
+		return canPlaceBlockOn(world.getBlock(x, y - 1, z)) && world.getBlock(x, y - 2, z).isOpaqueCube();
 	}
 }

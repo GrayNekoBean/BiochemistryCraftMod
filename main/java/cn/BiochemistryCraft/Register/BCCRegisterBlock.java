@@ -6,6 +6,7 @@ import cn.BiochemistryCraft.Block.BCCBlockBase;
 import cn.BiochemistryCraft.Block.BlockAcid;
 import cn.BiochemistryCraft.Block.BlockBioDirt;
 import cn.BiochemistryCraft.Block.BlockBioExtracter;
+import cn.BiochemistryCraft.Block.BlockGracilariaCorp;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Block.BlockTreeFruitLeave;
@@ -26,6 +27,8 @@ public class BCCRegisterBlock {
 	public static Block treeFruitBlock;
 	public static Block treeFruitLeave;
 	public static Block treeFruitSaplingBlock;
+	public static Block goldenVine;
+	public static Block gracilariaCorp;
 	
 	public static BlockHerbsCorps fireGrassCorp;
 	public static BlockHerbsCorps coolGrassCorp;
@@ -43,6 +46,8 @@ public class BCCRegisterBlock {
 		treeFruitBlock=new BlockTreeFruit();
 		treeFruitLeave=new BlockTreeFruitLeave();
 		treeFruitSaplingBlock=new BlockTreeFruitSapling();
+		//goldenVine=new BlockGoldenVine();
+		gracilariaCorp=new BlockGracilariaCorp();
 		
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
@@ -63,6 +68,8 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(treeFruitBlock, "treeFruitBlock");
 		GameRegistry.registerBlock(treeFruitLeave, "treeFruitLeave");
 		GameRegistry.registerBlock(treeFruitSaplingBlock, "treeFruitSaplingBlock");
+		//GameRegistry.registerBlock(goldenVine, "goldenVine");
+		GameRegistry.registerBlock(gracilariaCorp, "gracilariaCorp");
 		
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));

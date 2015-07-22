@@ -53,10 +53,6 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 	
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand){
-		if(world.getBlock(x, y - 1, z) == Blocks.air && rand.nextInt(12) == 0){
-			world.setBlock(x, y - 1, z, BCCRegisterBlock.treeFruitBlock);
-			world.setBlockMetadataWithNotify(x, y - 1, z, 1 << 2 | rand.nextInt(4), 2);
-		}
 		byte b0 = 4;
 		int i1 = b0 + 1;
 		byte b1 = 32;
@@ -131,6 +127,10 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 		}else{
 			removeLeaves(world, x, y, z);
 		}
+		if(world.getBlock(x, y - 1, z) == Blocks.air && rand.nextInt(25) == 0){
+			world.setBlock(x, y - 1, z, BCCRegisterBlock.treeFruitBlock);
+			world.setBlockMetadataWithNotify(x, y - 1, z, 1 << 2 | rand.nextInt(4), 2);
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -178,8 +178,7 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getBlockColor()
-	{
+	public int getBlockColor(){
 		double d0 = 0.5D;
 		double d1 = 1.0D;
 		return ColorizerFoliage.getFoliageColor(d0, d1);
@@ -187,25 +186,21 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getRenderColor(int meta)
-	{
+	public int getRenderColor(int meta){
 		return ColorizerFoliage.getFoliageColorBasic();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
-	{
+	public int colorMultiplier(IBlockAccess world, int x, int y, int z){
 		int meta = world.getBlockMetadata(x, y, z);
 
 		int r = 0;
 		int g = 0;
 		int b = 0;
 
-		for (int l1 = -1; l1 <= 1; ++l1)
-		{
-			for (int i2 = -1; i2 <= 1; ++i2)
-			{
+		for (int l1 = -1; l1 <= 1; ++l1){
+			for (int i2 = -1; i2 <= 1; ++i2){
 				int j2 = world.getBiomeGenForCoords(x + i2, z + l1).getBiomeFoliageColor(x + i2, y, z + l1);
 				r += (j2 & 16711680) >> 16;
 			g += (j2 & 65280) >> 8;
@@ -217,15 +212,13 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 	}
 	
 	@Override
-	public boolean isOpaqueCube()
-	{
+	public boolean isOpaqueCube(){
 		return false;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-	{
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side){
 		return true;
 	}
 }

@@ -26,7 +26,7 @@ public class BlockTreeFruit extends BlockCocoa{
 
 	public BlockTreeFruit(){	
 		setTickRandomly(true);
-		setHardness(0.3F);
+		setHardness(0.2F);
 		setResistance(5.0F);
 		setBlockTextureName(BiochemistryCraft.MODID+":treeFruitBlock");
 	}
@@ -34,7 +34,7 @@ public class BlockTreeFruit extends BlockCocoa{
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand){
 		if (canBlockStay(world, x, y, z)){
-			if(rand.nextInt(5) == 0){
+			if(rand.nextInt(6) == 0){
 				dropBlockAsItem(world, x, y, z, 0, 0);
 			}
 		}else{
