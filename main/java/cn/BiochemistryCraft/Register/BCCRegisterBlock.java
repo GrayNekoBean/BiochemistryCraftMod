@@ -61,17 +61,10 @@ public class BCCRegisterBlock {
 		
 		facid = new Fluid("acid").setViscosity(2000);
 		FluidRegistry.registerFluid(facid);
-		if (FluidRegistry.getFluid("acid").getBlock() == null)
-		{
-			acid2 = new BlockAcid.FluidAcid(FluidRegistry.getFluid("acid"),Material.water);
+			acid2 = new BlockAcid.FluidAcid(facid,Material.water);
 			((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
 			acid2.setBlockName("acid");
-			FluidRegistry.getFluid("acid").setBlock(acid2);
-		}
-		else
-		{
-			acid2 = FluidRegistry.getFluid("acid").getBlock();
-		}
+			facid.setBlock(acid2);
 	}
 	
 	

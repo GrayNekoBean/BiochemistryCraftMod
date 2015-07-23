@@ -1,11 +1,22 @@
 package cn.BiochemistryCraft.Register;
 
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Block.BlockHerbsCorps;
-import cn.BiochemistryCraft.Item.*;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Item.ItemAcidBottle;
+import cn.BiochemistryCraft.Item.ItemAcidWand;
+import cn.BiochemistryCraft.Item.ItemBioBrain;
+import cn.BiochemistryCraft.Item.ItemBloodEssence;
+import cn.BiochemistryCraft.Item.ItemBs;
+import cn.BiochemistryCraft.Item.ItemGracilaria;
+import cn.BiochemistryCraft.Item.ItemHerbs;
+import cn.BiochemistryCraft.Item.ItemTnc;
+import cn.BiochemistryCraft.Item.ItemTreeFruit;
+import cn.BiochemistryCraft.Item.ItemTreeFruitSapling;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BCCRegisterItem {
 	
@@ -75,6 +86,8 @@ public class BCCRegisterItem {
 		cavespiderbloodessence, creeperbloodessence, endermanbloodessence, ghostbloodessence, magmacubebloodessence,
 		pigzombiebloodessence, silverfishbloodessence, slimebloodessence, spiderbloodessence, witchbloodessence, zombiebloodessence};
 	
+	public static ItemAcidBottle bucketAcid;
+	
 	public static Item[] herbsArray = {fireGrass, coolGrass, plasmaBerry};
 	
 	public BCCRegisterItem()
@@ -111,6 +124,8 @@ public class BCCRegisterItem {
 		treeFruitSapling = new ItemTreeFruitSapling();
 		//goldenVineFruit = new ItemGoldenVineFruit();
 		gracilaria = new ItemGracilaria();
+		
+		bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.glass_bottle).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
 	}
 	
 	public void ItemRegisterInit(){
@@ -134,6 +149,9 @@ public class BCCRegisterItem {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
 		}
+		GameRegistry.registerItem(bucketAcid, "acid_bottle");
+		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.glass_bottle));
+		
 	}
 		
 	}

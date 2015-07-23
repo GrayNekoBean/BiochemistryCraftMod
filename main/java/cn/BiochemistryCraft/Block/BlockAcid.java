@@ -146,7 +146,7 @@ public class BlockAcid extends Block{
 	    	Block b2 = world.getBlock(x - 1, y, z);
 	    	Block b3 = world.getBlock(x, y, z + 1);
 	    	Block b4 = world.getBlock(x, y, z - 1);
-	    	if(rand.nextInt(10) >= 50){
+	    	if(rand.nextInt(10) >= 5){
 	    		
 		    if (under.getMaterial() == Material.rock && under != Blocks.bedrock) {
 			if(under == BCCRegisterBlock.corrodedStone){
@@ -159,7 +159,7 @@ public class BlockAcid extends Block{
 		    	world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
 		    }
 	    	}
-	    	if(rand.nextInt(10) >= 50){
+	    	if(rand.nextInt(10) >= 5){
 		    if (b1.getMaterial() == Material.rock && b1 != Blocks.bedrock) {
 			if(b1 == BCCRegisterBlock.corrodedStone){
 				world.setBlockToAir(x + 1, y, z);
@@ -171,7 +171,7 @@ public class BlockAcid extends Block{
 		    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
 		    }
 	    	}
-	    	if(rand.nextInt(10) >= 50){
+	    	if(rand.nextInt(10) >= 5){
 		    if (b2.getMaterial() == Material.rock && b2 != Blocks.bedrock) {
 			if(b2 == BCCRegisterBlock.corrodedStone){
 				world.setBlockToAir(x - 1, y, z);
@@ -184,7 +184,7 @@ public class BlockAcid extends Block{
 		    }
 	    	}
 	    	
-	    	if(rand.nextInt(10) >= 50){
+	    	if(rand.nextInt(10) >= 5){
 		    if (b3.getMaterial() == Material.rock && b3 != Blocks.bedrock) {
 			if(b3 == BCCRegisterBlock.corrodedStone){
 				world.setBlockToAir(x, y, z + 1);
@@ -197,7 +197,7 @@ public class BlockAcid extends Block{
 		    }
 	    	}
 	    	
-	    	if(rand.nextInt(10) >= 50){
+	    	if(rand.nextInt(10) >= 5){
 		    if (b4.getMaterial() == Material.rock && b4 != Blocks.bedrock) {
 			if(b4 == BCCRegisterBlock.corrodedStone){
 				world.setBlockToAir(x, y, z - 1);
