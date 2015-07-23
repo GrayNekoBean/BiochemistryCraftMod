@@ -2,7 +2,6 @@ package cn.BiochemistryCraft.Register;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;
@@ -150,7 +149,7 @@ public class BCCRegisterItem {
 			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
 		}
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
-		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.glass_bottle));
+		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
 		
 	}
 		

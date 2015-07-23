@@ -140,7 +140,7 @@ public class BlockAcid extends Block{
 	    @Override
 	    public void updateTick(World world, int x, int y, int z, Random rand)
 	    {
-	    	super.updateTick(world, x, y, z, rand);
+	    	this.oldUpdateTick(world, x, y, z, rand);
 	    	Block under = world.getBlock(x, y - 1, z);
 	    	Block b1 = world.getBlock(x + 1, y, z);
 	    	Block b2 = world.getBlock(x - 1, y, z);
@@ -209,6 +209,86 @@ public class BlockAcid extends Block{
 		    	world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
 		    }
 	    	}
+	    }
+	    private void oldUpdateTick(World world, int x, int y, int z, Random rand){
+	        int quantaRemaining = quantaPerBlock - world.getBlockMetadata(x, y, z);
+	        int expQuanta = -101;
+	        int eva = 1;
+
+	        // check adjacent block levels if non-source
+	        if (quantaRemaining < quantaPerBlock)
+	        {
+	            int y2 = y - densityDir;
+
+	            if (world.getBlock(x,     y2, z    ) == this ||
+	                world.getBlock(x - 1, y2, z    ) == this ||
+	                world.getBlock(x + 1, y2, z    ) == this ||
+	                world.getBlock(x,     y2, z - 1) == this ||
+	                world.getBlock(x,     y2, z + 1) == this)
+	            {
+	                expQuanta = quantaPerBlock - 1;
+	            }
+	            else
+	            {
+	                int maxQuanta = -100;
+	                maxQuanta = getLargerQuanta(world, x - 1, y, z,     maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x + 1, y, z,     maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x,     y, z - 1, maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x,     y, z + 1, maxQuanta);
+
+	                expQuanta = maxQuanta - 1;
+	            }
+
+	            // decay calculation
+	            if (expQuanta != quantaRemaining)
+	            {
+	                quantaRemaining = expQuanta;
+
+	                if (expQuanta <= 0)
+	                {
+	                    world.setBlock(x, y, z, Blocks.air);
+	                }
+	                else
+	                {
+	                    world.setBlockMetadataWithNotify(x, y, z, quantaPerBlock - expQuanta + eva, 3);
+	                    world.scheduleBlockUpdate(x, y, z, this, tickRate);
+	                    world.notifyBlocksOfNeighborChange(x, y, z, this);
+	                }
+	            }
+	        }
+	        // This is a "source" block, set meta to zero, and send a server only update
+	        else if (quantaRemaining >= quantaPerBlock)
+	        {
+	            world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+	        }
+
+	        // Flow vertically if possible
+	        if (canDisplace(world, x, y + densityDir, z))
+	        {
+	            flowIntoBlock(world, x, y + densityDir, z, 1);
+	            return;
+	        }
+
+	        // Flow outward if possible
+	        int flowMeta = quantaPerBlock - quantaRemaining + 1;
+	        if (flowMeta >= quantaPerBlock)
+	        {
+	            return;
+	        }
+
+	        if (isSourceBlock(world, x, y, z) || !isFlowingVertically(world, x, y, z))
+	        {
+	            if (world.getBlock(x, y - densityDir, z) == this)
+	            {
+	                flowMeta = 1;
+	            }
+	            boolean flowTo[] = getOptimalFlowDirections(world, x, y, z);
+
+	            if (flowTo[0]) flowIntoBlock(world, x - 1, y, z,     flowMeta + eva);
+	            if (flowTo[1]) flowIntoBlock(world, x + 1, y, z,     flowMeta + eva);
+	            if (flowTo[2]) flowIntoBlock(world, x,     y, z - 1, flowMeta + eva);
+	            if (flowTo[3]) flowIntoBlock(world, x,     y, z + 1, flowMeta + eva);
+	        }
 	    }
     }
 }

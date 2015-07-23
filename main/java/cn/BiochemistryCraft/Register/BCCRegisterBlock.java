@@ -19,7 +19,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 public class BCCRegisterBlock {
-	
 	public static Block biodirt;
 	public static Block bioextracter;
 	public static Block acid;
@@ -58,7 +57,7 @@ public class BCCRegisterBlock {
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
 
-		facid = new Fluid("acid").setViscosity(2000);
+		facid = new Fluid("acid").setViscosity(800);
 		FluidRegistry.registerFluid(facid);
 			acid2 = new BlockAcid.FluidAcid(facid,Material.water);
 			((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
