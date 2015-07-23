@@ -36,10 +36,9 @@ public class BCCRegisterBlock {
 	public static BlockHerbsCorps coolGrassCorp;
 	public static BlockHerbsCorps plasmaBerryCorp;
 	
-	
 	public static Fluid facid;
 	public static Block acid2;
-	
+
 	public static BlockHerbsCorps[] herbsCorpArray = {fireGrassCorp, coolGrassCorp, plasmaBerryCorp};
 	
 	public BCCRegisterBlock()
@@ -58,7 +57,7 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
-		
+
 		facid = new Fluid("acid").setViscosity(2000);
 		FluidRegistry.registerFluid(facid);
 			acid2 = new BlockAcid.FluidAcid(facid,Material.water);
