@@ -15,8 +15,6 @@ import cn.BiochemistryCraft.Item.ItemHerbs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class BCCRegisterBlock {
 	public static Block biodirt;
@@ -37,7 +35,7 @@ public class BCCRegisterBlock {
 	
 	public static Fluid facid;
 	public static Block acid2;
-
+	
 	public static BlockHerbsCorps[] herbsCorpArray = {fireGrassCorp, coolGrassCorp, plasmaBerryCorp};
 	
 	public BCCRegisterBlock()
@@ -56,13 +54,17 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> origin/master
 		facid = new Fluid("acid").setViscosity(800);
 		FluidRegistry.registerFluid(facid);
-			acid2 = new BlockAcid.FluidAcid(facid,Material.water);
-			((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
-			acid2.setBlockName("acid");
-			facid.setBlock(acid2);
+		acid2 = new BlockAcid.FluidAcid(facid,Material.water);
+		((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
+		acid2.setBlockName("acid");
+		facid.setBlock(acid2);
 	}
 	
 	

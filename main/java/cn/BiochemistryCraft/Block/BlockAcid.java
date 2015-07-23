@@ -6,13 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
 import cn.BiochemistryCraft.BCCDamageSource;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
@@ -76,13 +72,6 @@ public class BlockAcid extends Block{
     	entity.motionZ *= 0.4D;
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
     }
-    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-    	super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-    	Block under = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_);
-    	if(!under.getMaterial().isSolid()){
-    	    p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
-    	}
-    }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
 		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
 		Block under = p_149695_1_.getBlock(p_149695_2_, p_149695_3_ - 1, p_149695_4_);
@@ -103,7 +92,7 @@ public class BlockAcid extends Block{
 		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.acidicDirt);
 	    }
     }
-    public static class FluidAcid extends BlockFluidClassic{
+        public static class FluidAcid extends BlockFluidClassic{
         @SideOnly(Side.CLIENT)
         protected IIcon stillIcon;
         @SideOnly(Side.CLIENT)
@@ -291,4 +280,5 @@ public class BlockAcid extends Block{
 	        }
 	    }
     }
+
 }

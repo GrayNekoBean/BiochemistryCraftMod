@@ -55,9 +55,6 @@ public class EventBonemeal {
 				event.setResult(Result.ALLOW);
 			}
 		}
-	    if (block == BCCRegisterBlock.treeFruitBlock){
-			event.setResult(Result.DENY);
-		}
 	    /*
 	    if (block == BCCRegisterBlock.goldenVine){
 			if (!world.isRemote){
