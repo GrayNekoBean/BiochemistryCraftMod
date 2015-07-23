@@ -1,13 +1,6 @@
 package cn.BiochemistryCraft.Entity.Throwable;
 
 import net.minecraft.block.Block;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,15 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> origin/master
-=======
-=======
->>>>>>> origin/master
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCarrot;
 import net.minecraft.block.BlockDeadBush;
@@ -39,15 +24,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
 
 public class EntityAcid extends EntityThrowable{
 	int damage = 4;
@@ -78,35 +54,6 @@ public class EntityAcid extends EntityThrowable{
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
 		// TODO 自动生成的方法存根
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-		World world=this.worldObj;
-		if(mop.typeOfHit==MovingObjectType.ENTITY)
-		{
-			int x=MathHelper.floor_double(mop.entityHit.posX);
-			int y=MathHelper.floor_double(mop.entityHit.posY);
-			int z=MathHelper.floor_double(mop.entityHit.posZ);
-			Block acid=BCCRegisterBlock.acid;
-			world.setBlock(x, y, z, acid);
-			world.setBlock(x-1, y, z, acid);
-			world.setBlock(x+1, y, z, acid);
-			world.setBlock(x-1, y, z+1, acid);
-			world.setBlock(x+1, y, z+1, acid);
-			world.setBlock(x, y, z+1, acid);
-			world.setBlock(x-1, y, z-1, acid);
-			world.setBlock(x+1, y, z-1, acid);
-			world.setBlock(x, y, z-1, acid);
-		}
-		this.setDead();
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 	        if (!this.worldObj.isRemote)
 	        {
 /*			int x=MathHelper.floor_double(mop.entityHit.posX);
@@ -133,14 +80,6 @@ public class EntityAcid extends EntityThrowable{
 			}
 		this.setDead();
 	        }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
 	}
 	protected float func_70182_d()
     {
@@ -152,14 +91,6 @@ public class EntityAcid extends EntityThrowable{
     {
         return this.gravity; 
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
     
     private boolean isPlants(Block block){
 	boolean flag = block instanceof BlockFlower;
@@ -171,12 +102,4 @@ public class EntityAcid extends EntityThrowable{
 	boolean flag6 = block instanceof BlockStem;
 	return flag || flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
-=======
->>>>>>> origin/branch1
->>>>>>> origin/master
 }
