@@ -34,6 +34,9 @@ public class BCCRegisterBlock {
 	public static BlockHerbsCorps coolGrassCorp;
 	public static BlockHerbsCorps plasmaBerryCorp;
 	
+	public static Fluid facid;
+	public static Block acid2;
+	
 	public static BlockHerbsCorps[] herbsCorpArray = {fireGrassCorp, coolGrassCorp, plasmaBerryCorp};
 	
 	public BCCRegisterBlock()
@@ -52,6 +55,13 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
+		
+		facid = new Fluid("acid").setViscosity(800);
+		FluidRegistry.registerFluid(facid);
+		acid2 = new BlockAcid.FluidAcid(facid,Material.water);
+		((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
+		acid2.setBlockName("acid");
+		facid.setBlock(acid2);
 	}
 	
 	
@@ -74,5 +84,7 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));
 		}
+		
+		GameRegistry.registerBlock(acid2, "AcidStill");
 	}
 }
