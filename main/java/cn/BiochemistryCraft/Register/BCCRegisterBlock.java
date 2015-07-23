@@ -15,6 +15,8 @@ import cn.BiochemistryCraft.Item.ItemHerbs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 public class BCCRegisterBlock {
 	
@@ -34,6 +36,10 @@ public class BCCRegisterBlock {
 	public static BlockHerbsCorps coolGrassCorp;
 	public static BlockHerbsCorps plasmaBerryCorp;
 	
+	
+	public static Fluid facid;
+	public static Block acid2;
+	
 	public static BlockHerbsCorps[] herbsCorpArray = {fireGrassCorp, coolGrassCorp, plasmaBerryCorp};
 	
 	public BCCRegisterBlock()
@@ -51,6 +57,20 @@ public class BCCRegisterBlock {
 		
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
+		}
+		
+		facid = new Fluid("acid").setViscosity(2000);
+		FluidRegistry.registerFluid(facid);
+		if (FluidRegistry.getFluid("acid").getBlock() == null)
+		{
+			acid2 = new BlockAcid.FluidAcid(FluidRegistry.getFluid("acid"),Material.water);
+			((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
+			acid2.setBlockName("acid");
+			FluidRegistry.getFluid("acid").setBlock(acid2);
+		}
+		else
+		{
+			acid2 = FluidRegistry.getFluid("acid").getBlock();
 		}
 	}
 	
@@ -74,5 +94,7 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));
 		}
+		
+		GameRegistry.registerBlock(acid2, "AcidStill");
 	}
 }
