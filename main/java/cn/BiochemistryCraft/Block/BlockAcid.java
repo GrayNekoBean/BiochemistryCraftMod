@@ -6,9 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 import cn.BiochemistryCraft.BCCDamageSource;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
@@ -72,6 +76,13 @@ public class BlockAcid extends Block{
     	entity.motionZ *= 0.4D;
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
     }
+    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
+    	super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+    	Block under = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_);
+    	if(!under.getMaterial().isSolid()){
+    	    p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
+    	}
+    }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
 		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
 		Block under = p_149695_1_.getBlock(p_149695_2_, p_149695_3_ - 1, p_149695_4_);
@@ -90,6 +101,114 @@ public class BlockAcid extends Block{
 	    }
 	    if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
 		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.acidicDirt);
+	    }
+    }
+    public static class FluidAcid extends BlockFluidClassic{
+        @SideOnly(Side.CLIENT)
+        protected IIcon stillIcon;
+        @SideOnly(Side.CLIENT)
+        protected IIcon flowingIcon;
+		public FluidAcid(Fluid fluid, Material material) {
+			super(fluid, material);
+	        setCreativeTab(BiochemistryCraft.biocreativetab);
+		}
+        @Override
+        public IIcon getIcon(int side, int meta) {
+                return (side == 0 || side == 1)? stillIcon : flowingIcon;
+        }
+        @SideOnly(Side.CLIENT)
+        @Override
+        public void registerBlockIcons(IIconRegister register) {
+                stillIcon = register.registerIcon(BiochemistryCraft.MODID + ":acid_still");
+                flowingIcon = register.registerIcon(BiochemistryCraft.MODID + ":acid_flow");
+        }
+        public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity entity)
+        {
+            entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
+        }
+        @Override
+        public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
+                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
+                return super.canDisplace(world, x, y, z);
+        }
+        
+        @Override
+        public boolean displaceIfPossible(World world, int x, int y, int z) {
+                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
+                return super.displaceIfPossible(world, x, y, z);
+        }
+	    @Override
+	    public void updateTick(World world, int x, int y, int z, Random rand)
+	    {
+	    	super.updateTick(world, x, y, z, rand);
+	    	Block under = world.getBlock(x, y - 1, z);
+	    	Block b1 = world.getBlock(x + 1, y, z);
+	    	Block b2 = world.getBlock(x - 1, y, z);
+	    	Block b3 = world.getBlock(x, y, z + 1);
+	    	Block b4 = world.getBlock(x, y, z - 1);
+	    	if(rand.nextInt(10) >= 50){
+	    		
+		    if (under.getMaterial() == Material.rock && under != Blocks.bedrock) {
+			if(under == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y - 1, z);
+			}
+			else
+				world.setBlock(x, y - 1, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	if(rand.nextInt(10) >= 50){
+		    if (b1.getMaterial() == Material.rock && b1 != Blocks.bedrock) {
+			if(b1 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x + 1, y, z);
+			}
+			else
+				world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b1.getMaterial() == Material.ground || b1.getMaterial() == Material.grass) {
+		    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	if(rand.nextInt(10) >= 50){
+		    if (b2.getMaterial() == Material.rock && b2 != Blocks.bedrock) {
+			if(b2 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x - 1, y, z);
+			}
+			else
+				world.setBlock(x - 1, y, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b2.getMaterial() == Material.ground || b2.getMaterial() == Material.grass) {
+		    	world.setBlock(x - 1, y, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	
+	    	if(rand.nextInt(10) >= 50){
+		    if (b3.getMaterial() == Material.rock && b3 != Blocks.bedrock) {
+			if(b3 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y, z + 1);
+			}
+			else
+				world.setBlock(x, y, z + 1, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b3.getMaterial() == Material.ground || b3.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y, z + 1, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	
+	    	if(rand.nextInt(10) >= 50){
+		    if (b4.getMaterial() == Material.rock && b4 != Blocks.bedrock) {
+			if(b4 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y, z - 1);
+			}
+			else
+				world.setBlock(x, y, z - 1, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b4.getMaterial() == Material.ground || b4.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
 	    }
     }
 }

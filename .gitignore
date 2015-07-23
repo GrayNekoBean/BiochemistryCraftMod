@@ -213,3 +213,38 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+<<<<<<< HEAD
+*.bat
+gradlew
+*.properties
+gradle/wrapper/gradle-wrapper.jar
+*.json
+build.gradle
+*.cfg
+eclipse/logs/2015-07-22-1.log.gz
+*.gz
+eclipse/options.txt
+*.dat
+eclipse/saves/New Worldkjkjf/level.dat_mcr
+*.dat_old
+eclipse/saves/New Worldkjkjf/region/r.-1.0.mca
+*.png
+eclipse/saves/New Worldkjkjf/session.lock
+*.exe
+.gradle/2.0/taskArtifacts/cache.properties.lock
+*.bin
+*.java
+*.java
+/eclipse/
+/gradle/
+/.gitignore
+=======
+/eclipse/
+/gradle/
+/build.gradle
+/call CMD.bat
+/gradlew
+/gradlew.bat
+/runClient.exe
+/.gradle/
+>>>>>>> origin/branch1
