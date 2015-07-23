@@ -2,8 +2,11 @@ package cn.BiochemistryCraft.Entity.Throwable;
 
 import net.minecraft.block.Block;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
@@ -14,7 +17,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> origin/master
 =======
 =======
 >>>>>>> origin/master
@@ -33,7 +40,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/branch1
+>>>>>>> origin/master
 =======
 >>>>>>> origin/branch1
 >>>>>>> origin/master
@@ -68,8 +79,11 @@ public class EntityAcid extends EntityThrowable{
 	protected void onImpact(MovingObjectPosition mop) {
 		// TODO 自动生成的方法存根
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> origin/master
 		World world=this.worldObj;
 		if(mop.typeOfHit==MovingObjectType.ENTITY)
 		{
@@ -88,6 +102,9 @@ public class EntityAcid extends EntityThrowable{
 			world.setBlock(x, y, z-1, acid);
 		}
 		this.setDead();
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 	        if (!this.worldObj.isRemote)
@@ -117,6 +134,10 @@ public class EntityAcid extends EntityThrowable{
 		this.setDead();
 	        }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/branch1
+>>>>>>> origin/master
 =======
 >>>>>>> origin/branch1
 >>>>>>> origin/master
@@ -134,6 +155,9 @@ public class EntityAcid extends EntityThrowable{
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
     
@@ -148,6 +172,10 @@ public class EntityAcid extends EntityThrowable{
 	return flag || flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/branch1
+>>>>>>> origin/master
 =======
 >>>>>>> origin/branch1
 >>>>>>> origin/master
