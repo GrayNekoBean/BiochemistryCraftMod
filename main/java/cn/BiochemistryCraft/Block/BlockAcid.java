@@ -92,4 +92,193 @@ public class BlockAcid extends Block{
 		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.acidicDirt);
 	    }
     }
+        public static class FluidAcid extends BlockFluidClassic{
+        @SideOnly(Side.CLIENT)
+        protected IIcon stillIcon;
+        @SideOnly(Side.CLIENT)
+        protected IIcon flowingIcon;
+		public FluidAcid(Fluid fluid, Material material) {
+			super(fluid, material);
+	        setCreativeTab(BiochemistryCraft.biocreativetab);
+		}
+        @Override
+        public IIcon getIcon(int side, int meta) {
+                return (side == 0 || side == 1)? stillIcon : flowingIcon;
+        }
+        @SideOnly(Side.CLIENT)
+        @Override
+        public void registerBlockIcons(IIconRegister register) {
+                stillIcon = register.registerIcon(BiochemistryCraft.MODID + ":acid_still");
+                flowingIcon = register.registerIcon(BiochemistryCraft.MODID + ":acid_flow");
+        }
+        public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity entity)
+        {
+            entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
+        }
+        @Override
+        public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
+                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
+                return super.canDisplace(world, x, y, z);
+        }
+        
+        @Override
+        public boolean displaceIfPossible(World world, int x, int y, int z) {
+                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
+                return super.displaceIfPossible(world, x, y, z);
+        }
+	    @Override
+	    public void updateTick(World world, int x, int y, int z, Random rand)
+	    {
+	    	this.oldUpdateTick(world, x, y, z, rand);
+	    	Block under = world.getBlock(x, y - 1, z);
+	    	Block b1 = world.getBlock(x + 1, y, z);
+	    	Block b2 = world.getBlock(x - 1, y, z);
+	    	Block b3 = world.getBlock(x, y, z + 1);
+	    	Block b4 = world.getBlock(x, y, z - 1);
+	    	if(rand.nextInt(10) >= 5){
+	    		
+		    if (under.getMaterial() == Material.rock && under != Blocks.bedrock) {
+			if(under == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y - 1, z);
+			}
+			else
+				world.setBlock(x, y - 1, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	if(rand.nextInt(10) >= 5){
+		    if (b1.getMaterial() == Material.rock && b1 != Blocks.bedrock) {
+			if(b1 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x + 1, y, z);
+			}
+			else
+				world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b1.getMaterial() == Material.ground || b1.getMaterial() == Material.grass) {
+		    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	if(rand.nextInt(10) >= 5){
+		    if (b2.getMaterial() == Material.rock && b2 != Blocks.bedrock) {
+			if(b2 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x - 1, y, z);
+			}
+			else
+				world.setBlock(x - 1, y, z, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b2.getMaterial() == Material.ground || b2.getMaterial() == Material.grass) {
+		    	world.setBlock(x - 1, y, z, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	
+	    	if(rand.nextInt(10) >= 5){
+		    if (b3.getMaterial() == Material.rock && b3 != Blocks.bedrock) {
+			if(b3 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y, z + 1);
+			}
+			else
+				world.setBlock(x, y, z + 1, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b3.getMaterial() == Material.ground || b3.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y, z + 1, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    	
+	    	if(rand.nextInt(10) >= 5){
+		    if (b4.getMaterial() == Material.rock && b4 != Blocks.bedrock) {
+			if(b4 == BCCRegisterBlock.corrodedStone){
+				world.setBlockToAir(x, y, z - 1);
+			}
+			else
+				world.setBlock(x, y, z - 1, BCCRegisterBlock.corrodedStone);
+		    }
+		    if (b4.getMaterial() == Material.ground || b4.getMaterial() == Material.grass) {
+		    	world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
+		    }
+	    	}
+	    }
+	    private void oldUpdateTick(World world, int x, int y, int z, Random rand){
+	        int quantaRemaining = quantaPerBlock - world.getBlockMetadata(x, y, z);
+	        int expQuanta = -101;
+	        int eva = 1;
+
+	        // check adjacent block levels if non-source
+	        if (quantaRemaining < quantaPerBlock)
+	        {
+	            int y2 = y - densityDir;
+
+	            if (world.getBlock(x,     y2, z    ) == this ||
+	                world.getBlock(x - 1, y2, z    ) == this ||
+	                world.getBlock(x + 1, y2, z    ) == this ||
+	                world.getBlock(x,     y2, z - 1) == this ||
+	                world.getBlock(x,     y2, z + 1) == this)
+	            {
+	                expQuanta = quantaPerBlock - 1;
+	            }
+	            else
+	            {
+	                int maxQuanta = -100;
+	                maxQuanta = getLargerQuanta(world, x - 1, y, z,     maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x + 1, y, z,     maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x,     y, z - 1, maxQuanta);
+	                maxQuanta = getLargerQuanta(world, x,     y, z + 1, maxQuanta);
+
+	                expQuanta = maxQuanta - 1;
+	            }
+
+	            // decay calculation
+	            if (expQuanta != quantaRemaining)
+	            {
+	                quantaRemaining = expQuanta;
+
+	                if (expQuanta <= 0)
+	                {
+	                    world.setBlock(x, y, z, Blocks.air);
+	                }
+	                else
+	                {
+	                    world.setBlockMetadataWithNotify(x, y, z, quantaPerBlock - expQuanta + eva, 3);
+	                    world.scheduleBlockUpdate(x, y, z, this, tickRate);
+	                    world.notifyBlocksOfNeighborChange(x, y, z, this);
+	                }
+	            }
+	        }
+	        // This is a "source" block, set meta to zero, and send a server only update
+	        else if (quantaRemaining >= quantaPerBlock)
+	        {
+	            world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+	        }
+
+	        // Flow vertically if possible
+	        if (canDisplace(world, x, y + densityDir, z))
+	        {
+	            flowIntoBlock(world, x, y + densityDir, z, 1);
+	            return;
+	        }
+
+	        // Flow outward if possible
+	        int flowMeta = quantaPerBlock - quantaRemaining + 1;
+	        if (flowMeta >= quantaPerBlock)
+	        {
+	            return;
+	        }
+
+	        if (isSourceBlock(world, x, y, z) || !isFlowingVertically(world, x, y, z))
+	        {
+	            if (world.getBlock(x, y - densityDir, z) == this)
+	            {
+	                flowMeta = 1;
+	            }
+	            boolean flowTo[] = getOptimalFlowDirections(world, x, y, z);
+
+	            if (flowTo[0]) flowIntoBlock(world, x - 1, y, z,     flowMeta + eva);
+	            if (flowTo[1]) flowIntoBlock(world, x + 1, y, z,     flowMeta + eva);
+	            if (flowTo[2]) flowIntoBlock(world, x,     y, z - 1, flowMeta + eva);
+	            if (flowTo[3]) flowIntoBlock(world, x,     y, z + 1, flowMeta + eva);
+	        }
+	    }
+    }
+
 }
