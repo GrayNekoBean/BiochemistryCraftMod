@@ -68,6 +68,8 @@ public class BCCRegisterItem {
 	public static Item goldenVineFruit;
 	public static Item gracilaria;
 	
+	public static ItemAcidBottle bucketAcid;
+	
 	public static Item[] bloodgr = {cowblood, pigblood, chickenblood, wolfblood, playerblood, batblood, horseblood, mushroomblood, ocelotblood, sheepblood, squidblood,
 		cavespiderblood, creeperblood, endermanblood, ghostblood, magmacubeblood, pigzombieblood, silverfishblood, slimeblood, spiderblood, witchblood, zombieblood};
 	public static Item[] bloodes = {cowbloodessence, pigbloodessence, chickenbloodessence, wolfbloodessence, playerbloodessence,
@@ -111,6 +113,8 @@ public class BCCRegisterItem {
 		treeFruitSapling = new ItemTreeFruitSapling();
 		//goldenVineFruit = new ItemGoldenVineFruit();
 		gracilaria = new ItemGracilaria();
+		
+				bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.glass_bottle).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
 	}
 	
 	public void ItemRegisterInit(){
@@ -134,6 +138,9 @@ public class BCCRegisterItem {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
 		}
+		
+		GameRegistry.registerItem(bucketAcid, "acid_bottle");
+		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
 	}
 		
 	}
