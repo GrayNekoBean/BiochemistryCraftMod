@@ -1,14 +1,20 @@
 package cn.BiochemistryCraft.Entity.Throwable;
 
 import net.minecraft.block.Block;
-
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockCarrot;
+import net.minecraft.block.BlockDeadBush;
+import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockPotato;
+import net.minecraft.block.BlockStem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 
 public class EntityAcid extends EntityThrowable{
 	int damage = 4;

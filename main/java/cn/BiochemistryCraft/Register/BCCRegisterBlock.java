@@ -1,6 +1,9 @@
 package cn.BiochemistryCraft.Register;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Block.BCCBlockBase;
 import cn.BiochemistryCraft.Block.BlockAcid;
@@ -11,10 +14,7 @@ import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Block.BlockTreeFruitLeave;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
-import cn.BiochemistryCraft.Item.ItemHerbs;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BCCRegisterBlock {
 	public static Block biodirt;
@@ -54,11 +54,7 @@ public class BCCRegisterBlock {
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		facid = new Fluid("acid").setViscosity(800);
 		FluidRegistry.registerFluid(facid);
 		acid2 = new BlockAcid.FluidAcid(facid,Material.water);

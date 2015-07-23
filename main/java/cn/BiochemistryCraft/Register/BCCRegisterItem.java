@@ -1,18 +1,21 @@
 package cn.BiochemistryCraft.Register;
 
-<<<<<<< HEAD
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-=======
->>>>>>> origin/master
 import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Block.BlockHerbsCorps;
-import cn.BiochemistryCraft.Item.*;
+import cn.BiochemistryCraft.Item.ItemAcidBottle;
+import cn.BiochemistryCraft.Item.ItemAcidWand;
+import cn.BiochemistryCraft.Item.ItemBioBrain;
+import cn.BiochemistryCraft.Item.ItemBloodEssence;
+import cn.BiochemistryCraft.Item.ItemBs;
+import cn.BiochemistryCraft.Item.ItemGracilaria;
+import cn.BiochemistryCraft.Item.ItemHerbs;
+import cn.BiochemistryCraft.Item.ItemTnc;
+import cn.BiochemistryCraft.Item.ItemTreeFruit;
+import cn.BiochemistryCraft.Item.ItemTreeFruitSapling;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 
 public class BCCRegisterItem {
 	
@@ -145,11 +148,9 @@ public class BCCRegisterItem {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
 		}
-<<<<<<< HEAD
+
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
 		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
-=======
->>>>>>> origin/master
 		
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
 		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
