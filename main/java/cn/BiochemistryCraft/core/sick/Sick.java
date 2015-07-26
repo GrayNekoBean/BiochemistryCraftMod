@@ -42,17 +42,17 @@ public class Sick extends TimerTask{
 	public List<Sick> HasSicks = new ArrayList();
 	public List<Sick> sickList = new ArrayList();
 	//=========================================================================================
-	public static Sick sickCold=new SickCold();
 	public Sick(String name,int strong,EntityLivingBase entity2){
-		entity2=player;
-		this.maxStrong=strong;
-		this.Name=name;
-		this.entity=entity2;
+		if(player instanceof EntityPlayer)
+		{
+			this.maxStrong=strong;
+			this.Name=name;
+			this.entity=entity2;
+		}
 	}
 	
-	public void setTimer(){
-		Timer sickTimer=new Timer();
-		sickTimer.schedule(new Sick(Name, maxStrong,entity), 1000);
+	public void setTimer(Timer t,String name,int strong, EntityLivingBase entity){
+		t.schedule(new Sick(name, strong,entity), 1000);
 	}
 	
 	@Override

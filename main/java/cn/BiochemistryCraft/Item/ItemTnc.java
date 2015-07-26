@@ -1,7 +1,5 @@
 package cn.BiochemistryCraft.Item;
 
-import com.sun.xml.internal.stream.Entity;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cn.BiochemistryCraft.Entity.EntityDiable;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;

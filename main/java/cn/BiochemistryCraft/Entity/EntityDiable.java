@@ -1,7 +1,5 @@
 package cn.BiochemistryCraft.Entity;
 
-import com.sun.xml.internal.stream.Entity;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

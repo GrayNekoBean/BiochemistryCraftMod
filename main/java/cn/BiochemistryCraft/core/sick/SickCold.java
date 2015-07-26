@@ -6,18 +6,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 
-public class SickCold extends Sick{
+public class SickCold extends SSick{
 
-	protected SickCold() {
-		super("cold",3,entity);
-		this.RegisterSick(this);
-		this.RegAttribute(SharedMonsterAttributes.maxHealth, (UUID.randomUUID()), 15.0d, 0);
-		// TODO �Զ����ɵĹ��캯�����
+	protected SickCold(EntityLivingBase SickEntity) {
+		super(SickEntity);
 	}
-	
-	public void displayEffect(EntityLivingBase e){
-		super.displayEffect(e);
-		this.SetAttribute(SharedMonsterAttributes.maxHealth, 15.0d);
+
+	@Override
+	public void displayEffect() {
+		// TODO 自动生成的方法存根
+		
 	}
 
 }
