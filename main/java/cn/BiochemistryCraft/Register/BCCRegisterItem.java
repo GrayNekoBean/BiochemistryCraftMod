@@ -152,8 +152,6 @@ public class BCCRegisterItem {
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
 		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
 		
-		GameRegistry.registerItem(bucketAcid, "acid_bottle");
-		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
 	}
 		
 	}

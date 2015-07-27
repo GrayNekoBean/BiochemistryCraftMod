@@ -12,6 +12,8 @@ import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
+import cn.BiochemistryCraft.core.sick.SickCold;
+import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -62,6 +64,8 @@ public class BiochemistryCraft{
 		entityregister.EntityRenderRegisterInit();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
+		
+		SickRegistry.registerSick(new SickCold());
 	}
 
 	@EventHandler

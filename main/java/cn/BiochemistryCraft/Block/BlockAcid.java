@@ -1,11 +1,13 @@
 package cn.BiochemistryCraft.Block;
 
 import java.util.Random;
+import java.util.Timer;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -16,6 +18,7 @@ import net.minecraftforge.fluids.Fluid;
 import cn.BiochemistryCraft.BCCDamageSource;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.core.sick.SickCold;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -75,6 +78,13 @@ public class BlockAcid extends Block{
     	entity.motionX *= 0.4D;
     	entity.motionZ *= 0.4D;
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
+        if(entity instanceof EntityLivingBase)
+        {
+	        Timer t=new Timer();
+	        SickCold s=new SickCold();
+	        s.SetEntity((EntityLivingBase) entity);
+	        t.schedule(new SickCold(), 1000);
+        }
     }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
 		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
@@ -154,15 +164,15 @@ public class BlockAcid extends Block{
 	    	}
 	    	if(rand.nextInt(10) >= 5){
 		    if (b1.getMaterial() == Material.rock && b1 != Blocks.bedrock) {
-			if(b1 == BCCRegisterBlock.corrodedStone){
-				world.setBlockToAir(x + 1, y, z);
-			}
-			else
-				world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
-		    }
-		    if (b1.getMaterial() == Material.ground || b1.getMaterial() == Material.grass) {
-		    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
-		    }
+				if(b1 == BCCRegisterBlock.corrodedStone){
+					world.setBlockToAir(x + 1, y, z);
+				}
+				else
+					world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
+			    }
+			    if (b1.getMaterial() == Material.ground || b1.getMaterial() == Material.grass) {
+			    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
+			    }
 	    	}
 	    	if(rand.nextInt(10) >= 5){
 		    if (b2.getMaterial() == Material.rock && b2 != Blocks.bedrock) {
