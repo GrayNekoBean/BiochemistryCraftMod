@@ -9,17 +9,12 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 public class GeneBaseAlgorithm {
 	
 	public static void mutationProbly_normal(Entity entity,float par2,Event event){
-		
-		
-		
-		
+
 	}
 	
 	
 	public static void mutationProbly_player(EntityPlayer player,float par2,PlayerEvent event){
-		
-		
-		
+
 	}
 
 }

@@ -4,45 +4,41 @@ import cn.BiochemistryCraft.Entity.IBiology;
 import net.minecraft.entity.EntityLiving;
 
 public class Infect {
-public void InfectEntity(IBiology ibiology,InfectSource source){
+    public void InfectEntity(IBiology ibiology,InfectSource source){
 	
 	ibiology.getInfect(source,ibiology.getEntity());
 	
-}
+    }
 
-public void doEffect(InfectSource source,EntityLiving e){
-	
-	
-		
-			if(e instanceof IBiology){	
-				if(source==source.Xvirus){
-				if(e.worldObj.rand.nextInt(10)==(1|2|3)){
-				((IBiology) e).getSick(null);
-				
-			}
-				else if(e.worldObj.rand.nextInt(10)==(4|5)){
-					
-				}
-				else if(e.worldObj.rand.nextInt(10)==(6|7|8)){
-					
-				}
-				else if(e.worldObj.rand.nextInt(10)==9){
-					
-				}
-				else if(e.worldObj.rand.nextInt(10)==0){
-					
-				}
+    public void doEffect(InfectSource source,EntityLiving e){
+	if(e instanceof IBiology){	
+	    if(source==source.Xvirus){
+		switch (e.worldObj.rand.nextInt(10)) {
+		case 0:
+		    break;
+		case 1:case 2:case 3:
+		    ((IBiology) e).getSick(null);
+		    break;
+		case 4:case 5:
+		    break;
+		case 6:case 7: case 8:
+		    break;
+		case 9:
+		    break;
+		default:
+		    break;
 		}
-				else if(source==source.furorVirus){
+	    }
+	    else if(source==source.furorVirus){
 					
-				}
+	    }
 				
-				else if(source==source.parasiticer){
+	    else if(source==source.parasiticer){
 					
-				}
+	    }
 	}
-			else if(!(e instanceof IBiology)){
+	else if(!(e instanceof IBiology)){
 				
-			}
+	}
 }
 }
