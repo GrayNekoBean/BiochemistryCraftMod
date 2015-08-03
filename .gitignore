@@ -228,13 +228,10 @@ eclipse/options.txt
 eclipse/saves/New Worldkjkjf/level.dat_mcr
 *.dat_old
 eclipse/saves/New Worldkjkjf/region/r.-1.0.mca
-*.png
 eclipse/saves/New Worldkjkjf/session.lock
 *.exe
 .gradle/2.0/taskArtifacts/cache.properties.lock
 *.bin
-*.java
-*.java
 /eclipse/
 /gradle/
 /.gitignore
