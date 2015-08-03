@@ -8,10 +8,12 @@ import cn.BiochemistryCraft.GUI.BioGuiHandler;
 import cn.BiochemistryCraft.GUI.ContainerBioExtracter;
 import cn.BiochemistryCraft.GUI.GUIBioExtracter;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
+import cn.BiochemistryCraft.Register.BCCEntityRendererRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
+import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.core.sick.SickCold;
 import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
@@ -43,9 +45,10 @@ public class BiochemistryCraft{
 	public static final String Version="1.0.0";
 	
 	
-	public static BCCRegisterBlock blockregister;
-	public static BCCRegisterItem itemregister;
-	public static BCCEntityRegister entityregister;
+//	public static BCCRegisterBlock blockregister;
+//	public static BCCRegisterItem itemregister;
+//	public static BCCEntityRegister entityregister;
+//	public static BCCEntityRendererRegister entityrendererregister;
 	public static BCCRegisterEvent eventRegister = new BCCRegisterEvent();
 	//public static IGuiHandler guihandler;
 	
@@ -53,16 +56,16 @@ public class BiochemistryCraft{
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event){
 		//guihandler=(IGuiHandler) new BioGUIHandler();
+		BCCConfig.startConfig(event);
+//		blockregister=new BCCRegisterBlock();
+//		itemregister=new BCCRegisterItem();
+//		entityregister=new BCCEntityRegister();
+//		entityrendererregister=new BCCEntityRendererRegister();
 		
-		blockregister=new BCCRegisterBlock();
-		itemregister=new BCCRegisterItem();
-		entityregister=new BCCEntityRegister();
-		
-		blockregister.blockRegisterInit();
-		itemregister.ItemRegisterInit();
-		entityregister.EntityRegisterInit();
-		entityregister.EntityRenderRegisterInit();
-		
+//		blockregister.blockRegisterInit();
+//		itemregister.ItemRegisterInit();
+//		entityregister.EntityRegisterInit();
+		proxy.preInit(event);
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 		
 		SickRegistry.registerSick(new SickCold());
@@ -70,12 +73,13 @@ public class BiochemistryCraft{
 
 	@EventHandler
 	public void load(FMLInitializationEvent event){
+	    proxy.load(event);
 		eventRegister.eventRegisterInit();
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
+		proxy.postLoad(event);
 	}
 
 	
