@@ -13,7 +13,7 @@ this is a mod  :Biochemistry craft
 
 English
 
-We have nothing to say. This mod is still in base section. Base Classes are developing now.
+I have nothing to say. This mod is still in base section. Base Classes are developing now.
 
 Biochemistry Mod, is a mod of Biochemistry. More mobs, some Genetic experiments, and Sickness System, are planning in future.
 
@@ -22,6 +22,3 @@ I hope you will support me. If you wish to join, please contact me by QQ:4733947
 Yet, we are working hard in this...
 
 (English version is translated by cvrunmin 英文版本由cvrunmin翻译)
-
-#BiochemistryCraftMod - Snapshot Branch
-a branch for testing experiment features
