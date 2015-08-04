@@ -49,12 +49,12 @@ item.CreeperBloodEssence.name=苦力怕血精华
 item.EndermanBloodEssence.name=末影人血精华
 item.GhostBloodEssence.name=恶魂血精华
 item.MagmacubeBloodEssence.name=岩浆怪血精华
-item.PigzombieBloodNeedle.name=僵尸猪人血针筒
-item.SilverfishBloodNeedle.name=虫血针筒
-item.SlimeBloodNeedle.name=史莱姆血针筒
-item.SpiderBloodNeedle.name=蜘蛛血针筒
-item.WitchBloodNeedle.name=女巫血针筒
-item.ZombieBloodNeedle.name=僵尸血针筒
+item.PigzombieBloodEssence.name=僵尸猪人血精华
+item.SilverfishBloodEssence.name=虫血精华
+item.SlimeBloodEssence.name=史莱姆血精华
+item.SpiderBloodEssence.name=蜘蛛血精华
+item.WitchBloodEssence.name=女巫血精华
+item.ZombieBloodEssence.name=僵尸血精华
 
 item.fireGrass.name=火炎草
 item.coolGrass.name=寒霜草
@@ -66,6 +66,9 @@ item.treeFruitSapling.name=树果核
 itemGroup.BiochemistryCraft=生物化学
 
 gui.Extracter.name=生化提取器
+
+config.ngui=使用新风格界面
+config.cchance=酸液腐蚀机率
 
 entity.biomod.EntityBioPig.name=生化小猪猪
 

@@ -10,6 +10,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BCCConfig {
     private static boolean useNewStyleGui = false;
+    private static int corrodeChance = 10;
 	public static Configuration config;
 	
 	public static void startConfig(FMLPreInitializationEvent event) {
@@ -23,7 +24,8 @@ public class BCCConfig {
 	public static void init() {
 		config.load();
 		try {
-			useNewStyleGui = config.getBoolean("enable new style gui", Reference.CATEGORY_GLOBEL, false, "enable new style gui");
+			useNewStyleGui = config.getBoolean("enablenewstylegui", Reference.CATEGORY_GLOBEL, false, "enable new style gui", "config.ngui");
+			corrodeChance = config.getInt("corrodeChance", Reference.CATEGORY_GLOBEL, 10, 0, 100, "set the chance to let acid to corrode block", "config.cchance");
 		}
 		catch (Exception e) {} 
 		finally {
@@ -42,11 +44,17 @@ public class BCCConfig {
 			init();
 		}
 	}
-	public boolean isUseNewStyleGui() {
+	public static boolean isUseNewStyleGui() {
 	    return useNewStyleGui;
 	}
-	public static  String getGuiPath(){
+	public static String getGuiPath(){
 	    return useNewStyleGui ? "textures/gui/ns/" : "textures/gui/";
+	}
+	public static int getCorrodeChance(){
+	    return corrodeChance;
+	}
+	public static int getCCBase(){
+	    return 100 - corrodeChance;
 	}
 	protected class Reference {
 	    public static final String CATEGORY_GLOBEL = "globelsettings";

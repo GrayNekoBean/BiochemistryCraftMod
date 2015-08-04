@@ -29,7 +29,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 
 
-@Mod(modid=BiochemistryCraft.MODID,name=BiochemistryCraft.NAME,version=BiochemistryCraft.Version)
+@Mod(modid=BiochemistryCraft.MODID,name=BiochemistryCraft.NAME,version=BiochemistryCraft.Version, guiFactory="cn.BiochemistryCraft.core.BCCGuiFactory")
 
 public class BiochemistryCraft{
 	
