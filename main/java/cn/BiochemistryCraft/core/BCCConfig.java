@@ -2,9 +2,12 @@ package cn.BiochemistryCraft.core;
 
 import java.io.File;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraftforge.common.config.Configuration;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -37,10 +40,10 @@ public class BCCConfig {
 	}
 
 	@SubscribeEvent
-	public void onConfigChanged(
-			ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+	public void onConfigChanged( ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 		if (eventArgs.modID.equalsIgnoreCase(BiochemistryCraft.MODID)) {
 			config.save();
+			FMLLog.log(BiochemistryCraft.NAME, Level.INFO, "Config Saved");
 			init();
 		}
 	}

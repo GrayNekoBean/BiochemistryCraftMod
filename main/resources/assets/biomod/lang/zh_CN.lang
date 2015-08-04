@@ -9,6 +9,7 @@ item.AcidWand.name=酸之法杖
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
 item.BioBrain.name=生化核心
+item.acidBottle.name=酸液桶
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒
@@ -67,8 +68,11 @@ itemGroup.BiochemistryCraft=生物化学
 
 gui.Extracter.name=生化提取器
 
-config.ngui=使用新风格界面
+config.title=生物化学 设定
+config.ngui=使用新风格介面
+config.ngui.tooltip=允许使用新风格介面
 config.cchance=酸液腐蚀机率
+config.cchance.tooltip=控制酸液腐蚀方块机率
 
 entity.biomod.EntityBioPig.name=生化小猪猪
 

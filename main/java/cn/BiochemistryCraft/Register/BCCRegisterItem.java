@@ -124,7 +124,7 @@ public class BCCRegisterItem {
 		//goldenVineFruit = new ItemGoldenVineFruit();
 		gracilaria = new ItemGracilaria();
 		
-				bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.glass_bottle).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
+		bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.bucket).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
 	}
 	
 	public void ItemRegisterInit(){

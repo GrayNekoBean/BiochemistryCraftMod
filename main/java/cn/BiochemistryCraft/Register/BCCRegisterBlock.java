@@ -55,11 +55,11 @@ public class BCCRegisterBlock {
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
 		}
 
-		facid = new Fluid("acid").setViscosity(1200);
+		facid = new Fluid("Acid").setViscosity(1200);
 		FluidRegistry.registerFluid(facid);
 		acid2 = new BlockAcid.FluidAcid(facid,Material.water);
 		((BlockAcid.FluidAcid) acid2).setQuantaPerBlock(8);
-		acid2.setBlockName("acid");
+		acid2.setBlockName("Acid");
 		facid.setBlock(acid2);
 	}
 	

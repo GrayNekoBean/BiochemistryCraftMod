@@ -8,6 +8,7 @@ item.EmptyNeedle.name=Empty Needle
 item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
 item.AcidWand.name=AcidWand
+item.acidBottle.name=Acid Bucket
 
 item.CowBloodNeedle.name=Cow Blood Needle
 item.PigBloodNeedle.name=Pig Blood Needle
@@ -66,8 +67,11 @@ itemGroup.BiochemistryCraft=BiochemistryCraft
 
 gui.Extracter.name=BioExtracter
 
+config.title=Biochemistry Settings
 config.ngui=Use New Style Gui
+config.ngui.tooltip=Enable new style gui ingame
 config.cchance=Acid Corrode Chance
+config.cchance.tooltip=Control the chance of the acid to corrode blocks
 
 entity.biomod.EntityBioPig.name=BioPig
 
