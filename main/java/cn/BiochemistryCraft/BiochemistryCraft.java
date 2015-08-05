@@ -1,18 +1,9 @@
 package cn.BiochemistryCraft;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
 import cn.BiochemistryCraft.CreativeTab.BCCCreativeTab;
 import cn.BiochemistryCraft.GUI.BioGuiHandler;
-import cn.BiochemistryCraft.GUI.ContainerBioExtracter;
-import cn.BiochemistryCraft.GUI.GUIBioExtracter;
-import cn.BiochemistryCraft.Register.BCCEntityRegister;
-import cn.BiochemistryCraft.Register.BCCEntityRendererRegister;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
-import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.core.sick.SickCold;
 import cn.BiochemistryCraft.core.sick.SickRegistry;
@@ -24,7 +15,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 
@@ -75,6 +65,7 @@ public class BiochemistryCraft{
 	public void load(FMLInitializationEvent event){
 	    proxy.load(event);
 		eventRegister.eventRegisterInit();
+//		GameRegistry.registerWorldGenerator(new A(), 1);
 	}
 	
 	@EventHandler

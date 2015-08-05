@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.proxy;
 
+import cn.BiochemistryCraft.Register.BCCBiomeRegister;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
@@ -12,6 +13,7 @@ public class BCCcommonProxy {
 	public static BCCRegisterBlock blockregister;
 	public static BCCRegisterItem itemregister;
 	public static BCCEntityRegister entityregister;
+	public static BCCBiomeRegister biomeregister;
 	
 	public void preInit(FMLPreInitializationEvent event){
 		blockregister=new BCCRegisterBlock();
@@ -21,10 +23,13 @@ public class BCCcommonProxy {
 		blockregister.blockRegisterInit();
 		itemregister.ItemRegisterInit();
 		entityregister.EntityRegisterInit();
+		
 	}
 	
 	public void load(FMLInitializationEvent event){
+		biomeregister=new BCCBiomeRegister();
 		
+		biomeregister.registerBiome();
 	}
 	
 	public void postLoad(FMLPostInitializationEvent event){
