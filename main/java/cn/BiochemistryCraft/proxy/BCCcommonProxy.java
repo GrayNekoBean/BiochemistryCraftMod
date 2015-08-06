@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.proxy;
 
+import cn.BiochemistryCraft.Register.BCCAchievementRegister;
 import cn.BiochemistryCraft.Register.BCCBiomeRegister;
 import cn.BiochemistryCraft.Register.BCCEntityRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
@@ -14,6 +15,7 @@ public class BCCcommonProxy {
 	public static BCCRegisterItem itemregister;
 	public static BCCEntityRegister entityregister;
 	public static BCCBiomeRegister biomeregister;
+	public static BCCAchievementRegister achievementregister;
 	
 	public void preInit(FMLPreInitializationEvent event){
 		blockregister=new BCCRegisterBlock();
@@ -28,8 +30,10 @@ public class BCCcommonProxy {
 	
 	public void load(FMLInitializationEvent event){
 		biomeregister=new BCCBiomeRegister();
+		achievementregister=new BCCAchievementRegister();
 		
 		biomeregister.registerBiome();
+		achievementregister.achievementsInit();
 	}
 	
 	public void postLoad(FMLPostInitializationEvent event){

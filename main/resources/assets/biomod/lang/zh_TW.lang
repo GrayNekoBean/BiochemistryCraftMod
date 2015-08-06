@@ -78,3 +78,10 @@ entity.biomod.EntityBioPig.name=生化小豬豬
 
 death.attack.acid=%1$s 被溶解了
 death.attack.acid.player=%1$s 在逃離 %2$s 時掉進了酸中
+
+achievement.beginer=生化，開始！
+achievement.beginer.desc=撿起生化泥土
+achievement.treef=原始人佳糧
+achievement.treef.desc=采集樹果
+achievement.herb=神農「未嘗」種百草
+achievement.herb.desc=初次種植藥草

@@ -77,3 +77,10 @@ entity.biomod.EntityBioPig.name=BioPig
 
 death.attack.acid=%1$s was dissolve  to death
 death.attack.acid.player=%1$s walked onto acid whilst trying to escape %2$s
+
+achievement.beginer=Beginning Biochemistry
+achievement.beginer.desc=Pickup a BioDirt
+achievement.treef=Tree Fruit?
+achievement.treef.desc=Pick a Tree Fruit
+achievement.herb=Herb Factory
+achievement.herb.desc=First planting Herbs
