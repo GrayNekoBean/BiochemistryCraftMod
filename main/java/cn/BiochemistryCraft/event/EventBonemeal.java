@@ -5,13 +5,16 @@ import java.util.Random;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
+import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
@@ -36,6 +39,12 @@ public class EventBonemeal {
 				event.setResult(Result.ALLOW);
 			}
 	    }
+	    if (block == BCCRegisterBlock.treeFruitBlock){
+			if (!world.isRemote){
+				((BlockTreeFruit)block).dropBlockAsItem(world, posX, posY, posZ);
+			}
+			event.setResult(Result.ALLOW);
+		}
 	    if (block == BCCRegisterBlock.treeFruitSaplingBlock){
 			if (!world.isRemote){
 				if(rand.nextInt(4) == 0){

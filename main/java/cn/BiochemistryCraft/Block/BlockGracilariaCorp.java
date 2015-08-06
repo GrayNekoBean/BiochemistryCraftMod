@@ -108,6 +108,6 @@ public class BlockGracilariaCorp extends BlockCrops{
 	}
 	
 	public boolean canBlockStay(World world, int x, int y, int z){
-		return canPlaceBlockOn(world.getBlock(x, y - 1, z)) && world.getBlock(x, y - 2, z).isOpaqueCube();
+		return canPlaceBlockOn(world.getBlock(x, y - 1, z));
 	}
 }
