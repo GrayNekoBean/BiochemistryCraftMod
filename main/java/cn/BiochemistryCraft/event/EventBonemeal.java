@@ -64,23 +64,16 @@ public class EventBonemeal {
 				event.setResult(Result.ALLOW);
 			}
 		}
-	    /*
 	    if (block == BCCRegisterBlock.goldenVine){
 			if (!world.isRemote){
-				int md = metadata & 3;
-		    	int md2 = metadata >> 2;
-				
-				if(rand.nextInt(4+md) == 0){
-					md++;
-					if(md > 2){
-						md = 2;
-					}
-					world.setBlockMetadataWithNotify(posX, posY, posZ, md2 << 2 | md, 1);
+		    	int md = metadata >> 2;
+				if(rand.nextInt(6) == 0){
+					world.setBlockMetadataWithNotify(posX, posY, posZ, md << 2 | 1, 0);
 				}
+				world.setBlockMetadataWithNotify(posX, posY, posZ, md << 2 | 1, 0);
 				event.setResult(Result.ALLOW);
 			}
 		}
-		*/
 	    if (block == BCCRegisterBlock.gracilariaCorp){
 			if (!world.isRemote){
 				if(rand.nextInt(7) <= 2){
