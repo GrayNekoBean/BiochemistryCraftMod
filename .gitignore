@@ -218,7 +218,6 @@ pip-log.txt
 gradlew
 *.properties
 gradle/wrapper/gradle-wrapper.jar
-*.json
 build.gradle
 *.cfg
 eclipse/logs/2015-07-22-1.log.gz
