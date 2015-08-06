@@ -92,10 +92,10 @@ public class BlockGracilariaCorp extends BlockCrops{
 			dropBlockAsItem(world, x, y, z, new ItemStack(BCCRegisterItem.gracilaria, 1));
 		}else if(world.getBlockLightValue(x, y, z) >= 8){
 			int metadata = world.getBlockMetadata(x, y, z);
-			if (metadata == 2) {
+			if (metadata == 2){
 				return;
 			}
-			if (random.nextInt(12) != 0) {
+			if (random.nextInt(12) != 0){
 				return;
 			}
 			metadata++;
@@ -108,6 +108,6 @@ public class BlockGracilariaCorp extends BlockCrops{
 	}
 	
 	public boolean canBlockStay(World world, int x, int y, int z){
-		return canPlaceBlockOn(world.getBlock(x, y - 1, z)) && world.getBlock(x, y - 2, z).isOpaqueCube();
+		return canPlaceBlockOn(world.getBlock(x, y - 1, z));
 	}
 }

@@ -5,13 +5,16 @@ import java.util.Random;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
+import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
@@ -36,6 +39,12 @@ public class EventBonemeal {
 				event.setResult(Result.ALLOW);
 			}
 	    }
+	    if (block == BCCRegisterBlock.treeFruitBlock){
+			if (!world.isRemote){
+				((BlockTreeFruit)block).dropBlockAsItem(world, posX, posY, posZ);
+			}
+			event.setResult(Result.ALLOW);
+		}
 	    if (block == BCCRegisterBlock.treeFruitSaplingBlock){
 			if (!world.isRemote){
 				if(rand.nextInt(4) == 0){
@@ -55,23 +64,16 @@ public class EventBonemeal {
 				event.setResult(Result.ALLOW);
 			}
 		}
-	    /*
 	    if (block == BCCRegisterBlock.goldenVine){
 			if (!world.isRemote){
-				int md = metadata & 3;
-		    	int md2 = metadata >> 2;
-				
-				if(rand.nextInt(4+md) == 0){
-					md++;
-					if(md > 2){
-						md = 2;
-					}
-					world.setBlockMetadataWithNotify(posX, posY, posZ, md2 << 2 | md, 1);
+		    	int md = metadata >> 2;
+				if(rand.nextInt(6) == 0){
+					world.setBlockMetadataWithNotify(posX, posY, posZ, md << 2 | 1, 0);
 				}
+				world.setBlockMetadataWithNotify(posX, posY, posZ, md << 2 | 1, 0);
 				event.setResult(Result.ALLOW);
 			}
 		}
-		*/
 	    if (block == BCCRegisterBlock.gracilariaCorp){
 			if (!world.isRemote){
 				if(rand.nextInt(7) <= 2){

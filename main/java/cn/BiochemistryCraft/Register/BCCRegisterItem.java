@@ -10,6 +10,7 @@ import cn.BiochemistryCraft.Item.ItemAcidWand;
 import cn.BiochemistryCraft.Item.ItemBioBrain;
 import cn.BiochemistryCraft.Item.ItemBloodEssence;
 import cn.BiochemistryCraft.Item.ItemBs;
+import cn.BiochemistryCraft.Item.ItemGoldenVineFruit;
 import cn.BiochemistryCraft.Item.ItemGracilaria;
 import cn.BiochemistryCraft.Item.ItemHerbs;
 import cn.BiochemistryCraft.Item.ItemTnc;
@@ -121,7 +122,7 @@ public class BCCRegisterItem {
 		
 		treeFruit = new ItemTreeFruit();
 		treeFruitSapling = new ItemTreeFruitSapling();
-		//goldenVineFruit = new ItemGoldenVineFruit();
+		goldenVineFruit = new ItemGoldenVineFruit();
 		gracilaria = new ItemGracilaria();
 		
 		bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.bucket).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
@@ -136,7 +137,7 @@ public class BCCRegisterItem {
 		
 		GameRegistry.registerItem(treeFruit, "treeFruit");
 		GameRegistry.registerItem(treeFruitSapling, "treeFruitSapling");
-		//GameRegistry.registerItem(goldenVineFruit, "goldenVineFruit");
+		GameRegistry.registerItem(goldenVineFruit, "goldenVineFruit");
 		GameRegistry.registerItem(gracilaria, "gracilaria");
 		
 		for(int i=0;i<22;i++)

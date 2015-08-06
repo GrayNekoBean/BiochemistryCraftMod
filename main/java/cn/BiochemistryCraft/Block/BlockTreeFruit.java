@@ -126,4 +126,9 @@ public class BlockTreeFruit extends BlockCocoa{
 	    		setBlockBounds((15.0F - k1) / 16.0F, (12.0F - l1) / 16.0F, (8.0F - f) / 16.0F, 0.9375F, 0.75F, (8.0F + f) / 16.0F);
 	    }
 	}
+	
+	public void dropBlockAsItem(World world, int x, int y, int z){
+		dropBlockAsItem(world, x, y, z, 0, 0);
+		world.setBlockToAir(x, y, z);
+	}
 }
