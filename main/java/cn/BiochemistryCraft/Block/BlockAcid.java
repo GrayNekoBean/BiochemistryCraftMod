@@ -157,8 +157,7 @@ public class BlockAcid extends Block{
 	    	Block b2 = world.getBlock(x - 1, y, z);
 	    	Block b3 = world.getBlock(x, y, z + 1);
 	    	Block b4 = world.getBlock(x, y, z - 1);
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){
-	    		
+	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){	    		
 		    if (under.getMaterial() == Material.rock && under != Blocks.bedrock) {
 			if(under == BCCRegisterBlock.corrodedStone){
 				world.setBlockToAir(x, y - 1, z);
