@@ -95,24 +95,26 @@ public class BlockAcid extends Block{
 		}
     }
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
-	Block under = p_149674_1_.getBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_);
-	    if (under.getMaterial() == Material.rock) {
-		if(under == BCCRegisterBlock.corrodedStone){
-			p_149674_1_.setBlockToAir(p_149674_2_, p_149674_3_ - 1, p_149674_4_);
-		}
-		else
-		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.corrodedStone);
-	    }
-	    if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
-		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.acidicDirt);
-	    }
+    	if(BCCConfig.canAcidCorrode()){
+    	Block under = p_149674_1_.getBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_);
+    	if (under.getMaterial() == Material.rock) {
+    		if(under == BCCRegisterBlock.corrodedStone){
+    			p_149674_1_.setBlockToAir(p_149674_2_, p_149674_3_ - 1, p_149674_4_);
+    		}
+    		else
+    			p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.corrodedStone);
+    	}
+    	if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
+    		p_149674_1_.setBlock(p_149674_2_, p_149674_3_ - 1, p_149674_4_, BCCRegisterBlock.acidicDirt);
+    	}
+    	}
     }
-        public static class FluidAcid extends BlockFluidClassic{
-        @SideOnly(Side.CLIENT)
-        protected IIcon stillIcon;
-        @SideOnly(Side.CLIENT)
-        protected IIcon flowingIcon;
-		public FluidAcid(Fluid fluid, Material material) {
+    public static class FluidAcid extends BlockFluidClassic{
+    	@SideOnly(Side.CLIENT)
+    	protected IIcon stillIcon;
+    	@SideOnly(Side.CLIENT)
+    	protected IIcon flowingIcon;
+    	public FluidAcid(Fluid fluid, Material material) {
 			super(fluid, material);
 	        setCreativeTab(BiochemistryCraft.biocreativetab);
 		}
@@ -152,74 +154,85 @@ public class BlockAcid extends Block{
 	    public void updateTick(World world, int x, int y, int z, Random rand)
 	    {
 	    	super.updateTick(world, x, y, z, rand);
-	    	Block under = world.getBlock(x, y - 1, z);
-	    	Block b1 = world.getBlock(x + 1, y, z);
-	    	Block b2 = world.getBlock(x - 1, y, z);
-	    	Block b3 = world.getBlock(x, y, z + 1);
-	    	Block b4 = world.getBlock(x, y, z - 1);
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){	    		
-		    if (under.getMaterial() == Material.rock && under != Blocks.bedrock) {
-			if(under == BCCRegisterBlock.corrodedStone){
-				world.setBlockToAir(x, y - 1, z);
-			}
-			else
-				world.setBlock(x, y - 1, z, BCCRegisterBlock.corrodedStone);
-		    }
-		    if (under.getMaterial() == Material.ground || under.getMaterial() == Material.grass) {
-		    	world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
-		    }
-	    	}
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){
-		    if (b1.getMaterial() == Material.rock && b1 != Blocks.bedrock) {
-				if(b1 == BCCRegisterBlock.corrodedStone){
-					world.setBlockToAir(x + 1, y, z);
-				}
-				else
-					world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
-			    }
-			    if (b1.getMaterial() == Material.ground || b1.getMaterial() == Material.grass) {
-			    	world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
-			    }
-	    	}
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){
-		    if (b2.getMaterial() == Material.rock && b2 != Blocks.bedrock) {
-			if(b2 == BCCRegisterBlock.corrodedStone){
-				world.setBlockToAir(x - 1, y, z);
-			}
-			else
-				world.setBlock(x - 1, y, z, BCCRegisterBlock.corrodedStone);
-		    }
-		    if (b2.getMaterial() == Material.ground || b2.getMaterial() == Material.grass) {
-		    	world.setBlock(x - 1, y, z, BCCRegisterBlock.acidicDirt);
-		    }
-	    	}
+	    	if(BCCConfig.canAcidCorrode()){
+	    		Block under = world.getBlock(x, y - 1, z);
+	    		Block b1 = world.getBlock(x + 1, y, z);
+	    		Block b2 = world.getBlock(x - 1, y, z);
+	    		Block b3 = world.getBlock(x, y, z + 1);
+	    		Block b4 = world.getBlock(x, y, z - 1);
+	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){	    		
+	    			if (isCorrodibleRock(under)) {
+	    				if(under == BCCRegisterBlock.corrodedStone){
+	    					world.setBlockToAir(x, y - 1, z);
+	    				}
+	    				else
+	    					world.setBlock(x, y - 1, z, BCCRegisterBlock.corrodedStone);
+	    			}
+	    			if (isAcidibleDirt(under)) {
+	    				world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
+	    			}
+	    		}
+	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
+	    			if (isCorrodibleRock(b1)) {
+	    				if(b1 == BCCRegisterBlock.corrodedStone){
+	    					world.setBlockToAir(x + 1, y, z);
+	    				}
+	    				else
+	    					world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
+	    			}
+	    			if (isAcidibleDirt(b1)) {
+	    				world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
+	    			}
+	    		}
+	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
+	    			if (isCorrodibleRock(b2)) {
+	    				if(b2 == BCCRegisterBlock.corrodedStone){
+	    					world.setBlockToAir(x - 1, y, z);
+	    				}
+	    				else
+	    					world.setBlock(x - 1, y, z, BCCRegisterBlock.corrodedStone);
+	    			}
+	    			if (isAcidibleDirt(b2)) {
+	    				world.setBlock(x - 1, y, z, BCCRegisterBlock.acidicDirt);
+	    			}
+	    		}
+	    		
+	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
+	    			if (isCorrodibleRock(b3)) {
+	    				if(b3 == BCCRegisterBlock.corrodedStone){
+	    					world.setBlockToAir(x, y, z + 1);
+	    				}
+	    				else
+	    					world.setBlock(x, y, z + 1, BCCRegisterBlock.corrodedStone);
+	    			}
+	    			if (isAcidibleDirt(b3)) {
+	    				world.setBlock(x, y, z + 1, BCCRegisterBlock.acidicDirt);
+	    			}
+	    		}
 	    	
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){
-		    if (b3.getMaterial() == Material.rock && b3 != Blocks.bedrock) {
-			if(b3 == BCCRegisterBlock.corrodedStone){
-				world.setBlockToAir(x, y, z + 1);
-			}
-			else
-				world.setBlock(x, y, z + 1, BCCRegisterBlock.corrodedStone);
-		    }
-		    if (b3.getMaterial() == Material.ground || b3.getMaterial() == Material.grass) {
-		    	world.setBlock(x, y, z + 1, BCCRegisterBlock.acidicDirt);
-		    }
-	    	}
-	    	
-	    	if(rand.nextInt(100) >= BCCConfig.getCCBase()){
-		    if (b4.getMaterial() == Material.rock && b4 != Blocks.bedrock) {
-			if(b4 == BCCRegisterBlock.corrodedStone){
-				world.setBlockToAir(x, y, z - 1);
-			}
-			else
-				world.setBlock(x, y, z - 1, BCCRegisterBlock.corrodedStone);
-		    }
-		    if (b4.getMaterial() == Material.ground || b4.getMaterial() == Material.grass) {
-		    	world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
-		    }
+	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
+	    			if (isCorrodibleRock(b4)) {
+	    				if(b4 == BCCRegisterBlock.corrodedStone){
+	    					world.setBlockToAir(x, y, z - 1);
+	    				}
+	    				else
+	    					world.setBlock(x, y, z - 1, BCCRegisterBlock.corrodedStone);
+	    			}
+	    			if (isAcidibleDirt(b4)) {
+	    				world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
+	    			}
+	    		}
 	    	}
 	    }
-    }
+
+	    private boolean isCorrodibleRock(Block bk){
+	    	return bk.getMaterial() == Material.rock && bk != Blocks.bedrock && bk != Blocks.obsidian;
+	    }
+	    
+	    private boolean isAcidibleDirt(Block bk){
+	    	return bk.getMaterial() == Material.ground || bk.getMaterial() == Material.grass;
+	    }
+	    
+        }
 
 }

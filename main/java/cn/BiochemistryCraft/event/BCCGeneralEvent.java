@@ -1,13 +1,12 @@
 package cn.BiochemistryCraft.event;
 
-import cn.BiochemistryCraft.Block.BlockHerbsCorps;
+import net.minecraft.item.Item;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import cn.BiochemistryCraft.Item.ItemHerbs;
 import cn.BiochemistryCraft.Register.BCCAchievementRegister;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import cn.BiochemistryCraft.core.BCCLogger;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
@@ -33,12 +32,21 @@ public class BCCGeneralEvent {
     }
     @SubscribeEvent
     public void onInteract(PlayerInteractEvent event){
-	for (int i = 0; i < BCCRegisterItem.herbsArray.length; i++) {
-	if(((event.world.getBlock(event.x, event.y, event.z) == BCCRegisterBlock.biodirt)
-		||(event.world.getBlock(event.x, event.y, event.z) == Blocks.dirt) || (event.world.getBlock(event.x, event.y, event.z) == Blocks.grass))
-		&& event.face == 1 && event.entityPlayer.getCurrentEquippedItem().getItem() == BCCRegisterItem.herbsArray[i]){
-	    event.entityPlayer.triggerAchievement(BCCAchievementRegister.herbfac);
-	}
-    }
+    	try{
+    		if(ItemHerbs.canPlaceOn(event.world.getBlock(event.x, event.y, event.z)) && event.face == 1){
+    			for (int i = 0; i < BCCRegisterItem.herbsArray.length; i++) {
+    				if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem() == BCCRegisterItem.herbsArray[i]){
+    					event.entityPlayer.triggerAchievement(BCCAchievementRegister.herbfac);
+    				}
+    			}
+    		}
+    	}
+    	catch(Exception e){
+    		BCCLogger.warn("***********************************");
+    		BCCLogger.warn("Something here went wrong:");
+    		e.printStackTrace();
+    		BCCLogger.warn("***********************************");
+    		event.setCanceled(true);
+    	}
     }
 }

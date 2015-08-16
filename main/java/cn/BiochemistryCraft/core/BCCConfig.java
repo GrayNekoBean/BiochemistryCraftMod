@@ -13,6 +13,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BCCConfig {
     private static boolean useNewStyleGui = false;
+    private static boolean allowAcidCorroding = true;
     private static int corrodeChance = 10;
 	public static Configuration config;
 	
@@ -28,6 +29,7 @@ public class BCCConfig {
 		config.load();
 		try {
 			useNewStyleGui = config.getBoolean("enablenewstylegui", Reference.CATEGORY_GLOBEL, false, "enable new style gui", "config.ngui");
+			allowAcidCorroding = config.getBoolean("aciddoc", Reference.CATEGORY_GLOBEL, true, "Allow Acid Corroding", "config.aciddoc");
 			corrodeChance = config.getInt("corrodeChance", Reference.CATEGORY_GLOBEL, 10, 0, 100, "set the chance to let acid to corrode block", "config.cchance");
 		}
 		catch (Exception e) {} 
@@ -58,6 +60,9 @@ public class BCCConfig {
 	}
 	public static int getCCBase(){
 	    return 100 - corrodeChance;
+	}
+	public static boolean canAcidCorrode(){
+		return allowAcidCorroding;
 	}
 	protected class Reference {
 	    public static final String CATEGORY_GLOBEL = "globelsettings";

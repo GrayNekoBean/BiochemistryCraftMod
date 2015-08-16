@@ -67,4 +67,12 @@ private static final String[] herbsArray = new String[] {"fireGrass", "coolGrass
 	private boolean canPlaceBlockOn(Block arg0){
 		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
 	}
+	/**
+	 * 外部调用方法
+	 * @param 方塊
+	 * @return
+	 */
+	public static boolean canPlaceOn(Block arg0){
+		return arg0==BCCRegisterBlock.biodirt || arg0==Blocks.dirt || arg0==Blocks.grass;
+	}
 }

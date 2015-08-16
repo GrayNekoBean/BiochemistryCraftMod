@@ -71,6 +71,8 @@ gui.Extracter.name=生化提取器
 config.title=生物化學 設定
 config.ngui=使用新風格介面
 config.ngui.tooltip=允許使用新風格介面
+config.aciddoc=允许酸液腐蝕
+config.aciddoc.tooltip=允许酸液腐蝕方塊
 config.cchance=酸液腐蝕機率
 config.cchance.tooltip=控制酸液腐蝕方塊機率
 

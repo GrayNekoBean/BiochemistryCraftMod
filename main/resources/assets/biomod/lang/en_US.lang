@@ -73,6 +73,8 @@ gui.Extracter.name=BioExtracter
 config.title=Biochemistry Settings
 config.ngui=Use New Style Gui
 config.ngui.tooltip=Enable new style gui ingame
+config.aciddoc=Allow Acid Corrode
+config.aciddoc.tooltip=Allow Acid corrode Blocks
 config.cchance=Acid Corrode Chance
 config.cchance.tooltip=Control the chance of the acid to corrode blocks
 
