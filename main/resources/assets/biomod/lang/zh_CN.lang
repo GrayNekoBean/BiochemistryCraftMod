@@ -3,12 +3,14 @@ tile.BioExtracter.name=生化提取器
 tile.Acid.name=酸
 tile.CStone.name=腐化之石
 tile.ADirt.name=酸化泥土
+tile.goldenVine.name=金藤
 
 item.AcidWand.name=酸之法杖
 
 item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
 item.BioBrain.name=生化核心
+item.acidBottle.name=酸液桶
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒
@@ -62,6 +64,8 @@ item.plasmaBerry.name=血浆莓
 
 item.treeFruit.name=树果
 item.treeFruitSapling.name=树果核
+item.goldenVineFruit.name=金藤果
+item.gracilaria.name=龙须
 
 itemGroup.BiochemistryCraft=生物化学
 

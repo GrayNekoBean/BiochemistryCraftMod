@@ -3,11 +3,13 @@ tile.BioExtracter.name=BioExtracter
 tile.Acid.name=Acid
 tile.CStone.name=Corroded Stone
 tile.ADirt.name=Acidic Dirt
+tile.goldenVine.name=Golden Vine
 
 item.EmptyNeedle.name=Empty Needle
 item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
 item.AcidWand.name=AcidWand
+item.acidBottle.name=Acid Bucket
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle
@@ -61,6 +63,8 @@ item.plasmaBerry.name=Plasma Berry
 
 item.treeFruit.name=Tree Fruit
 item.treeFruitSapling.name=Tree Fruit Sapling
+item.goldenVineFruit.name=Golden Vine Fruit
+item.gracilaria.name=Gracilaria
 
 itemGroup.BiochemistryCraft=BiochemistryCraft
 
