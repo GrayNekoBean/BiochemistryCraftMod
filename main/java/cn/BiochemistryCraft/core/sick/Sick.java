@@ -25,141 +25,117 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
-public class Sick extends TimerTask{
+public class Sick {
 
-	public EntityPlayer player;
-	public Random rnd;
-	public float probly=0.8f;
-	public static EntityLivingBase entity;
-	public Potion theEffect;
-	public boolean gotSick;
-	public int prevStrong;
-	public String Name;
-	public int maxStrong;
-	public float worsenProbly;
-	public Map attrs= Maps.newHashMap();
-	public List<Sick> HasSicks = new ArrayList();
-	public List<Sick> sickList = new ArrayList();
-	//=========================================================================================
-	public Sick(String name,int strong,EntityLivingBase entity2){
-		if(player instanceof EntityPlayer)
-		{
-			this.maxStrong=strong;
-			this.Name=name;
-			this.entity=entity2;
-		}
+	private static List<EntityPlayer> playerList = new ArrayList();
+	private static List<List<SSick>> playerSickList = new ArrayList();
+	
+	public static void addPlayer(EntityPlayer player){
+		playerList.add(player);
+		playerSickList.add(null);
 	}
 	
-	public void setTimer(Timer t,String name,int strong, EntityLivingBase entity){
-		t.schedule(new Sick(name, strong,entity), 1000);
+	public static void addPlayer(EntityPlayer player, SSick[] sick){
+		List<SSick> input = new ArrayList();
+		for(SSick a: sick){
+			input.add(a);
+		}
+		playerList.add(player);
+		playerSickList.add(input);
 	}
 	
-	@Override
-	public void run() {
-		// TODO �Զ����ɵķ������
-		this.sickUpdate();
-		
+	public static void addPlayer(EntityPlayer player, List<SSick> sick) {
+		playerList.add(player);
+		playerSickList.add(sick);
+	}
+	
+	public static void removePlayer(EntityPlayer player){
+		int a = find(player);
+		playerList.remove(a);
+		playerSickList.remove(a);
+	}
+	
+	public static void addSick(EntityPlayer player, SSick add){
+		List<SSick> input = new ArrayList();
+		int a = find(player);
+		if(a != -1){
+			input = playerSickList.get(a);
+			input.add(add);
+			playerSickList.add(a, input);
+			update(player.worldObj, player);
+		}
 		
 	}
-	public void sickUpdate(){
-		Random rnd=this.entity.worldObj.rand;
+	
+	public static void removeSick(EntityPlayer player, SSick remove){
+		int a = find(player);
+		List<SSick> result = new ArrayList();
+		if(a == -1){
+			return;
+		}else{
+			result = playerSickList.get(a);
+			result.remove(remove);
+			playerSickList.add(a, result);
+			update(player.worldObj, player);
+		}
 		
-		if(((IBiology)entity).getSick(this)==true){
-			this.HasSicks.add(sickList.get(rnd.nextInt(sickList.size())));
-			this.gotSick=true;
-		}
-		if(this.rnd.nextInt((int)(60*60*3/probly))==10){
-			//player.addPotionEffect(new PotionEffect(Potion.poison.id,strong*this.rnd.nextInt(250)*62,0));
-			this.HasSicks.add(sickList.get(rnd.nextInt(sickList.size())));
-			this.gotSick=true;
-		}
-		if(gotSick==true){
-			for(int i=0;i<HasSicks.size();i++){
-				if(this.HasSicks.get(i) != null){
-		 this.HasSicks.get(i).displayEffect(entity);
-				}
-		}
-		}
-		if(this.prevStrong<this.maxStrong){
-			if(this.rnd.nextInt(MathHelper.floor_float(2000/this.WorsenProbly()))==62){
-				this.prevStrong++;
+	}
+	
+	public static int setSick(EntityPlayer player, SSick[] sick){
+		int a = find(player);
+		List<SSick> input = new ArrayList();
+		if(a != -1){
+			for(SSick b: sick){
+				input.add(b);
 			}
+			playerSickList.add(a, input);
+			update(player.worldObj, player);
 		}
-		
+		return a;
 	}
 	
-	
-	
-	public void setProbly(float par1){
-		
-		this.probly=par1;
-	}
-	
-	public float getProbly(){
-		return this.probly;
-	}
-
-	public void displayEffect(EntityLivingBase entity2) {
-		// TODO 自动生成的方法存根
-		this.entity=entity2;
-		
-		
-	}
-	
-	public float WorsenProbly(){
-		return this.worsenProbly;
-	}
-	
-	public void setWorsenProbly(float f){
-		this.worsenProbly=f;
-	}
-	
-	 
-	 public double func_111183_a(int p_111183_1_, AttributeModifier p_111183_2_)
-	    {
-	        return p_111183_2_.getAmount() * (double)(p_111183_1_ + 1);
-	    }
-	 
-	private String getName() {
-		// TODO 自动生成的方法存根
-		return Name;
-	}
-	
-	public void RegisterSick(Sick s){
-		
-		for(int i=0;i<sickList.size();i++){
-			sickList.add(i, s);
+	public static SSick[] getSickFromPlayer(EntityPlayer player){
+		int a = find(player);
+		List<SSick> input = new ArrayList();
+		SSick[] result;
+		if(a != -1){
+			input = playerSickList.get(a);
+			result = new SSick[input.size()];
+			for(int i = 0; i < input.size(); i++){
+				result[i] = input.get(i);
+			}
+			return result;
+		}else{
+			return null;
 		}
 	}
 	
-	public Sick RegAttribute(IAttribute attr, UUID uuid, double value, int unKnow)
-    {
-        AttributeModifier attributemodifier = new AttributeModifier(uuid, this.getName(), value, unKnow);
-        this.attrs.put(attr, attributemodifier);
-        this.entity.getEntityAttribute(attr).setBaseValue(value);
-        return this;
-    }
-	
-	public Sick SetAttribute(IAttribute attr,double value){
-		this.entity.getEntityAttribute(attr).setBaseValue(value);
-		return this;
-	}
-	
-	public void addSick(Sick s){
-		if(HasSicks.indexOf(s)==-1){
-			HasSicks.add(s);
-		}
-		else{
-			s.prevStrong++;
+	public static List<SSick> getSickListFromPlayer(EntityPlayer player){
+		int a = find(player);
+		if(a != -1){
+			return playerSickList.get(a);
+		}else{
+			return null;
 		}
 	}
 	
-	public List<Sick> getHasSick(){
-		
-		return HasSicks;
-		
+	public static boolean playerHasSick(EntityPlayer player, SSick sick){
+		int a = playerSickList.get(find(player)).indexOf(sick);
+		if(a >= 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
-
+	private static int find(EntityPlayer player){
+		return playerList.indexOf(player);
+	}
+	
+	public static void update(World world, EntityPlayer player){
+		//put update
+		SickPlayerInfo.onUpdate(player, playerSickList.get(find(player)));
+	}
 }

@@ -33,6 +33,9 @@ public class SickRegistry {
 		}
 		return "cold";
 	}
+	public static int getIDFromSick(SSick sick){
+		return sicklist.indexOf(sick);
+	}
 	public static SSick getRandomSick()
 	{
 		Random r=new Random();

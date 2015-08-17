@@ -6,12 +6,12 @@ import cn.BiochemistryCraft.Entity.BCCGeneAnimal;
 import cn.BiochemistryCraft.Entity.BCCGeneMonster;
 import cn.BiochemistryCraft.core.sick.Sick;
 
-public class Mutation extends Sick{
+public class Mutation {
 	
 	
 	public Mutation(String name, int strong, EntityLivingBase entity) {
-		super(name, strong, entity);
-		// TODO 自动生成的构造函数存根
+		//super(name, strong, entity);
+		// TODO 鑷姩鐢熸垚鐨勬瀯閫犲嚱鏁板瓨鏍�
 	}
 
 	public float probly;

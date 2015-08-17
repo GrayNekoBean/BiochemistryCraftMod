@@ -3,6 +3,7 @@ package cn.BiochemistryCraft.core.sick;
 import java.util.TimerTask;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 
 public abstract class SSick extends TimerTask{
 	private String SickName;
@@ -15,8 +16,8 @@ public abstract class SSick extends TimerTask{
 
 	@Override
 	public void run() {
-		// TODO 自动生成的方法存根
-		System.out.println("生病中");
+		// TODO 鑷姩鐢熸垚鐨勬柟娉曞瓨鏍�
+		System.out.println("鐢熺梾涓�");
 		this.SickUpdate();
 		this.displayEffect();
 	}
@@ -32,10 +33,16 @@ public abstract class SSick extends TimerTask{
 	public void EndSick()
 	{
 		this.cancel();
+		if(this.entity instanceof EntityPlayer){
+			Sick.removeSick((EntityPlayer)this.entity, this);
+		}
 	}
 	
 	public void SetEntity(EntityLivingBase entity)
 	{
 		this.entity=entity;
+		if(entity instanceof EntityPlayer){
+			Sick.addSick((EntityPlayer)entity, this);
+		}
 	}
 }
