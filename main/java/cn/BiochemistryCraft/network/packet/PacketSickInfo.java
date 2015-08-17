@@ -11,24 +11,35 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import cn.BiochemistryCraft.core.sick.SSick;
 import cn.BiochemistryCraft.core.sick.SickPlayerInfo;
+import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.network.AbstractPacket;
 import cn.BiochemistryCraft.network.ICallClient;
 
 public class PacketSickInfo extends AbstractPacket implements ICallClient {
-private NBTTagCompound tagCompound;
+	private NBTTagCompound tagCompound;
+	private static final String NBT_ROOT = SickPlayerInfo.NBT_ROOT;
+	private static final String NBT_SICK = SickPlayerInfo.NBT_SICK;
 	
 	public PacketSickInfo(){
 		
 	}
 	
-	public PacketSickInfo(List<SSick> a){
+	public PacketSickInfo(int[] a){
 		tagCompound = new NBTTagCompound();
-		SickPlayerInfo.write(tagCompound, a);
+        if (!tagCompound.hasKey(NBT_ROOT)){
+        	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
+        }
+        tagCompound.getCompoundTag(NBT_ROOT).setIntArray(NBT_SICK, a);
 	}
 	
 	@Override
 	public IMessage handleClientSide(EntityPlayer player) {
-		SickPlayerInfo.write(player, SickPlayerInfo.read(player));
+		NBTTagCompound root = SickPlayerInfo.getPersistedFromPlayer(player);
+		if (!root.hasKey(NBT_ROOT)){
+			root.setTag(NBT_ROOT, new NBTTagCompound());
+        }else{
+        	root.setIntArray(NBT_SICK, root.getCompoundTag(NBT_ROOT).getIntArray(NBT_SICK));
+        }
 		return null;
 	}
 

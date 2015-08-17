@@ -10,6 +10,7 @@ public class SickRegistry {
 	private static int id=0;
 	public static void registerSick(SSick sick)
 	{
+		sick.SickID = id;
 		sicklist.add(id++, sick);
 	}
 	public static SSick getSickFromName(String s)
@@ -32,9 +33,6 @@ public class SickRegistry {
 		case 0:return "cold";
 		}
 		return "cold";
-	}
-	public static int getIDFromSick(SSick sick){
-		return sicklist.indexOf(sick);
 	}
 	public static SSick getRandomSick()
 	{
