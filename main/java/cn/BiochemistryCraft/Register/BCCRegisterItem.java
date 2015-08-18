@@ -13,6 +13,7 @@ import cn.BiochemistryCraft.Item.ItemBs;
 import cn.BiochemistryCraft.Item.ItemGoldenVineFruit;
 import cn.BiochemistryCraft.Item.ItemGracilaria;
 import cn.BiochemistryCraft.Item.ItemHerbs;
+import cn.BiochemistryCraft.Item.ItemSulfurDust;
 import cn.BiochemistryCraft.Item.ItemTnc;
 import cn.BiochemistryCraft.Item.ItemTreeFruit;
 import cn.BiochemistryCraft.Item.ItemTreeFruitSapling;
@@ -23,6 +24,7 @@ public class BCCRegisterItem {
 	public static Item emptyneedle;
 	public static Item biobrain;
 	public static Item acidwand;
+	public static Item sulfurDust;
 	
 	public static Item cowblood;
 	public static Item pigblood;
@@ -119,6 +121,7 @@ public class BCCRegisterItem {
 		emptyneedle = new ItemTnc();
 		biobrain = new ItemBioBrain();
 		acidwand = new ItemAcidWand();
+		sulfurDust = new ItemSulfurDust();
 		
 		treeFruit = new ItemTreeFruit();
 		treeFruitSapling = new ItemTreeFruitSapling();
@@ -149,10 +152,10 @@ public class BCCRegisterItem {
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerItem(herbsArray[i], ItemHerbs.getName(i));
 		}
-
+		
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
 		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
-		
+		GameRegistry.registerItem(sulfurDust, "sulfurDust");
 	}
 		
 	}

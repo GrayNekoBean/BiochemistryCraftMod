@@ -3,6 +3,7 @@ package cn.BiochemistryCraft.Register;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.event.BCCGeneralEvent;
@@ -13,9 +14,14 @@ import cn.BiochemistryCraft.event.FluidBottleHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cn.BiochemistryCraft.network.PacketMain;
 import cn.BiochemistryCraft.network.packet.PacketSickInfo;
+import cn.BiochemistryCraft.world.gen.OreGenerator;
 
 public class BCCRegisterEvent {
 	public static SimpleNetworkWrapper networkHandler;
+	
+	public void eventRegisterPreLoad(){
+		GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
+	}
 	
 	public void eventRegisterInit(){
 		networkHandler = NetworkRegistry.INSTANCE.newSimpleChannel(BiochemistryCraft.MODID);

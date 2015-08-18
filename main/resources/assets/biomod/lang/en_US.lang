@@ -5,6 +5,7 @@ tile.CStone.name=Corroded Stone
 tile.CStoneSlab.name=Corroded Stone Slab
 tile.CStoneStair.name=Corroded Stone Stair
 tile.ADirt.name=Acidic Dirt
+tile.pyrite.name=Pyrite
 tile.goldenVine.name=Golden Vine
 
 item.EmptyNeedle.name=Empty Needle
@@ -12,6 +13,7 @@ item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
 item.AcidWand.name=AcidWand
 item.acidBottle.name=Acid Bucket
+item.sulfurDust.name=Sulfur Dust
 
 item.CowBloodNeedle.name=Cow Blood Needle
 item.PigBloodNeedle.name=Pig Blood Needle

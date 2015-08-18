@@ -15,6 +15,7 @@ import cn.BiochemistryCraft.Block.BlockCStone;
 import cn.BiochemistryCraft.Block.BlockGoldenVine;
 import cn.BiochemistryCraft.Block.BlockGracilariaCorp;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
+import cn.BiochemistryCraft.Block.BlockPyrite;
 import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Block.BlockTreeFruitLeave;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
@@ -30,6 +31,7 @@ public class BCCRegisterBlock {
 	public static BlockCStone.Slab cStoneDoubleSlab;
 	public static BlockCStone.Stair cStoneStair;
 	public static Block acidicDirt;
+	public static Block pyrite;
 	
 	public static Block treeFruitBlock;
 	public static Block treeFruitLeave;
@@ -56,6 +58,7 @@ public class BCCRegisterBlock {
 		cStoneDoubleSlab = new BlockCStone.Slab(true);
 		cStoneStair = new BlockCStone.Stair();
 		acidicDirt = new BCCBlockBase(Material.ground).setBlockName("ADirt").setBlockTextureName(BiochemistryCraft.MODID + ":ADirt").setCreativeTab(BiochemistryCraft.biocreativetab);
+		pyrite = new BlockPyrite();
 		treeFruitBlock=new BlockTreeFruit();
 		treeFruitLeave=new BlockTreeFruitLeave();
 		treeFruitSaplingBlock=new BlockTreeFruitSapling();
@@ -88,6 +91,7 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(cStoneDoubleSlab, ItemCStoneSlab.class, "DoublecStoneSlab", cStoneSlab, cStoneDoubleSlab, true);
 		GameRegistry.registerBlock(cStoneStair, "cStoneStair");
 		GameRegistry.registerBlock(acidicDirt, "acidic_dirt");
+		GameRegistry.registerBlock(pyrite, "pyrite");
 		GameRegistry.registerBlock(treeFruitBlock, "treeFruitBlock");
 		GameRegistry.registerBlock(treeFruitLeave, "treeFruitLeave");
 		GameRegistry.registerBlock(treeFruitSaplingBlock, "treeFruitSaplingBlock");

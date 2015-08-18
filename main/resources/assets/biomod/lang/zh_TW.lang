@@ -5,6 +5,8 @@ tile.CStone.name=腐化之石
 tile.CStoneSlab.name=腐化石半磚
 tile.CStoneStair.name=腐化石樓梯
 tile.ADirt.name=酸化泥土
+tile.pyrite.name=黃鐵礦
+tile.goldenVine.name=金藤
 
 item.AcidWand.name=酸之法杖
 
@@ -65,6 +67,8 @@ item.plasmaBerry.name=血漿莓
 
 item.treeFruit.name=樹果
 item.treeFruitSapling.name=樹果核
+item.goldenVineFruit.name=金藤果
+item.gracilaria.name=龍鬚
 
 itemGroup.BiochemistryCraft=生物化學
 

@@ -5,6 +5,7 @@ tile.CStone.name=腐化之石
 tile.CStoneSlab.name=腐化石阶
 tile.CStoneStair.name=腐化石楼梯
 tile.ADirt.name=酸化泥土
+tile.pyrite.name=黄铁矿
 tile.goldenVine.name=金藤
 
 item.AcidWand.name=酸之法杖
