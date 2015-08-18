@@ -2,6 +2,8 @@ tile.BioDirt.name=BioDirt
 tile.BioExtracter.name=BioExtracter
 tile.Acid.name=Acid
 tile.CStone.name=Corroded Stone
+tile.CStoneSlab.name=Corroded Stone Slab
+tile.CStoneStair.name=Corroded Stone Stair
 tile.ADirt.name=Acidic Dirt
 tile.goldenVine.name=Golden Vine
 

@@ -2,6 +2,8 @@ tile.BioDirt.name=生化泥土
 tile.BioExtracter.name=生化提取器
 tile.Acid.name=酸
 tile.CStone.name=腐化之石
+tile.CStoneSlab.name=腐化石阶
+tile.CStoneStair.name=腐化石楼梯
 tile.ADirt.name=酸化泥土
 tile.goldenVine.name=金藤
 

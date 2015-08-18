@@ -1,9 +1,9 @@
 package cn.BiochemistryCraft.network;
 
-import net.minecraft.client.Minecraft;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.NetHandlerPlayServer;
-import io.netty.buffer.ByteBuf;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -46,7 +46,7 @@ public abstract class AbstractPacket implements IMessage, IMessageHandler<Abstra
 
     @SideOnly(Side.CLIENT)
     private EntityPlayer getClientPlayer(){
-        return Minecraft.getMinecraft().thePlayer;
+        return FMLClientHandler.instance().getClient().thePlayer;
     }
 
     public abstract void encodeInto(ByteBuf buffer);

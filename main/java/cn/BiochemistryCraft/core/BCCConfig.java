@@ -36,7 +36,7 @@ public class BCCConfig {
 		finally {
 			if (config.hasChanged()) {
 				config.save();
-				System.out.println("Config saved");
+				BCCLogger.info("Config saved");
 			}
 		}
 	}
@@ -45,7 +45,7 @@ public class BCCConfig {
 	public void onConfigChanged( ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 		if (eventArgs.modID.equalsIgnoreCase(BiochemistryCraft.MODID)) {
 			config.save();
-			FMLLog.log(BiochemistryCraft.NAME, Level.INFO, "Config Saved");
+			BCCLogger.info("Config Saved");
 			init();
 		}
 	}

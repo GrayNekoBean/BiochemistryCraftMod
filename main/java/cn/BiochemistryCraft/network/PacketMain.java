@@ -3,6 +3,7 @@ package cn.BiochemistryCraft.network;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
+import cn.BiochemistryCraft.core.BCCLogger;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
@@ -40,13 +41,13 @@ public class PacketMain {
         Class<AbstractPacket> message = (Class<AbstractPacket>)packetClass;
         if (ICallServer.class.isAssignableFrom(packetClass)){
             networkHandler.registerMessage(packetClass, message, id, Side.SERVER);
-            System.out.printf("Registered Packet: %s at ID %d", packetClass.getName(), id);
+            BCCLogger.info("Registered Packet: %s at ID %d", packetClass.getName(), id);
             id++;
         }
 
         if (ICallClient.class.isAssignableFrom(packetClass)){
             networkHandler.registerMessage(packetClass, message, id, Side.CLIENT);
-            System.out.printf("Registered Packet: %s at ID %d", packetClass.getName(), id);
+            BCCLogger.info("Registered Packet: %s at ID %d", packetClass.getName(), id);
             id++;
         }
     }

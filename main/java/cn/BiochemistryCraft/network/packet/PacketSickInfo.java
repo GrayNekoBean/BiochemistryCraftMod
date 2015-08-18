@@ -9,6 +9,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.core.sick.SSick;
 import cn.BiochemistryCraft.core.sick.SickPlayerInfo;
 import cn.BiochemistryCraft.network.AbstractPacket;
@@ -39,7 +40,7 @@ private NBTTagCompound tagCompound;
             packet.writeNBTTagCompoundToBuffer(tagCompound);
         }
         catch (IOException e){
-            System.out.println("Warning: Failed to send NBT tag.");
+            BCCLogger.warn("Warning: Failed to send NBT tag.");
         }
 	}
 
@@ -50,7 +51,7 @@ private NBTTagCompound tagCompound;
         	tagCompound = packet.readNBTTagCompoundFromBuffer();
         }
         catch (IOException e){
-            System.out.println("Warning: Failed to receive NBT tag.");
+        	BCCLogger.warn("Warning: Failed to receive NBT tag.");
         }
 	}
 }

@@ -50,7 +50,8 @@ public class EntityAcid extends EntityThrowable{
 			int y = (int) posY;
 			int z = (int) posZ;
 			Block acid = BCCRegisterBlock.acid;
-			for(int x1 = -1; x1 <= 1; x1++){
+			worldObj.setBlock(x, y, z, BCCRegisterBlock.acid2);
+/*			for(int x1 = -1; x1 <= 1; x1++){
 				for(int y1 = -1; y1 <= 1; y1++){
 					for(int z1 = -1; z1 <= 1; z1++){
 					    int x2 = x + x1, y2 = y + y1 - 1, z2 = z + z1;
@@ -64,7 +65,7 @@ public class EntityAcid extends EntityThrowable{
 					    }
 					}
 				}
-			}
+			}*/
 		this.setDead();
 	        }
 	}

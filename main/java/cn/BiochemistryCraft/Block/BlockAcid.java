@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Timer;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -13,13 +15,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenReed;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import cn.BiochemistryCraft.BCCDamageSource;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.core.BCCConfig;
+import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.core.sick.SickCold;
+import cn.BiochemistryCraft.network.PacketMain;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -114,6 +119,7 @@ public class BlockAcid extends Block{
     	protected IIcon stillIcon;
     	@SideOnly(Side.CLIENT)
     	protected IIcon flowingIcon;
+		float s = 0,s1 = 0,s2 = 0,s3 = 0,s4 = 0;
     	public FluidAcid(Fluid fluid, Material material) {
 			super(fluid, material);
 	        setCreativeTab(BiochemistryCraft.biocreativetab);
@@ -162,11 +168,7 @@ public class BlockAcid extends Block{
 	    		Block b4 = world.getBlock(x, y, z - 1);
 	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){	    		
 	    			if (isCorrodibleRock(under)) {
-	    				if(under == BCCRegisterBlock.corrodedStone){
-	    					world.setBlockToAir(x, y - 1, z);
-	    				}
-	    				else
-	    					world.setBlock(x, y - 1, z, BCCRegisterBlock.corrodedStone);
+	    				corrodePlz(world, under, x, y - 1, z);
 	    			}
 	    			if (isAcidibleDirt(under)) {
 	    				world.setBlock(x, y - 1, z, BCCRegisterBlock.acidicDirt);
@@ -174,11 +176,7 @@ public class BlockAcid extends Block{
 	    		}
 	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
 	    			if (isCorrodibleRock(b1)) {
-	    				if(b1 == BCCRegisterBlock.corrodedStone){
-	    					world.setBlockToAir(x + 1, y, z);
-	    				}
-	    				else
-	    					world.setBlock(x + 1, y, z, BCCRegisterBlock.corrodedStone);
+	    				corrodePlz(world, b1, x + 1, y, z);
 	    			}
 	    			if (isAcidibleDirt(b1)) {
 	    				world.setBlock(x + 1, y, z, BCCRegisterBlock.acidicDirt);
@@ -186,11 +184,7 @@ public class BlockAcid extends Block{
 	    		}
 	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
 	    			if (isCorrodibleRock(b2)) {
-	    				if(b2 == BCCRegisterBlock.corrodedStone){
-	    					world.setBlockToAir(x - 1, y, z);
-	    				}
-	    				else
-	    					world.setBlock(x - 1, y, z, BCCRegisterBlock.corrodedStone);
+	    				corrodePlz(world, b2, x - 1, y, z);
 	    			}
 	    			if (isAcidibleDirt(b2)) {
 	    				world.setBlock(x - 1, y, z, BCCRegisterBlock.acidicDirt);
@@ -199,11 +193,7 @@ public class BlockAcid extends Block{
 	    		
 	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
 	    			if (isCorrodibleRock(b3)) {
-	    				if(b3 == BCCRegisterBlock.corrodedStone){
-	    					world.setBlockToAir(x, y, z + 1);
-	    				}
-	    				else
-	    					world.setBlock(x, y, z + 1, BCCRegisterBlock.corrodedStone);
+	    				corrodePlz(world, b3, x, y, z + 1);
 	    			}
 	    			if (isAcidibleDirt(b3)) {
 	    				world.setBlock(x, y, z + 1, BCCRegisterBlock.acidicDirt);
@@ -212,11 +202,7 @@ public class BlockAcid extends Block{
 	    	
 	    		if(rand.nextInt(100) >= BCCConfig.getCCBase()){
 	    			if (isCorrodibleRock(b4)) {
-	    				if(b4 == BCCRegisterBlock.corrodedStone){
-	    					world.setBlockToAir(x, y, z - 1);
-	    				}
-	    				else
-	    					world.setBlock(x, y, z - 1, BCCRegisterBlock.corrodedStone);
+	    				corrodePlz(world, b4, x, y, z - 1);
 	    			}
 	    			if (isAcidibleDirt(b4)) {
 	    				world.setBlock(x, y, z - 1, BCCRegisterBlock.acidicDirt);
@@ -231,6 +217,26 @@ public class BlockAcid extends Block{
 	    
 	    private boolean isAcidibleDirt(Block bk){
 	    	return bk.getMaterial() == Material.ground || bk.getMaterial() == Material.grass;
+	    }
+	    private void corrodePlz(World world, Block bk, int x, int y, int z){
+	    	int meta = world.getBlockMetadata(x, y, z);
+	    	if(bk instanceof Block){
+	    		world.setBlock(x, y, z, BCCRegisterBlock.corrodedStone);
+	    	}
+	    	if(bk instanceof BlockSlab){
+	    		if(((BlockSlab)bk).renderAsNormalBlock()){
+		    		world.setBlock(x, y, z, BCCRegisterBlock.cStoneDoubleSlab);	
+	    		}
+	    		if(!((BlockSlab)bk).renderAsNormalBlock()){
+		    		world.setBlock(x, y, z, BCCRegisterBlock.cStoneSlab, meta, 3);	
+	    		}
+	    	}
+	    	if(bk instanceof BlockStairs){
+	    		world.setBlock(x, y, z, BCCRegisterBlock.cStoneStair, meta, 3);
+	    	}
+	    	if(bk == BCCRegisterBlock.corrodedStone || bk == BCCRegisterBlock.cStoneSlab || bk == BCCRegisterBlock.cStoneDoubleSlab || bk == BCCRegisterBlock.cStoneStair){
+	    		world.setBlockToAir(x, y, z);
+	    	}
 	    }
 	    
         }

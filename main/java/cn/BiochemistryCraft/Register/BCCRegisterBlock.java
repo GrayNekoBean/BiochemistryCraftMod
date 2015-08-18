@@ -1,7 +1,9 @@
 package cn.BiochemistryCraft.Register;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;
@@ -9,19 +11,24 @@ import cn.BiochemistryCraft.Block.BCCBlockBase;
 import cn.BiochemistryCraft.Block.BlockAcid;
 import cn.BiochemistryCraft.Block.BlockBioDirt;
 import cn.BiochemistryCraft.Block.BlockBioExtracter;
+import cn.BiochemistryCraft.Block.BlockCStone;
 import cn.BiochemistryCraft.Block.BlockGoldenVine;
 import cn.BiochemistryCraft.Block.BlockGracilariaCorp;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Block.BlockTreeFruitLeave;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
+import cn.BiochemistryCraft.Item.ItemCStoneSlab;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BCCRegisterBlock {
 	public static Block biodirt;
 	public static Block bioextracter;
 	public static Block acid;
-	public static Block corrodedStone;
+	public static BlockCStone.Full corrodedStone;
+	public static BlockCStone.Slab cStoneSlab;
+	public static BlockCStone.Slab cStoneDoubleSlab;
+	public static BlockCStone.Stair cStoneStair;
 	public static Block acidicDirt;
 	
 	public static Block treeFruitBlock;
@@ -44,7 +51,10 @@ public class BCCRegisterBlock {
 		biodirt = new BlockBioDirt(Material.grass);
 		bioextracter=new BlockBioExtracter(Material.wood);
 		acid=new BlockAcid(Material.clay);
-		corrodedStone = new BCCBlockBase(Material.rock).setBlockName("CStone").setBlockTextureName(BiochemistryCraft.MODID + ":CStone").setCreativeTab(BiochemistryCraft.biocreativetab);
+		corrodedStone = new BlockCStone.Full();
+		cStoneSlab = new BlockCStone.Slab(false);
+		cStoneDoubleSlab = new BlockCStone.Slab(true);
+		cStoneStair = new BlockCStone.Stair();
 		acidicDirt = new BCCBlockBase(Material.ground).setBlockName("ADirt").setBlockTextureName(BiochemistryCraft.MODID + ":ADirt").setCreativeTab(BiochemistryCraft.biocreativetab);
 		treeFruitBlock=new BlockTreeFruit();
 		treeFruitLeave=new BlockTreeFruitLeave();
@@ -74,6 +84,9 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(bioextracter, "BioExtracter");
 		GameRegistry.registerBlock(acid, "Acid");
 		GameRegistry.registerBlock(corrodedStone, "corroded_stone");
+		GameRegistry.registerBlock(cStoneSlab, ItemCStoneSlab.class, "cStoneSlab", cStoneSlab, cStoneDoubleSlab, false);
+		GameRegistry.registerBlock(cStoneDoubleSlab, ItemCStoneSlab.class, "DoublecStoneSlab", cStoneSlab, cStoneDoubleSlab, true);
+		GameRegistry.registerBlock(cStoneStair, "cStoneStair");
 		GameRegistry.registerBlock(acidicDirt, "acidic_dirt");
 		GameRegistry.registerBlock(treeFruitBlock, "treeFruitBlock");
 		GameRegistry.registerBlock(treeFruitLeave, "treeFruitLeave");
