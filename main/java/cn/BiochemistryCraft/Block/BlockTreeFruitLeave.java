@@ -127,7 +127,7 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 		}else{
 			removeLeaves(world, x, y, z);
 		}
-		if(world.getBlock(x, y - 1, z) == Blocks.air && rand.nextInt(25) == 0){
+		if(world.getBlock(x, y - 1, z) == Blocks.air && rand.nextInt(100) == 0){
 			world.setBlock(x, y - 1, z, BCCRegisterBlock.treeFruitBlock);
 			world.setBlockMetadataWithNotify(x, y - 1, z, 1 << 2 | rand.nextInt(4), 2);
 		}

@@ -9,10 +9,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class SickPlayerInfo {
-	private static final String NBT_ROOT = "SickPlayerInfo";
-	private static final String NBT_SICK = "Sick";
+	public static final String NBT_ROOT = "SickPlayerInfo";
+	public static final String NBT_SICK = "Sick";
 	
-	public static List<SSick> read(EntityPlayer player){
+	public static int[] read(EntityPlayer player){
 		NBTTagCompound persisted = getPersistedFromPlayer(player);
         if (persisted.hasKey(NBT_ROOT)){
         	return read(persisted);
@@ -20,53 +20,48 @@ public class SickPlayerInfo {
         return null;
     }
 	
-	public static List<SSick> read(NBTTagCompound tagCompound){
-		int[] sick;
+	public static int[] read(NBTTagCompound tagCompound){
 		List<SSick> result = new ArrayList();
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        sick = root.getIntArray(NBT_SICK);
-        for(int a: sick){
-        	result.add(SickRegistry.getSickFromID(a));
-        }
-        return result;
+        return root.getIntArray(NBT_SICK);
     }
 	
-	public static void write(EntityPlayer player, List<SSick> sick){
+	public static void write(EntityPlayer player, int[] sick){
         NBTTagCompound persisted = getPersistedFromPlayer(player);
         write(persisted, sick);
     }
 
-    public static void write(NBTTagCompound tagCompound, List<SSick> sick){
-    	int[] a = new int[sick.size()];
+    public static void write(NBTTagCompound tagCompound, int[] sick){
         if (!tagCompound.hasKey(NBT_ROOT)){
         	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
         }
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        for(int i = 0; i < sick.size(); i++){
-        	a[i] = SickRegistry.getIDFromSick(sick.get(i));
-        }
-        root.setIntArray(NBT_SICK, a);
+        root.setIntArray(NBT_SICK, sick);
     }
     
-    private static NBTTagCompound getPersistedFromPlayer(EntityPlayer player){
+    public static List<SSick> getSickListFromArray(int[] array){
+		List<SSick> result = new ArrayList();
+        for(int a: array){
+        	result.add(SickRegistry.getSickFromID(a));
+        }
+        return result;
+    }
+    
+    public static boolean playerHasSick(EntityPlayer player, int sick){
+    	int[] a = read(player);
+    	for(int i: a){
+        	if(i == sick){
+        		return true;
+        	}
+        }
+    	return false;
+    }
+    
+    public static NBTTagCompound getPersistedFromPlayer(EntityPlayer player){
     	NBTTagCompound tagCompound = player.getEntityData();
     	if (!tagCompound.hasKey(EntityPlayer.PERSISTED_NBT_TAG)){
 			tagCompound.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
         }
 		return tagCompound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
-    }
-    
-    public static void onLogin(EntityPlayer player){
-    	PacketMain.sendToPlayer(new PacketSickInfo(read(player)), player);
-    	Sick.update(player.worldObj, player);
-    }
-    
-    public static void onLogout(EntityPlayer player, List<SSick> sick){
-    	write(player, sick);
-    	PacketMain.sendToPlayer(new PacketSickInfo(Sick.getSickListFromPlayer(player)), player);
-    }
-    
-    public static void onUpdate(EntityPlayer player, List<SSick> sick){
-    	onLogout(player, sick);
     }
 }
