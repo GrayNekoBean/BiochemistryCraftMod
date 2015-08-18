@@ -66,6 +66,8 @@ public class BiochemistryCraft{
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 		
 		SickRegistry.registerSick(new SickCold());
+		
+		eventRegister.eventRegisterPreLoad();
 	}
 
 	@EventHandler

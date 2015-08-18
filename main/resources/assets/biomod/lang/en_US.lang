@@ -3,6 +3,7 @@ tile.BioExtracter.name=BioExtracter
 tile.Acid.name=Acid
 tile.CStone.name=Corroded Stone
 tile.ADirt.name=Acidic Dirt
+tile.pyrite.name=Pyrite
 tile.goldenVine.name=Golden Vine
 
 item.EmptyNeedle.name=Empty Needle
@@ -10,6 +11,7 @@ item.EmptyNeedle.lore=Vampiring
 item.BioBrain.name=BioBrain
 item.AcidWand.name=AcidWand
 item.acidBottle.name=Acid Bucket
+item.sulfurDust.name=Sulfur Dust
 
 item.CowBloodNeedle.name=CowBloodNeedle
 item.PigBloodNeedle.name=PigBloodNeedle
