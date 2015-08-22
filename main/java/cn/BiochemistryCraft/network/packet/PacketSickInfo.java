@@ -20,17 +20,25 @@ public class PacketSickInfo extends AbstractPacket implements ICallClient {
 	private NBTTagCompound tagCompound;
 	private static final String NBT_ROOT = SickPlayerInfo.NBT_ROOT;
 	private static final String NBT_SICK = SickPlayerInfo.NBT_SICK;
+	private static final String NBT_IMMUNE = SickPlayerInfo.NBT_IMMUNE;
+	private static final String NBT_INFECT = SickPlayerInfo.NBT_INFECT;
 	
 	public PacketSickInfo(){
 		
 	}
 	
-	public PacketSickInfo(int[] a){
+	public PacketSickInfo(List<SSick> sick, int immune, int infect){
+		int[] a = new int[sick.size()];
 		tagCompound = new NBTTagCompound();
+        for(int i = 0; i < sick.size(); i++){
+        	a[i] = sick.get(i).sickID;
+        }
         if (!tagCompound.hasKey(NBT_ROOT)){
         	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
         }
         tagCompound.getCompoundTag(NBT_ROOT).setIntArray(NBT_SICK, a);
+        tagCompound.getCompoundTag(NBT_ROOT).setInteger(NBT_IMMUNE, immune);
+        tagCompound.getCompoundTag(NBT_ROOT).setInteger(NBT_INFECT, infect);
 	}
 	
 	@Override
@@ -40,6 +48,8 @@ public class PacketSickInfo extends AbstractPacket implements ICallClient {
 			root.setTag(NBT_ROOT, new NBTTagCompound());
         }else{
         	root.setIntArray(NBT_SICK, root.getCompoundTag(NBT_ROOT).getIntArray(NBT_SICK));
+        	root.setInteger(NBT_IMMUNE, root.getCompoundTag(NBT_ROOT).getInteger(NBT_IMMUNE));
+        	root.setInteger(NBT_INFECT, root.getCompoundTag(NBT_ROOT).getInteger(NBT_INFECT));
         }
 		return null;
 	}
@@ -62,7 +72,7 @@ public class PacketSickInfo extends AbstractPacket implements ICallClient {
         	tagCompound = packet.readNBTTagCompoundFromBuffer();
         }
         catch (IOException e){
-        	BCCLogger.warn("Warning: Failed to receive NBT tag.");
+            BCCLogger.warn("Warning: Failed to receive NBT tag.");
         }
 	}
 }

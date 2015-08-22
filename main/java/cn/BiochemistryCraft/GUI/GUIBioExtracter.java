@@ -3,7 +3,6 @@ package cn.BiochemistryCraft.GUI;
 import org.lwjgl.opengl.GL11;
 
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
-import cn.BiochemistryCraft.core.BCCConfig;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -11,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 public class GUIBioExtracter extends GuiContainer{
-	private static final ResourceLocation resource = new ResourceLocation("biomod", BCCConfig.getGuiPath() + "container/BioExtracter.png");
+	private static final ResourceLocation resource = new ResourceLocation("biomod:textures/gui/container/BioExtracter.png");
 	private TileentityBioExtracter tile;
 	public GUIBioExtracter(InventoryPlayer inventory,
 			TileentityBioExtracter tileEntity) {

@@ -1,12 +1,17 @@
 package cn.BiochemistryCraft.proxy;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
+import net.minecraftforge.client.GuiIngameForge;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import cn.BiochemistryCraft.Register.BCCEntityRendererRegister;
+import cn.BiochemistryCraft.core.sick.SSick;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Register.BCCEntityRegister;
-import cn.BiochemistryCraft.Register.BCCEntityRendererRegister;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BCCclientProxy extends BCCcommonProxy{
     public static BCCEntityRendererRegister entityrendererregister;
@@ -36,5 +41,13 @@ public class BCCclientProxy extends BCCcommonProxy{
 	
 	public void registerNormalThings(){
 		super.registerNormalThings();
+	}
+	
+	@SubscribeEvent
+	public void showSickGUIinGame(RenderGameOverlayEvent.Pre event){
+		Minecraft mc = FMLClientHandler.instance().getClient();
+		FontRenderer render=mc.fontRenderer;
+		render.drawString(SSick.getName(), GuiIngameForge.right_height, GuiIngameForge.left_height, 0xFFFFFF);
+		mc.renderEngine.bindTexture(Gui.icons);
 	}
 }

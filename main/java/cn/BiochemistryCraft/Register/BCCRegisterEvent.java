@@ -1,20 +1,19 @@
 package cn.BiochemistryCraft.Register;
 
+import net.minecraftforge.common.MinecraftForge;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.core.BCCConfig;
+import cn.BiochemistryCraft.event.BCCGeneralEvent;
+import cn.BiochemistryCraft.event.EventBonemeal;
+import cn.BiochemistryCraft.event.EventPlayer;
+import cn.BiochemistryCraft.event.FluidBottleHandler;
+import cn.BiochemistryCraft.network.PacketMain;
+import cn.BiochemistryCraft.network.packet.PacketSickInfo;
+import cn.BiochemistryCraft.world.gen.OreGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.MinecraftForge;
-import cn.BiochemistryCraft.core.BCCConfig;
-import cn.BiochemistryCraft.event.BCCGeneralEvent;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.event.EventBonemeal;
-import cn.BiochemistryCraft.event.EventPlayer;
-import cn.BiochemistryCraft.event.FluidBottleHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cn.BiochemistryCraft.network.PacketMain;
-import cn.BiochemistryCraft.network.packet.PacketSickInfo;
-import cn.BiochemistryCraft.world.gen.OreGenerator;
 
 public class BCCRegisterEvent {
 	public static SimpleNetworkWrapper networkHandler;

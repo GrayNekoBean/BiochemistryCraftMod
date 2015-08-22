@@ -1,7 +1,7 @@
 package cn.BiochemistryCraft.Item;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import cn.BiochemistryCraft.Entity.EntityDiable;
+
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -56,96 +56,81 @@ public class ItemTnc extends BCCItemBase{
     	//EntityDiable entity=new EntityDiable(e.worldObj,e.posX,e.posY,e.posZ);
     	//e.worldObj.spawnEntityInWorld(entity);
     	el.attackEntityFrom(DamageSource.cactus, 2F);
+    	ItemStack stack = null;
     	if(!el.worldObj.isRemote){
-    		if(el instanceof EntityCow){		
-    			e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0), 1.0F);
-	    		i.stackSize--;
-    			return true;
+    		if(el instanceof EntityCow){	
+    			stack = new ItemStack(BCCRegisterItem.bloodgr[0], 1, 0);
+	    		--i.stackSize;
     		}else if(el instanceof EntityPig){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[1], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[1], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityChicken){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[2], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[2], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityWolf){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[3], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[3], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityPlayer){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[4], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[4], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityBat){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[5], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[5], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityHorse){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[6], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[6], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityMooshroom){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[7], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[7], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityOcelot){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[8], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[8], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntitySheep){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[9], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[9], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntitySquid){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[10], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[10], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityCaveSpider){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[11], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[11], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityCreeper){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[12], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[12], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityEnderman){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[13], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[13], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityGhast){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[14], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[14], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityMagmaCube){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[15], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[15], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityPigZombie){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[16], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[16], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntitySilverfish){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[17], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[17], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntitySlime){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[18], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[18], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntitySpider){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[19], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[19], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityWitch){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[20], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[20], 1, 0);
+	    		--i.stackSize;
 	    	}else if(el instanceof EntityZombie){
-	    		e.entityDropItem( new ItemStack(BCCRegisterItem.bloodgr[21], 1, 0), 1.0F);
-	    		i.stackSize--;
-	    		return true;
+	    		stack = new ItemStack(BCCRegisterItem.bloodgr[21], 1, 0);
+	    		--i.stackSize;
 	    	}
+    		if(stack != null){
+    	            EntityItem entityitem = e.dropPlayerItemWithRandomChoice(stack, false);
+    	            entityitem.delayBeforeCanPickup = 0;
+    	            entityitem.func_145797_a(e.getCommandSenderName());
+    	            return true;
+    		}
     	}
     	return false;
     	

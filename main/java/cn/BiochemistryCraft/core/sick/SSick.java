@@ -2,87 +2,122 @@ package cn.BiochemistryCraft.core.sick;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.TimerTask;
 
-import cn.BiochemistryCraft.core.BCCLogger;
-import cn.BiochemistryCraft.network.PacketMain;
-import cn.BiochemistryCraft.network.packet.PacketSickInfo;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetHandlerPlayServer;
+import cn.BiochemistryCraft.core.BCCLogger;
+import cn.BiochemistryCraft.network.PacketMain;
+import cn.BiochemistryCraft.network.packet.PacketSickInfo;
 
-public abstract class SSick extends TimerTask{
-	private String SickName;
-	public static int SickID;
-	public EntityLivingBase entity;
-	
+public abstract class SSick extends TimerTask {
 	private static final String NBT_ROOT = SickPlayerInfo.NBT_ROOT;
 	private static final String NBT_SICK = SickPlayerInfo.NBT_SICK;
 	
-	public SSick()
-	{
+	private static String sickName;
+	public static int sickID;
+	public EntityLivingBase entity;
+	public static List<SSick> sickList = new ArrayList();
+	public Random rand = new Random();
+	private int immune = SickPlayerInfo.immuneValue;
+	private int infect = SickPlayerInfo.infectValue;
+	
+	public SSick() {
+	}
+
+	public static String getName() {
+		return sickName;
+	}
+	
+	public boolean equals(SSick sick){
+		return sick == null ? false : sick.sickID == this.sickID;
 	}
 
 	@Override
 	public void run() {
-		// TODO 鑷姩鐢熸垚鐨勬柟娉曞瓨鏍�
-		BCCLogger.debug("鐢熺梾涓�");
+		if(entity instanceof EntityPlayer){
+			BCCLogger.debug(((EntityPlayer)entity).getDisplayName() + " is sick, disease name:"
+					+ sickName + ", disease ID is " + sickID + ".");
+		}
 		this.SickUpdate();
 		this.displayEffect();
 	}
-	
-	public void SickUpdate()
-	{
-		
+
+	public void SickUpdate() {
+		if (immune <= infect) {
+			if (rand.nextInt(500 - immune) < infect - immune) {
+				infect++;
+			}
+
+			if (infect > (float) immune * 1.5) {
+				if (rand.nextInt(immune) == 1) {
+					randomSick();
+				}
+			}
+
+		}
+		displayEffect();
 	}
-	
-	
+
 	public abstract void displayEffect();
 	
-	public void EndSick()
-	{
-		this.cancel();
-		if(this.entity instanceof EntityPlayer){
-			int[] a = SickPlayerInfo.read((EntityPlayer)this.entity);
-			int[] b = new int[a.length - 1];
-			for(int i = 0; i < a.length; i++){
-				if(a[i] == SickID){
-					System.arraycopy(a, 0, b, 0, i);
-					System.arraycopy(a, i + 1, b, i, a.length - 1 - i);
-					break;
-				}
-			}
-			SickPlayerInfo.write((EntityPlayer)this.entity, b);
-			if (this.entity instanceof EntityPlayerMP){
-				PacketMain.sendToPlayer(new PacketSickInfo(b), (EntityPlayer)this.entity);
+	public void randomSick() {
+		for (int i = 0; i < sickList.size(); i++) {
+			if (i == rand.nextInt(sickList.size())) {
+				displayEffect();
 			}
 		}
 	}
-	
-	public void SetEntity(EntityLivingBase entity)
-	{
-		this.entity=entity;
-		if(this.entity instanceof EntityPlayer){
-			int[] a = SickPlayerInfo.read((EntityPlayer)this.entity);
-			int[] b;
-			if (a == null){
-				b = new int[1];
-				b[0] = SickID;
-			}else{
-				for(int i: a){
-					if(i == SickID){
-						return;
-					}
-				}
-				b = new int[a.length + 1];
-				System.arraycopy(a, 0, b, 0, a.length);
-				b[a.length] = SickID;
-			}
-			SickPlayerInfo.write((EntityPlayer)this.entity, b);
-			if (this.entity instanceof EntityPlayerMP){
-				PacketMain.sendToPlayer(new PacketSickInfo(b), (EntityPlayer)this.entity);
+
+	public void EndSick() {
+		this.cancel();
+		if (this.entity instanceof EntityPlayer) {
+			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
+			a.remove(this);
+			SickPlayerInfo.write((EntityPlayer) this.entity, a);
+			if (this.entity instanceof EntityPlayerMP) {
+				PacketMain.sendToPlayer(new PacketSickInfo(a, this.immune, this.infect), (EntityPlayer) this.entity);
 			}
 		}
+	}
+
+	public void SetEntity(EntityLivingBase entity) {
+		this.entity = entity;
+		this.rand = entity.worldObj.rand;
+		if (this.entity instanceof EntityPlayer) {
+			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
+			if (a == null) {
+				a = new ArrayList();
+			} else if (a.indexOf(this) == -1) {
+					return;
+			}
+			a.add(this);
+			SickPlayerInfo.write((EntityPlayer) this.entity, a);
+			if (this.entity instanceof EntityPlayerMP) {
+				PacketMain.sendToPlayer(new PacketSickInfo(a, this.immune, this.infect), (EntityPlayer) this.entity);
+			}
+		}
+	}
+	@SideOnly(Side.CLIENT)
+	public static EntityPlayer getClientPlayerEntity() {
+		return FMLClientHandler.instance().getClientPlayerEntity();
+	}
+	@SideOnly(Side.SERVER)
+	public static EntityPlayer getServerPlayerEntity() {
+	    
+		return ((NetHandlerPlayServer)FMLCommonHandler.instance().getClientToServerNetworkManager().channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity;
+	}
+
+	public void playRandomSound(String str, Random rand) {
+
 	}
 }

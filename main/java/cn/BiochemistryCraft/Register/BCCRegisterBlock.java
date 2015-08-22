@@ -1,9 +1,7 @@
 package cn.BiochemistryCraft.Register;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import cn.BiochemistryCraft.BiochemistryCraft;

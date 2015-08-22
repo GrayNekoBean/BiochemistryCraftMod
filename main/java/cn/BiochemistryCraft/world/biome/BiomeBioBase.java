@@ -16,6 +16,5 @@ public abstract class BiomeBioBase extends BiomeGenBase{
 		this.heightVariation = height_Default.variation;
 	    this.temperature = 0.5F;
 	    this.rainfall = 0.5F;
-	    this.waterColorMultiplier = 0xffffff / 2;
 	}
 }

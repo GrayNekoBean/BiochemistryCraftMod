@@ -158,6 +158,4 @@ public class BCCRegisterItem {
 		GameRegistry.registerItem(sulfurDust, "sulfurDust");
 	}
 		
-	}
-
-
+}

@@ -12,7 +12,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class BCCEntityRendererRegister {
 	public void EntityRenderRegisterInit()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
+//		RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAcid.class, new RenderAcid());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBioPig.class, new RenderBioPig(new ModelPig(),0.5f));
 	}
