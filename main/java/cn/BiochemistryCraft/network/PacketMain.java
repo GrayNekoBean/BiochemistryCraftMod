@@ -1,5 +1,6 @@
 package cn.BiochemistryCraft.network;
 
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
@@ -22,6 +23,8 @@ public class PacketMain {
     public static void sendToPlayer(AbstractPacket packet, EntityPlayerMP player){
         networkHandler.sendTo(packet, player);
     }
+    
+   
 
     public static void sendToAllInDimension(AbstractPacket packet, int dimId){
         networkHandler.sendToDimension(packet, dimId);

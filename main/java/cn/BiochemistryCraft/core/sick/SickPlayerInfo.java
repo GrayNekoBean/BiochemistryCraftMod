@@ -11,8 +11,12 @@ import net.minecraft.nbt.NBTTagCompound;
 public class SickPlayerInfo {
 	public static final String NBT_ROOT = "SickPlayerInfo";
 	public static final String NBT_SICK = "Sick";
+	public static final String NBT_IMMUNE = "ImmuneValue";
+	public static final String NBT_INFECT = "InfectValue";
+	public static int immuneValue = 50;
+	public static int infectValue = 0;
 	
-	public static int[] read(EntityPlayer player){
+	public static List<SSick> read(EntityPlayer player){
 		NBTTagCompound persisted = getPersistedFromPlayer(player);
         if (persisted.hasKey(NBT_ROOT)){
         	return read(persisted);
@@ -20,23 +24,35 @@ public class SickPlayerInfo {
         return null;
     }
 	
-	public static int[] read(NBTTagCompound tagCompound){
+	public static List<SSick> read(NBTTagCompound tagCompound){
 		List<SSick> result = new ArrayList();
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        return root.getIntArray(NBT_SICK);
+        int[] sick = root.getIntArray(NBT_SICK);
+        for(int a: sick){
+        	result.add(SickRegistry.getSickFromID(a));
+        }
+        immuneValue = root.getInteger("immuneValue");
+        infectValue = root.getInteger("InfectValue");
+        return result;
     }
 	
-	public static void write(EntityPlayer player, int[] sick){
+	public static void write(EntityPlayer player, List<SSick> a){
         NBTTagCompound persisted = getPersistedFromPlayer(player);
-        write(persisted, sick);
+        write(persisted, a);
     }
 
-    public static void write(NBTTagCompound tagCompound, int[] sick){
+    public static void write(NBTTagCompound tagCompound, List<SSick> sick){
         if (!tagCompound.hasKey(NBT_ROOT)){
         	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
         }
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        root.setIntArray(NBT_SICK, sick);
+        int[] a = new int[sick.size()];
+        for(int i = 0; i < sick.size(); i++){
+        	a[i] = sick.get(i).sickID;
+        }
+        root.setInteger(NBT_IMMUNE, immuneValue);
+        root.setInteger(NBT_INFECT, infectValue);
+        root.setIntArray(NBT_SICK, a);
     }
     
     public static List<SSick> getSickListFromArray(int[] array){
@@ -47,9 +63,9 @@ public class SickPlayerInfo {
         return result;
     }
     
-    public static boolean playerHasSick(EntityPlayer player, int sick){
-    	int[] a = read(player);
-    	for(int i: a){
+    public static boolean playerHasSick(EntityPlayer player, SSick sick){
+    	List<SSick> a = read(player);
+    	for(SSick i: a){
         	if(i == sick){
         		return true;
         	}
