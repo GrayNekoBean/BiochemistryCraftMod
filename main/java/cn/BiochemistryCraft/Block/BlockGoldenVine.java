@@ -3,25 +3,19 @@ package cn.BiochemistryCraft.Block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockVine;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
-import net.minecraftforge.common.util.BlockSnapshot;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGoldenVine extends BlockVine implements IShearable{
 	@SideOnly(Side.CLIENT)
@@ -53,7 +47,7 @@ public class BlockGoldenVine extends BlockVine implements IShearable{
 	  
 	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune){
 		int metadata = world.getBlockMetadata(x, y, z) & 3;
-		ArrayList<ItemStack> ret = new ArrayList();
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(Blocks.vine, 1));
 		ret.add(new ItemStack(BCCRegisterItem.goldenVineFruit, 1 + metadata));
 		return ret;

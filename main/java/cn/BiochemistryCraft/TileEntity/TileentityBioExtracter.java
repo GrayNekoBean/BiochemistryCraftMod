@@ -1,7 +1,5 @@
 package cn.BiochemistryCraft.TileEntity;
 
-import cn.BiochemistryCraft.GUI.CraftingBioExtracter;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,7 +7,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
@@ -18,6 +15,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import cn.BiochemistryCraft.GUI.CraftingBioExtracter;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TileentityBioExtracter extends TileEntity implements IInventory{
 	
@@ -31,9 +30,7 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 	
 	@Override
     public void updateEntity() {
-           // TODO Auto-generated method stub
            super.updateEntity();
-           //System.out.println("Hello GUI"+(i++));
            ItemStack output = null;
            if(tableBurnTime > 0)
            {
@@ -106,13 +103,11 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 		
 	@Override
 	public int getSizeInventory() {
-		// TODO �Զ���ɵķ������
 		return tstack.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		// TODO �Զ���ɵķ������
 		return tstack[index];
 	}
 
@@ -148,13 +143,11 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
-		// TODO �Զ���ɵķ������
 		return null;
 	}
 
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
-		// TODO �Զ���ɵķ������
 		this.tstack[var1] = var2;
         if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
         {
@@ -165,43 +158,32 @@ public class TileentityBioExtracter extends TileEntity implements IInventory{
 
 	@Override
 	public String getInventoryName() {
-		// TODO �Զ���ɵķ������
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO �Զ���ɵķ������
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO �Զ���ɵķ������
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		// TODO �Զ���ɵķ������
 		return true;
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO �Զ���ɵķ������
-		
-	}
+	public void openInventory() {}
 
 	@Override
-	public void closeInventory() {
-		// TODO �Զ���ɵķ������
-		
-	}
+	public void closeInventory() {}
 
 	@Override
 	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
-		// TODO �Զ���ɵķ������
 		return false;
 	}
 	

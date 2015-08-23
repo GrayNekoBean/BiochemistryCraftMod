@@ -36,7 +36,6 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 	}
 	
 	public String[] func_150125_e() {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -190,6 +189,7 @@ public class BlockTreeFruitLeave extends BlockLeavesBase implements IShearable{
 		return ColorizerFoliage.getFoliageColorBasic();
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z){

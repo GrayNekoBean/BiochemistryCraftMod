@@ -1,20 +1,11 @@
 package cn.BiochemistryCraft.Register;
 
+import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Entity.EntityBioPig;
-import cn.BiochemistryCraft.Entity.EntityDiable;
 import cn.BiochemistryCraft.Entity.Throwable.EntityAcid;
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
-import cn.BiochemistryCraft.client.render.RenderAcid;
-import cn.BiochemistryCraft.client.render.RenderBioPig;
-import cn.BiochemistryCraft.client.render.RenderDiable;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import net.minecraft.client.model.ModelPig;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.techne.*;
 
 public class BCCEntityRegister {
     

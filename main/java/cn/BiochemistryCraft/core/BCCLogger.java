@@ -4,7 +4,6 @@ import org.apache.logging.log4j.Level;
 
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cpw.mods.fml.common.FMLLog;
-import akka.event.Logging.Info;
 
 public class BCCLogger {
 	public static void info(String format, Object... data){

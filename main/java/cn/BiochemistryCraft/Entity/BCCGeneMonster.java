@@ -1,25 +1,22 @@
 package cn.BiochemistryCraft.Entity;
 
-import cn.BiochemistryCraft.Gene.InfectSource;
-import cn.BiochemistryCraft.core.sick.Sick;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import cn.BiochemistryCraft.Gene.InfectSource;
+import cn.BiochemistryCraft.core.sick.SSick;
  
 public class BCCGeneMonster extends EntityMob implements IBiology{
 
@@ -38,11 +35,8 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	
 	public BCCGeneMonster(World p_i1738_1_) {
 		super(p_i1738_1_);
-		
-		
-		// TODO �Զ����ɵĹ��캯�����
 	}
-	//�����Ƿ����������
+
 	public boolean isActiveAttack(boolean yes){
 		return this.whether = yes;
 		
@@ -78,8 +72,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(moveSpeed);
 		
 	}
-	
-	//��ݷ�����ʹ��һ�����AI
+
 	public void useNormalMobAI(boolean par1){
 		if(par1){
 		 this.tasks.addTask(0, new EntityAISwimming(this));
@@ -127,16 +120,13 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	}
 	@Override
 	public boolean canMutate() {
-		// TODO �Զ����ɵķ������
 		return true;
 	}
 	public void SetMutationProbly(float par1) {
-		// TODO �Զ����ɵķ������
 		mutateProbly=par1;
 		
 	}
 	public void setInfectivity(float par1) {//设置感染值
-		// TODO �Զ����ɵķ������
 		Infectivity=par1;
 		
 	}
@@ -169,7 +159,7 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 		return this.immuneValue;
 	}
 	
-	public void writeEntityToNBT(NBTTagCompound tag){//读写nbt
+	public void writeEntityToNBT(NBTTagCompound tag){
 		super.writeEntityToNBT(tag);
 		tag.setFloat("Infectivity", Infectivity);
 		tag.setFloat("contaminateValue", contaminateValue);
@@ -189,17 +179,14 @@ public class BCCGeneMonster extends EntityMob implements IBiology{
 	}
 	@Override
 	public Entity getEntity() {
-		// TODO 自动生成的方法存根
 		return this;
 	}
 	@Override
 	public boolean getInfect(InfectSource source, Entity entity) {
-		// TODO 自动生成的方法存根
 		return false;
 	}
 	@Override
-	public boolean getSick(Sick sick) {
-		// TODO 自动生成的方法存根
+	public boolean getSick(SSick sick) {
 		return false;
 	}
 

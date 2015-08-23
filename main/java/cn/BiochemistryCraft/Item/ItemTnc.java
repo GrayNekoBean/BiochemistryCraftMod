@@ -1,9 +1,5 @@
 package cn.BiochemistryCraft.Item;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCaveSpider;
@@ -28,11 +24,10 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 
 
 
@@ -42,13 +37,9 @@ public class ItemTnc extends BCCItemBase{
 	
 	public ItemTnc(){
 		super();
-		//this.setTextureName("biomod:EmptyNeedle");
-		//this.setCreativeTab(CreativeTabs.tabTools);
-		//this.setUnlocalizedName("EmptyNeedle");
 		this.setItem("EmptyNeedle", true);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(1);
-		//GameRegistry.registerItem(this, "空针筒");
 	}
 	
     public boolean itemInteractionForEntity(ItemStack i, EntityPlayer e, EntityLivingBase el)

@@ -7,7 +7,7 @@ public class ItemBloodEssence extends Item{
 	public static int xz;
 	public ItemBloodEssence(int xzs)
 	{
-		this.xz=xzs;
+		xz=xzs;
 		this.setCreativeTab(BiochemistryCraft.biocreativetab);
 		this.setMaxStackSize(16);
 		this.setMaxDamage(1);

@@ -5,12 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimerTask;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,7 +12,12 @@ import net.minecraft.network.NetHandlerPlayServer;
 import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.network.PacketMain;
 import cn.BiochemistryCraft.network.packet.PacketSickInfo;
-
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+@SuppressWarnings("unused")
 public abstract class SSick extends TimerTask {
 	private static final String NBT_ROOT = SickPlayerInfo.NBT_ROOT;
 	private static final String NBT_SICK = SickPlayerInfo.NBT_SICK;
@@ -26,7 +25,7 @@ public abstract class SSick extends TimerTask {
 	private static String sickName;
 	public static int sickID;
 	public EntityLivingBase entity;
-	public static List<SSick> sickList = new ArrayList();
+	public static List<SSick> sickList = new ArrayList<SSick>();
 	public Random rand = new Random();
 	private int immune = SickPlayerInfo.immuneValue;
 	private int infect = SickPlayerInfo.infectValue;
@@ -38,8 +37,9 @@ public abstract class SSick extends TimerTask {
 		return sickName;
 	}
 	
+	@SuppressWarnings("static-access")
 	public boolean equals(SSick sick){
-		return sick == null ? false : sick.sickID == this.sickID;
+		return sick == null ? false : sick.sickID == sickID;
 	}
 
 	@Override
@@ -96,7 +96,7 @@ public abstract class SSick extends TimerTask {
 		if (this.entity instanceof EntityPlayer) {
 			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
 			if (a == null) {
-				a = new ArrayList();
+				a = new ArrayList<SSick>();
 			} else if (a.indexOf(this) == -1) {
 					return;
 			}

@@ -1,9 +1,7 @@
 package cn.BiochemistryCraft.Block;
 
-import cn.BiochemistryCraft.BiochemistryCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockBioDirt extends BCCBlockBase{
 

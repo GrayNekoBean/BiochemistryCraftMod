@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.util.DamageSource;
@@ -20,7 +19,6 @@ public abstract class BCCEntityMob extends EntityMob{
 	
 	public BCCEntityMob(World p_i1738_1_) {
 		super(p_i1738_1_);
-		// TODO 自动生成的构造函数存根
 	}
 	
 	@Override
@@ -45,6 +43,7 @@ public abstract class BCCEntityMob extends EntityMob{
 		return super.attackEntityFrom(damage,f);
 	}
 	
+	@SuppressWarnings("unused")
 	public void InterestedInBlock(Block b,float f){
 		Block block=bl;
 		float f1=fl;
@@ -59,6 +58,7 @@ public abstract class BCCEntityMob extends EntityMob{
 		
 	}
 	
+	@SuppressWarnings({ "rawtypes" , "unchecked" })
 	public List<Entity> foundEntityInDistance(double distance,Entity target){
 		
 		 List entityList = this.worldObj.getLoadedEntityList();

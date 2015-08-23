@@ -3,15 +3,6 @@ package cn.BiochemistryCraft.Block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.Icon;
-
-import scala.actors.threadpool.Arrays;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Item.ItemHerbs;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
-import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,8 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHerbsCorps extends BlockCrops{
 	private static final String[] herbsArray = new String[] {"fireGrassCorp", "coolGrassCorp", "plasmaBerryCorp"};
@@ -62,6 +56,7 @@ public class BlockHerbsCorps extends BlockCrops{
 		return BCCRegisterItem.herbsArray[j];
     }
 	
+	@SuppressWarnings("unused")
 	private Item getCropItem(){
         return getSeedItem();
     }
@@ -71,7 +66,7 @@ public class BlockHerbsCorps extends BlockCrops{
 	}
 	
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune){
-		ArrayList<ItemStack> ret = new ArrayList();
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(getSeedItem(), 1, 0));
 		if (metadata >= 1) {
 	    	for (int i = 0; i < 3 + fortune; i++) {

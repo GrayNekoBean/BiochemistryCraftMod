@@ -3,8 +3,6 @@ package cn.BiochemistryCraft.core.sick;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.BiochemistryCraft.network.PacketMain;
-import cn.BiochemistryCraft.network.packet.PacketSickInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -25,7 +23,7 @@ public class SickPlayerInfo {
     }
 	
 	public static List<SSick> read(NBTTagCompound tagCompound){
-		List<SSick> result = new ArrayList();
+		List<SSick> result = new ArrayList<SSick>();
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
         int[] sick = root.getIntArray(NBT_SICK);
         for(int a: sick){
@@ -41,7 +39,8 @@ public class SickPlayerInfo {
         write(persisted, a);
     }
 
-    public static void write(NBTTagCompound tagCompound, List<SSick> sick){
+    @SuppressWarnings("static-access")
+	public static void write(NBTTagCompound tagCompound, List<SSick> sick){
         if (!tagCompound.hasKey(NBT_ROOT)){
         	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
         }
@@ -56,7 +55,7 @@ public class SickPlayerInfo {
     }
     
     public static List<SSick> getSickListFromArray(int[] array){
-		List<SSick> result = new ArrayList();
+		List<SSick> result = new ArrayList<SSick>();
         for(int a: array){
         	result.add(SickRegistry.getSickFromID(a));
         }

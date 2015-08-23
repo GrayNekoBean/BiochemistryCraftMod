@@ -2,9 +2,6 @@ package cn.BiochemistryCraft.GUI;
 
 import java.util.Iterator;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,6 +10,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 //import net.minecraft.item.crafting.FurnaceRecipes;
 //import net.minecraft.tileentity.TileEntityFurnace;
+import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerBioExtracter extends Container{
 	private TileentityBioExtracter tile;
@@ -40,7 +40,6 @@ public class ContainerBioExtracter extends Container{
     }
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		// TODO 自动生成的方法存根
 		return true;
 	}
 	@Override
@@ -62,7 +61,8 @@ public class ContainerBioExtracter extends Container{
             	this.tile.maxBurnTime = par2;
             }
     }
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public void detectAndSendChanges()
     {
     	// TODO Auto-generated method stub

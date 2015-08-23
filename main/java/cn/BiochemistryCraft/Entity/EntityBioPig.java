@@ -18,7 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeModContainer;
 
 public class EntityBioPig extends EntityMob implements IRangedAttackMob
 {

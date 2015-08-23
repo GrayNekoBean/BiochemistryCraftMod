@@ -1,39 +1,22 @@
 package cn.BiochemistryCraft.core.sick;
 
-import io.netty.buffer.ByteBuf;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.UUID;
-import java.util.Map.Entry;
 
-import com.google.common.collect.Maps;
-
-
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.BaseAttributeMap;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import cn.BiochemistryCraft.core.BCCLogger;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
+/**
+ * Sick.java is useless certainly
+ * Sick.java 现在没有用
+ * @deprecated
+ */
+@Deprecated
 public class Sick {
-	//目前，Sick没什么乱用
-	private static List<EntityPlayer> playerList = new ArrayList();
-	private static List<List<SSick>> playerSickList = new ArrayList();
+	private static List<EntityPlayer> playerList = new ArrayList<EntityPlayer>();
+	private static List<List<SSick>> playerSickList = new ArrayList<List<SSick>>();
 	//public static List<Sick> sickList=new ArrayList();
 			
 	public static void addPlayer(EntityPlayer player){
@@ -41,11 +24,11 @@ public class Sick {
 		playerSickList.add(null);
 	}
 	
-	public List getPlayerList() throws InstantiationException, IllegalAccessException{
+	public List<?> getPlayerList() throws InstantiationException, IllegalAccessException{
 		try {
 			Field fild= ServerConfigurationManager.class.getDeclaredField("PlayerEntityList");
 			fild.setAccessible(true);
-			System.out.println("sick!");
+			BCCLogger.debug("sick!");
 			return ServerConfigurationManager.class.newInstance().playerEntityList;
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
@@ -57,7 +40,7 @@ public class Sick {
 	
 	
 	public static void addPlayer(EntityPlayer player, SSick[] sick){
-		List<SSick> input = new ArrayList();
+		List<SSick> input = new ArrayList<SSick>();
 		for(SSick a: sick){
 			input.add(a);
 		}
@@ -77,7 +60,7 @@ public class Sick {
 	}
 	
 	public static void addSick(EntityPlayer player, SSick add){
-		List<SSick> input = new ArrayList();
+		List<SSick> input = new ArrayList<SSick>();
 		int a = find(player);
 		if(a != -1){
 			input = playerSickList.get(a);
@@ -90,7 +73,7 @@ public class Sick {
 	
 	public static void removeSick(EntityPlayer player, SSick remove){
 		int a = find(player);
-		List<SSick> result = new ArrayList();
+		List<SSick> result = new ArrayList<SSick>();
 		if(a == -1){
 			return;
 		}else{
@@ -104,7 +87,7 @@ public class Sick {
 	
 	public static int setSick(EntityPlayer player, SSick[] sick){
 		int a = find(player);
-		List<SSick> input = new ArrayList();
+		List<SSick> input = new ArrayList<SSick>();
 		if(a != -1){
 			for(SSick b: sick){
 				input.add(b);
@@ -122,7 +105,7 @@ public class Sick {
 
 	public static SSick[] getSickFromPlayer(EntityPlayer player){
 		int a = find(player);
-		List<SSick> input = new ArrayList();
+		List<SSick> input = new ArrayList<SSick>();
 		SSick[] result;
 		if(a != -1){
 			input = playerSickList.get(a);

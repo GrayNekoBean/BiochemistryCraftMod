@@ -5,16 +5,15 @@ import io.netty.buffer.ByteBuf;
 import java.io.IOException;
 import java.util.List;
 
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.core.sick.SSick;
 import cn.BiochemistryCraft.core.sick.SickPlayerInfo;
-import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.network.AbstractPacket;
 import cn.BiochemistryCraft.network.ICallClient;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
 
 public class PacketSickInfo extends AbstractPacket implements ICallClient {
 	private NBTTagCompound tagCompound;
@@ -27,6 +26,7 @@ public class PacketSickInfo extends AbstractPacket implements ICallClient {
 		
 	}
 	
+	@SuppressWarnings("static-access")
 	public PacketSickInfo(List<SSick> sick, int immune, int infect){
 		int[] a = new int[sick.size()];
 		tagCompound = new NBTTagCompound();

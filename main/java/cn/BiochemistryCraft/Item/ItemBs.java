@@ -1,14 +1,8 @@
 package cn.BiochemistryCraft.Item;
 
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import cn.BiochemistryCraft.BiochemistryCraft;
 public class ItemBs extends Item{
     public static final String[] BloodKind = new String[] {"cow", "pig", "chicken", "wolf", "player", "bat", "horse", "mooshroom", "ocelot", "sheep", "squid",
 		"cavespider", "creeper", "enderman", "ghast", "magmacube", "pigzombie", "silverfish", "slime", "spider", "witch", "zombie"};
@@ -19,7 +13,6 @@ public class ItemBs extends Item{
 		super();
 		this.xz = xzs;
 		this.setCreativeTab(BiochemistryCraft.biocreativetab);
-		//this.setUnlocalizedName(BloodKind[this.xz] + "blood");
 		this.setMaxStackSize(16);
 		this.setMaxDamage(1);
 	}
@@ -51,17 +44,4 @@ public class ItemBs extends Item{
 		}
 		return "";
 	}
-    //public IIcon getIcon(ItemStack s, int r, EntityPlayer p, ItemStack u, int ur)
-    //{
-    //	if(this.xz <= 10){
-    //		return i1;
-    //	}else{
-    //		return i2;
-    //	}
-    //}
-    //public void registerIcons(IIconRegister ir)
-    //{
-    //	i1 = ir.registerIcon("biochemistrytextures:RedBloodSyringe");
-    //	i2 = ir.registerIcon("biochemistrytextures:GreenBloodSyringe");
-    //}
 }

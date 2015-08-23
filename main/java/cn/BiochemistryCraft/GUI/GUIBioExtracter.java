@@ -1,20 +1,19 @@
 package cn.BiochemistryCraft.GUI;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
 import org.lwjgl.opengl.GL11;
 
 import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 public class GUIBioExtracter extends GuiContainer{
 	private static final ResourceLocation resource = new ResourceLocation("biomod:textures/gui/container/BioExtracter.png");
 	private TileentityBioExtracter tile;
 	public GUIBioExtracter(InventoryPlayer inventory,
 			TileentityBioExtracter tileEntity) {
-		// TODO 自动生成的构造函数存根
 		super(new ContainerBioExtracter(inventory, tileEntity));
 		this.tile=tileEntity;
 		this.doesGuiPauseGame();

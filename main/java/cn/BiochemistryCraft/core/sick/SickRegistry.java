@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Random;
 
 public class SickRegistry {
-	private static List<SSick> sicklist = new ArrayList();
+	private static List<SSick> sicklist = new ArrayList<SSick>();
 	private static int id = 0;
 
+	@SuppressWarnings("static-access")
 	public static void registerSick(SSick sick) {
 		sick.sickID = id;
 		sicklist.add(id++, sick);

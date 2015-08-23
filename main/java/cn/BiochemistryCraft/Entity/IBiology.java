@@ -7,7 +7,7 @@ import cn.BiochemistryCraft.core.sick.*;
 public interface IBiology {
 	 public Entity getEntity() ;
 	
-	 public boolean getSick(Sick sick);
+	 public boolean getSick(SSick sick);
 	 
 	public float getImmuneValue();
 	 

@@ -1,6 +1,5 @@
 package cn.BiochemistryCraft.network;
 
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
@@ -40,7 +39,8 @@ public class PacketMain {
         networkHandler.sendToAll(packet);
     }
     
-    public static void registerPacket(Class<? extends AbstractPacket> packetClass){
+    @SuppressWarnings("unchecked")
+	public static void registerPacket(Class<? extends AbstractPacket> packetClass){
         Class<AbstractPacket> message = (Class<AbstractPacket>)packetClass;
         if (ICallServer.class.isAssignableFrom(packetClass)){
             networkHandler.registerMessage(packetClass, message, id, Side.SERVER);

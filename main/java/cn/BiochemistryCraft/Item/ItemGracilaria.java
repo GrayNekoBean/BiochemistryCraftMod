@@ -1,18 +1,11 @@
 package cn.BiochemistryCraft.Item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -21,6 +14,8 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 
 public class ItemGracilaria extends ItemFood implements IPlantable{
 	public ItemGracilaria(){
@@ -45,6 +40,7 @@ public class ItemGracilaria extends ItemFood implements IPlantable{
 		return EnumPlantType.Crop;
 	}
 	
+	@SuppressWarnings("unused")
 	private boolean canPlaceBlockOn(Block arg0){
 		return arg0 == Blocks.water;
 	}

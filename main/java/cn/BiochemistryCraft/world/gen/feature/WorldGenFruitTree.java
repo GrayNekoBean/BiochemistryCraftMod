@@ -13,6 +13,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class WorldGenFruitTree extends WorldGenerator{
 	private final int minTreeHeight = 4;
+	@SuppressWarnings("unused")
 	private final boolean vinesGrow = false;
 	private final int metaWood = 0;
 	private final int metaLeaves = 0;
