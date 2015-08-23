@@ -1,6 +1,6 @@
 package cn.BiochemistryCraft.Gene;
 
-import cn.BiochemistryCraft.core.sick.SSick;
+import cn.BiochemistryCraft.core.sick.Sick;
 
 public class InfectSource {
 	
@@ -38,7 +38,7 @@ public class InfectSource {
 		
 	}
 	
-	public SSick[] causeSick(SSick[] par1){
+	public Sick[] causeSick(Sick[] par1){
 		if(this.canCauseSick()==true){
 			return par1;
 		}

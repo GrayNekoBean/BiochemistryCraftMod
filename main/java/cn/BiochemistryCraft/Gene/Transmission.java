@@ -6,7 +6,7 @@ import net.minecraft.util.AxisAlignedBB;
 import cn.BiochemistryCraft.Entity.BCCGeneAnimal;
 import cn.BiochemistryCraft.Entity.BCCGeneMonster;
 import cn.BiochemistryCraft.Entity.IBiology;
-@SuppressWarnings("rawtypes")
+
 public class Transmission {
 
 	public BCCGeneMonster mob;
@@ -18,7 +18,9 @@ public class Transmission {
 		
 		
 	}
-
+	
+	
+	
 	public boolean mobTansmission(InfectSource source){
 		double x=mob.posX;
 		double y=mob.posY;

@@ -22,6 +22,8 @@ import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Register.BCCRegisterBlock;
 import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.core.sick.SickCold;
+import cn.BiochemistryCraft.core.sick.SickTrigger;
+import cn.BiochemistryCraft.core.sick.TriggerType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -31,7 +33,7 @@ public class BlockAcid extends Block{
 	IIcon icon2;
 	public BlockAcid(Material m) {
 		super(m);
-		// TODO 自动生成的构造函数存根
+		// TODO 鑷姩鐢熸垚鐨勬瀯閫犲嚱鏁板瓨鏍�
 		this.setBlockName("Acid");
 		this.setCreativeTab(BiochemistryCraft.biocreativetab);
 		this.setHarvestLevel("shavel", 3);
@@ -81,12 +83,8 @@ public class BlockAcid extends Block{
     	entity.motionX *= 0.4D;
     	entity.motionZ *= 0.4D;
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
-        if(entity instanceof EntityLivingBase)
-        {
-	        Timer t=new Timer();
-	        SickCold s=new SickCold();
-	        s.SetEntity((EntityLivingBase) entity);
-	        t.schedule(new SickCold(), 1000);
+        if(entity instanceof EntityLivingBase){
+        	SickTrigger.triggerFromBlock(TriggerType.COLLIDE_BLOCK, this, (EntityLivingBase)entity);
         }
     }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
@@ -136,10 +134,7 @@ public class BlockAcid extends Block{
             entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
             if(entity instanceof EntityLivingBase)
             {
-    	        Timer t=new Timer();
-    	        SickCold s=new SickCold();
-    	        s.SetEntity((EntityLivingBase) entity);
-    	        t.schedule(new SickCold(), 1000);
+            	SickTrigger.triggerFromBlock(TriggerType.COLLIDE_BLOCK, this, (EntityLivingBase)entity);
             }
         }
         @Override
