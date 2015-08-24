@@ -41,7 +41,6 @@ public class SickRegistry {
 			return;
 		}
 		sick.sickID = specificID;
-//		sicklist.add(id++, sick);
 		sickclslist.set(specificID, sick);
 		sicknmlist.set(specificID, name);
 	}

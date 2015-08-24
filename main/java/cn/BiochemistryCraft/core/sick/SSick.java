@@ -3,6 +3,7 @@ package cn.BiochemistryCraft.core.sick;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
 import java.util.TimerTask;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +18,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused" , "static-access" })
 public abstract class SSick extends TimerTask {
 	private static final String NBT_ROOT = SickPlayerInfo.NBT_ROOT;
 	private static final String NBT_SICK = SickPlayerInfo.NBT_SICK;
@@ -25,21 +26,29 @@ public abstract class SSick extends TimerTask {
 	private static String sickName;
 	public static int sickID;
 	public EntityLivingBase entity;
+	private Timer timer;
 	public static List<SSick> sickList = new ArrayList<SSick>();
 	public Random rand = new Random();
 	private int immune = SickPlayerInfo.immuneValue;
 	private int infect = SickPlayerInfo.infectValue;
 	
-	public SSick() {
+	public SSick () {
+		
+	}
+	
+	public SSick (EntityLivingBase entity, Timer timer, int delay) {
+		this.entity = entity;
+		this.timer = timer;
+		this.setUp();
+		timer.scheduleAtFixedRate(this, 1 / 20, delay);
 	}
 
 	public static String getName() {
 		return sickName;
 	}
 	
-	@SuppressWarnings("static-access")
 	public boolean equals(SSick sick){
-		return sick == null ? false : sick.sickID == sickID;
+		return sick == null ? false : sick.sickID == this.sickID;
 	}
 
 	@Override
@@ -48,11 +57,11 @@ public abstract class SSick extends TimerTask {
 			BCCLogger.debug(((EntityPlayer)entity).getDisplayName() + " is sick, disease name:"
 					+ sickName + ", disease ID is " + sickID + ".");
 		}
-		this.SickUpdate();
+		this.sickUpdate();
 		this.displayEffect();
 	}
 
-	public void SickUpdate() {
+	public void sickUpdate() {
 		if (immune <= infect) {
 			if (rand.nextInt(500 - immune) < infect - immune) {
 				infect++;
@@ -78,20 +87,20 @@ public abstract class SSick extends TimerTask {
 		}
 	}
 
-	public void EndSick() {
+	public void endSick() {
 		this.cancel();
 		if (this.entity instanceof EntityPlayer) {
 			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
 			a.remove(this);
 			SickPlayerInfo.write((EntityPlayer) this.entity, a);
+			SickPlayerInfo.removeSick((EntityPlayer) this.entity, this);
 			if (this.entity instanceof EntityPlayerMP) {
 				PacketMain.sendToPlayer(new PacketSickInfo(a, this.immune, this.infect), (EntityPlayer) this.entity);
 			}
 		}
 	}
 
-	public void SetEntity(EntityLivingBase entity) {
-		this.entity = entity;
+	private void setUp() {
 		this.rand = entity.worldObj.rand;
 		if (this.entity instanceof EntityPlayer) {
 			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
@@ -102,22 +111,24 @@ public abstract class SSick extends TimerTask {
 			}
 			a.add(this);
 			SickPlayerInfo.write((EntityPlayer) this.entity, a);
+			SickPlayerInfo.addSick((EntityPlayer) this.entity, this);
 			if (this.entity instanceof EntityPlayerMP) {
 				PacketMain.sendToPlayer(new PacketSickInfo(a, this.immune, this.infect), (EntityPlayer) this.entity);
 			}
 		}
 	}
+	
 	@SideOnly(Side.CLIENT)
 	public static EntityPlayer getClientPlayerEntity() {
 		return FMLClientHandler.instance().getClientPlayerEntity();
 	}
+	
 	@SideOnly(Side.SERVER)
 	public static EntityPlayer getServerPlayerEntity() {
-	    
 		return ((NetHandlerPlayServer)FMLCommonHandler.instance().getClientToServerNetworkManager().channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity;
 	}
 
 	public void playRandomSound(String str, Random rand) {
-
+		
 	}
 }
