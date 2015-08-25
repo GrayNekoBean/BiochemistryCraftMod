@@ -13,6 +13,7 @@ import cn.BiochemistryCraft.Item.ItemBs;
 import cn.BiochemistryCraft.Item.ItemGoldenVineFruit;
 import cn.BiochemistryCraft.Item.ItemGracilaria;
 import cn.BiochemistryCraft.Item.ItemHerbs;
+import cn.BiochemistryCraft.Item.ItemSulfur;
 import cn.BiochemistryCraft.Item.ItemSulfurDust;
 import cn.BiochemistryCraft.Item.ItemTnc;
 import cn.BiochemistryCraft.Item.ItemTreeFruit;
@@ -76,6 +77,8 @@ public class BCCRegisterItem {
 	public static ItemHerbs coolGrass;
 	public static ItemHerbs plasmaBerry;
 	
+	public static Item sulfur;
+	
 	public static Item treeFruit;
 	public static Item treeFruitSapling;
 	public static Item goldenVineFruit;
@@ -128,6 +131,8 @@ public class BCCRegisterItem {
 		goldenVineFruit = new ItemGoldenVineFruit();
 		gracilaria = new ItemGracilaria();
 		
+		sulfur=new ItemSulfur();
+		
 		bucketAcid = (ItemAcidBottle) new ItemAcidBottle(BCCRegisterBlock.acid2, Items.bucket).setUnlocalizedName("acidBottle").setTextureName(BiochemistryCraft.MODID + ":acid_bottle");
 	}
 	
@@ -156,6 +161,7 @@ public class BCCRegisterItem {
 		GameRegistry.registerItem(bucketAcid, "acid_bottle");
 		FluidContainerRegistry.registerFluidContainer(BCCRegisterBlock.facid, new ItemStack(bucketAcid), new ItemStack(Items.bucket));
 		GameRegistry.registerItem(sulfurDust, "sulfurDust");
+		GameRegistry.registerItem(sulfur, "Sulfur");
 	}
 		
 }

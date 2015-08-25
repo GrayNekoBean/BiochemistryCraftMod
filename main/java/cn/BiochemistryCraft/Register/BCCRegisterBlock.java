@@ -14,6 +14,7 @@ import cn.BiochemistryCraft.Block.BlockGoldenVine;
 import cn.BiochemistryCraft.Block.BlockGracilariaCorp;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
 import cn.BiochemistryCraft.Block.BlockPyrite;
+import cn.BiochemistryCraft.Block.BlockSulfurOre;
 import cn.BiochemistryCraft.Block.BlockTreeFruit;
 import cn.BiochemistryCraft.Block.BlockTreeFruitLeave;
 import cn.BiochemistryCraft.Block.BlockTreeFruitSapling;
@@ -44,11 +45,14 @@ public class BCCRegisterBlock {
 	public static Fluid facid;
 	public static Block acid2;
 	
+	public static Block sulfurore;
+	
 	public static BlockHerbsCorps[] herbsCorpArray = {fireGrassCorp, coolGrassCorp, plasmaBerryCorp};
 	
 	public BCCRegisterBlock()
 	{
 		biodirt = new BlockBioDirt(Material.grass);
+		
 		bioextracter=new BlockBioExtracter(Material.wood);
 		acid=new BlockAcid(Material.clay);
 		corrodedStone = new BlockCStone.Full();
@@ -62,6 +66,8 @@ public class BCCRegisterBlock {
 		treeFruitSaplingBlock=new BlockTreeFruitSapling();
 		goldenVine=new BlockGoldenVine();
 		gracilariaCorp=new BlockGracilariaCorp();
+		
+		sulfurore=new BlockSulfurOre();
 		
 		for(int i = 0; i <= 2; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i);
@@ -95,6 +101,7 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(treeFruitSaplingBlock, "treeFruitSaplingBlock");
 		GameRegistry.registerBlock(goldenVine, "goldenVine");
 		GameRegistry.registerBlock(gracilariaCorp, "gracilariaCorp");
+		GameRegistry.registerBlock(sulfurore, "SulfurOre");
 		
 		for(int i = 0; i <= 1; i++){
 			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));

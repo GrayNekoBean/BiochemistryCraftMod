@@ -10,7 +10,7 @@ public class OreGenerator extends BioGenBase{
 
 	@Override
 	protected void generateEnd(World world, Random rand, int chunkX, int chunkZ) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 	}
 
@@ -23,6 +23,7 @@ public class OreGenerator extends BioGenBase{
         	int posZ = chunkZ + rand.nextInt(16);
         	
         	(new WorldGenMinable(BCCRegisterBlock.pyrite, 2 + rand.nextInt(7))).generate(world, rand, posX, posY, posZ);
+        	(new WorldGenMinable(BCCRegisterBlock.sulfurore, 2 + rand.nextInt(7))).generate(world, rand, posX, posY, posZ);
         }
 		
 	}
@@ -30,7 +31,7 @@ public class OreGenerator extends BioGenBase{
 	@Override
 	protected void generateNether(World world, Random rand, int chunkX,
 			int chunkZ) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 	}
 

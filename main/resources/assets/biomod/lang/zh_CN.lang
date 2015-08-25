@@ -7,6 +7,7 @@ tile.CStoneStair.name=腐化石楼梯
 tile.ADirt.name=酸化泥土
 tile.pyrite.name=黄铁矿
 tile.goldenVine.name=金藤
+tile.SulfurOre.name=硫矿
 
 item.AcidWand.name=酸之法杖
 
@@ -14,6 +15,7 @@ item.EmptyNeedle.name=空针筒
 item.EmptyNeedle.lore=吸取血液中......
 item.BioBrain.name=生化核心
 item.acidBottle.name=酸液桶
+item.Sulfur.name=硫
 
 item.CowBloodNeedle.name=牛血针筒
 item.PigBloodNeedle.name=猪血针筒
