@@ -3,8 +3,13 @@ package cn.BiochemistryCraft.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import cn.BiochemistryCraft.core.sick.SSick;
 import cn.BiochemistryCraft.core.sick.SickPlayerInfo;
+import cn.BiochemistryCraft.core.sick.SickTrigger;
+import cn.BiochemistryCraft.core.sick.TriggerType;
 import cn.BiochemistryCraft.network.PacketMain;
 import cn.BiochemistryCraft.network.packet.PacketSickInfo;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -27,5 +32,11 @@ public class EventPlayer {
 			a = new ArrayList<SSick>();
 		}
 		PacketMain.sendToPlayer(new PacketSickInfo(a, SickPlayerInfo.immuneValue, SickPlayerInfo.infectValue), event.player);
+    }
+    @SubscribeEvent
+    public void living(LivingEvent event){
+    	if(event.entityLiving instanceof EntityPlayer){
+        	SickTrigger.trigger(TriggerType.REACH_POSISION, new int[]{(int) event.entityLiving.posX,(int) event.entityLiving.posY,(int) event.entityLiving.posZ}, (EntityLivingBase)event.entityLiving);
+    	}
     }
 }

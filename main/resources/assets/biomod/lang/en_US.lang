@@ -7,6 +7,8 @@ tile.CStoneStair.name=Corroded Stone Stair
 tile.ADirt.name=Acidic Dirt
 tile.pyrite.name=Pyrite
 tile.goldenVine.name=Golden Vine
+tile.BlockVolcano.name=Volcanic Rock
+tile.BlockTephra.name=Tephra
 tile.SulfurOre.name=Sulfur Ore
 
 

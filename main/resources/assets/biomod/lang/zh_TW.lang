@@ -7,6 +7,9 @@ tile.CStoneStair.name=腐化石樓梯
 tile.ADirt.name=酸化泥土
 tile.pyrite.name=黃鐵礦
 tile.goldenVine.name=金藤
+tile.BlockVolcano.name=火山岩
+tile.BlockTephra.name=火山灰
+tile.SulfurOre.name=硫礦
 
 item.AcidWand.name=酸之法杖
 

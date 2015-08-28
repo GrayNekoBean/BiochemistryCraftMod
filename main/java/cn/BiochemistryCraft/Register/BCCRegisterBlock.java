@@ -38,6 +38,9 @@ public class BCCRegisterBlock {
 	public static Block goldenVine;
 	public static Block gracilariaCorp;
 	
+	public static BCCBlockBase BlockTephra;
+	public static BCCBlockBase BlockVolcano;
+	
 	public static BlockHerbsCorps fireGrassCorp;
 	public static BlockHerbsCorps coolGrassCorp;
 	public static BlockHerbsCorps plasmaBerryCorp;
@@ -66,6 +69,8 @@ public class BCCRegisterBlock {
 		treeFruitSaplingBlock=new BlockTreeFruitSapling();
 		goldenVine=new BlockGoldenVine();
 		gracilariaCorp=new BlockGracilariaCorp();
+		BlockTephra=new BCCBlockBase(Material.sand);
+        BlockVolcano= new BCCBlockBase(Material.rock);
 		
 		sulfurore=new BlockSulfurOre();
 		
@@ -101,6 +106,8 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(treeFruitSaplingBlock, "treeFruitSaplingBlock");
 		GameRegistry.registerBlock(goldenVine, "goldenVine");
 		GameRegistry.registerBlock(gracilariaCorp, "gracilariaCorp");
+		GameRegistry.registerBlock(BlockTephra, "Tephra");
+		GameRegistry.registerBlock(BlockVolcano, "volcanicRock");
 		GameRegistry.registerBlock(sulfurore, "SulfurOre");
 		
 		for(int i = 0; i <= 1; i++){

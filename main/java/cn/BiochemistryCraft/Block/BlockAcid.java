@@ -82,7 +82,7 @@ public class BlockAcid extends Block{
     	entity.motionZ *= 0.4D;
         entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
         if(entity instanceof EntityLivingBase){
-        	SickTrigger.triggerFromBlock(TriggerType.COLLIDE_BLOCK, this, (EntityLivingBase)entity);
+        	SickTrigger.trigger(TriggerType.COLLIDE_BLOCK, w.getBlock(x, y, z), (EntityLivingBase)entity);
         }
     }
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
@@ -132,7 +132,7 @@ public class BlockAcid extends Block{
             entity.attackEntityFrom(BCCDamageSource.acid, 0.5F);
             if(entity instanceof EntityLivingBase)
             {
-            	SickTrigger.triggerFromBlock(TriggerType.COLLIDE_BLOCK, this, (EntityLivingBase)entity);
+            	SickTrigger.trigger(TriggerType.COLLIDE_BLOCK, w.getBlock(x, y, z), (EntityLivingBase)entity);
             }
         }
         @Override
