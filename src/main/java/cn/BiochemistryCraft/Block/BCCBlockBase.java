@@ -15,8 +15,7 @@ public class BCCBlockBase extends Block{
 	
 	protected void setBlock(String str,boolean hasCreativeTab)
 	{
-		this.setBlockName(str);
-		this.setBlockTextureName(BiochemistryCraft.MODID+":"+str);
+		this.setUnlocalizedName(str);
 		if(hasCreativeTab)
 			this.setCreativeTab(BiochemistryCraft.biocreativetab);
 	}

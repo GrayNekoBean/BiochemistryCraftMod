@@ -1,6 +1,15 @@
 package cn.BiochemistryCraft;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import cn.BiochemistryCraft.CreativeTab.BCCCreativeTab;
 import cn.BiochemistryCraft.GUI.BioGuiHandler;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
@@ -8,15 +17,6 @@ import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.core.sick.SickCold;
 import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
 
 

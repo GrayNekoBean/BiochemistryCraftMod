@@ -1,27 +1,23 @@
 package cn.BiochemistryCraft.Block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import cn.BiochemistryCraft.BiochemistryCraft;
-import cn.BiochemistryCraft.GUI.GUIID;
-import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.GUI.GUIID;
+import cn.BiochemistryCraft.TileEntity.TileentityBioExtracter;
 
 public class BlockBioExtracter extends BlockContainer{
 
-	public IIcon icon1;
-	public IIcon icon2;
 	public BlockBioExtracter(Material m) {
 		super(m);
 		// TODO �Զ���ɵĹ��캯����
-		this.setBlockName("BioExtracter");
+		this.setUnlocalizedName("BioExtracter");
 		//this.setBlockTextureName("biomod:BioExtracter");
 		this.setCreativeTab(BiochemistryCraft.biocreativetab);
 		this.setHarvestLevel("shavel", 3);
