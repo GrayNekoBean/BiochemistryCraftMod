@@ -41,35 +41,14 @@ public class RenderLavaZommbie extends RenderBiped
     protected int shouldRenderPass(EntityLavaZommbie p_77032_1_, int p_77032_2_, float p_77032_3_)
     {
         this.func_82427_a(p_77032_1_);
-/*        if (p_77032_1_.isImmuneToFire())
+        if (p_77032_1_.isImmuneToFire())
         {
-            float f1 = (float)p_77032_1_.ticksExisted + p_77032_3_;
             this.bindTexture(resZombieTextures);
-            GL11.glMatrixMode(GL11.GL_TEXTURE);
-            GL11.glLoadIdentity();
-            float f2 = MathHelper.cos(f1 * 0.02F) * 3.0F;
-            float f3 = f1 * 0.01F;
-            GL11.glTranslatef(f2, f3, 0.0F);
-            this.setRenderPassModel(this.mainModel);
-            GL11.glMatrixMode(GL11.GL_MODELVIEW);
-            GL11.glEnable(GL11.GL_BLEND);
-            float f4 = 0.5F;
-            GL11.glColor4f(f4, f4, f4, 1.0F);
-            GL11.glDisable(GL11.GL_LIGHTING);
-            GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
-            GL11.glTranslatef(0.0F, -0.01F, 0.0F);
-            GL11.glScalef(1.1F, 1.1F, 1.1F);
-            return 1;
         }
-
-        if (p_77032_2_ == 2)
+        if (!p_77032_1_.isImmuneToFire())
         {
-            GL11.glMatrixMode(GL11.GL_TEXTURE);
-            GL11.glLoadIdentity();
-            GL11.glMatrixMode(GL11.GL_MODELVIEW);
-            GL11.glEnable(GL11.GL_LIGHTING);
-            GL11.glDisable(GL11.GL_BLEND);
-        }*/
+            this.bindTexture(zombieTextures);
+        }
         return super.shouldRenderPass((EntityLiving)p_77032_1_, p_77032_2_, p_77032_3_);
     }
 
@@ -90,7 +69,7 @@ public class RenderLavaZommbie extends RenderBiped
      */
     protected ResourceLocation getEntityTexture(EntityLavaZommbie p_110775_1_)
     {
-        return p_110775_1_.isImmuneToFire() ? resZombieTextures :zombieTextures;
+        return p_110775_1_.isImmuneToFire() ? resZombieTextures : zombieTextures;
     }
 
     protected void renderEquippedItems(EntityLavaZommbie p_77029_1_, float p_77029_2_)

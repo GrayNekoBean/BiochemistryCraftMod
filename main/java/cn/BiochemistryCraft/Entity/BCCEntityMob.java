@@ -112,10 +112,8 @@ public abstract class BCCEntityMob extends EntityMob{
 		return ((NetHandlerPlayServer)FMLCommonHandler.instance().getClientToServerNetworkManager().channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity;
 	}
 	public void useNormalMobAI(boolean par1){
-	
-	
 		if(par1){
-		 this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(0, new EntityAISwimming(this));
 	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
 	        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
 	        this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
