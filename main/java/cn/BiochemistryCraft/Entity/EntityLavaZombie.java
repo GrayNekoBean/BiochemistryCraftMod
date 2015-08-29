@@ -38,7 +38,6 @@ public class EntityLavaZombie extends BCCEntityMob{
 		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityZombie.class, 0, false));
 		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityLavaZombie.class, 0, true));
 		this.setSize(this.size1[sizes],this.size2[sizes]);
-		this.setHealth(26);
 	}
 	    protected void applyEntityAttributes()
 	    {
@@ -46,6 +45,7 @@ public class EntityLavaZombie extends BCCEntityMob{
 	        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(12.0D);
 	        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
 	        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
+	        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(26.0D);
 	    }
 	@Override
 	public boolean isAIEnabled(){
