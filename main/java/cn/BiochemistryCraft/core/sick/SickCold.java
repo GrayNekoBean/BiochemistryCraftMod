@@ -3,7 +3,10 @@ package cn.BiochemistryCraft.core.sick;
 import java.util.Timer;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import cn.BiochemistryCraft.BCCDamageSource;
+import cn.BiochemistryCraft.Register.BCCRegisterItem;
 
 public class SickCold extends SSick{
 	
@@ -22,7 +25,12 @@ public class SickCold extends SSick{
 		if(this.entity!=null)
 		{
 			entity.attackEntityFrom(BCCDamageSource.acid, 1F);
+			this.curetiveList.add(new ItemStack(BCCRegisterItem.goldenVineFruit));
+			this.addEffectToPlayer((PotionBio) Potion.hunger, 1, curetiveList);
 		}
 	}
-
+	@Override
+	public InfectType setInfectType(InfectType type) {
+		return null;
+	}
 }

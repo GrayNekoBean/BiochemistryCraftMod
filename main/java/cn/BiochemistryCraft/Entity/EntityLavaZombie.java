@@ -20,7 +20,7 @@ import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 
-public class EntityLavaZommbie extends BCCEntityMob{
+public class EntityLavaZombie extends BCCEntityMob{
 
 	public float[] size1=new float[]{0.6f,0.8f};
 	public float[] size2=new float[]{1.8f,2.0f};
@@ -28,15 +28,15 @@ public class EntityLavaZommbie extends BCCEntityMob{
 	private boolean movement;
 	public byte protecting=this.dataWatcher.getWatchableObjectByte(29);
 	
-	public EntityLavaZommbie(World p_i1738_1_) {
+	public EntityLavaZombie(World p_i1738_1_) {
 		super(p_i1738_1_);
 		this.useNormalMobAI(true);
 	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityZombie.class, 1.0D, true));
-	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityLavaZommbie.class, 1.0D, false));
+	        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityLavaZombie.class, 1.0D, false));
 		this.targetTasks.removeTask(new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityZombie.class, 0, false));
-		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityLavaZommbie.class, 0, true));
+		this.targetTasks.addTask(2, new LavaZombieBeNLazyAI(this, EntityLavaZombie.class, 0, true));
 		this.setSize(this.size1[sizes],this.size2[sizes]);
 		this.setHealth(26);
 	}
@@ -129,7 +129,7 @@ public class EntityLavaZommbie extends BCCEntityMob{
 	                return;
 	            }
 
-	            EntityLavaZommbie entityzombie = new EntityLavaZommbie(this.worldObj);
+	            EntityLavaZombie entityzombie = new EntityLavaZombie(this.worldObj);
 	            entityzombie.copyLocationAndAnglesFrom(p_70074_1_);
 //	            this.worldObj.removeEntity(p_70074_1_);
 	            entityzombie.onSpawnWithEgg((IEntityLivingData)null);
@@ -139,7 +139,7 @@ public class EntityLavaZommbie extends BCCEntityMob{
 	    }
 	@SubscribeEvent
 	public void onTargetEntity(LivingSetAttackTargetEvent event){
-		if(event.entityLiving instanceof EntityLavaZommbie && event.target instanceof EntityPlayer){
+		if(event.entityLiving instanceof EntityLavaZombie && event.target instanceof EntityPlayer){
 			this.beLazy(false);
 		}
 		else{
