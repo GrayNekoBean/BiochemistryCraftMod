@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Entity.EntityLavaZombie;
 import cn.BiochemistryCraft.Entity.Throwable.EntityAcid;
 
 public class ItemAcidWand extends Item{
@@ -24,7 +25,7 @@ public class ItemAcidWand extends Item{
 		itemstk.damageItem(20 , player);
 		if(!world.isRemote)
 		{
-			EntityAcid entity=new EntityAcid(world,player,4,1.5F,1.5F);
+			EntityLavaZombie entity=new EntityLavaZombie(world,player);
 			world.spawnEntityInWorld(entity);
 		}
 		return itemstk;

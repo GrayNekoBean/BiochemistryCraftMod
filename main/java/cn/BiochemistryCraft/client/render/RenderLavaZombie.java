@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import cn.BiochemistryCraft.BiochemistryCraft;
 import cn.BiochemistryCraft.Entity.EntityLavaZombie;
+import cn.BiochemistryCraft.Entity.EntityLavaZombieBroken;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -41,14 +42,6 @@ public class RenderLavaZombie extends RenderBiped
     protected int shouldRenderPass(EntityLavaZombie p_77032_1_, int p_77032_2_, float p_77032_3_)
     {
         this.func_82427_a(p_77032_1_);
-        if (p_77032_1_.isImmuneToFire())
-        {
-            this.bindTexture(resZombieTextures);
-        }
-        if (!p_77032_1_.isImmuneToFire())
-        {
-            this.bindTexture(zombieTextures);
-        }
         return super.shouldRenderPass((EntityLiving)p_77032_1_, p_77032_2_, p_77032_3_);
     }
 
@@ -69,7 +62,7 @@ public class RenderLavaZombie extends RenderBiped
      */
     protected ResourceLocation getEntityTexture(EntityLavaZombie p_110775_1_)
     {
-        return p_110775_1_.isImmuneToFire() ? resZombieTextures : zombieTextures;
+        return p_110775_1_ instanceof EntityLavaZombieBroken ? zombieTextures : resZombieTextures;
     }
 
     protected void renderEquippedItems(EntityLavaZombie p_77029_1_, float p_77029_2_)
