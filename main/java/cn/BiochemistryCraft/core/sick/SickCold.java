@@ -26,7 +26,8 @@ public class SickCold extends SSick{
 		{
 			entity.attackEntityFrom(BCCDamageSource.acid, 1F);
 			this.curetiveList.add(new ItemStack(BCCRegisterItem.goldenVineFruit));
-			this.addEffectToPlayer((PotionBio) Potion.hunger, 1, curetiveList);
+			this.addEffectToEntity(new PotionBio(Potion.hunger), 1, curetiveList);
+//			this.addEffectToEntity((PotionBio) Potion.hunger, 1, curetiveList);
 		}
 	}
 	@Override

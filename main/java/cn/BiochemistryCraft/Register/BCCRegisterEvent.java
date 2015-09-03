@@ -17,9 +17,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BCCRegisterEvent {
 	public static SimpleNetworkWrapper networkHandler;
+	public static EventPlayer eplayer = new EventPlayer();
 	
 	public void eventRegisterPreLoad(){
 		GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
+		MinecraftForge.EVENT_BUS.register(eplayer);
 	}
 	
 	public void eventRegisterInit(){
@@ -27,7 +29,7 @@ public class BCCRegisterEvent {
 		PacketMain.registerPacket(PacketSickInfo.class);
 		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
-		FMLCommonHandler.instance().bus().register(new EventPlayer());
+		FMLCommonHandler.instance().bus().register(eplayer);
 		
 		FluidBottleHandler.INSTANCE.buckets.put(BCCRegisterBlock.acid2, BCCRegisterItem.bucketAcid);
 		MinecraftForge.EVENT_BUS.register(FluidBottleHandler.INSTANCE);

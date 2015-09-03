@@ -18,7 +18,7 @@ public class BCCEntityRendererRegister {
 //		RenderingRegistry.registerEntityRenderingHandler(EntityDiable.class, new RenderDiable(0.5f));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAcid.class, new RenderAcid());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBioPig.class, new RenderBioPig(new ModelPig(),0.5f));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLavaZombie.class,new RenderLavaZombie());
-		RenderingRegistry.registerEntityRenderingHandler(EntityLavaZombieBroken.class,new RenderLavaZombie());
+		RenderingRegistry.registerEntityRenderingHandler(EntityLavaZombie.class,new RenderLavaZombie(new ModelZombie(), 0.5f,1.0f) );
+		RenderingRegistry.registerEntityRenderingHandler(EntityLavaZombieBroken.class,new RenderLavaZombieBroken(new ModelZombie(), 0.5f,1.0f) );
 	}
 }

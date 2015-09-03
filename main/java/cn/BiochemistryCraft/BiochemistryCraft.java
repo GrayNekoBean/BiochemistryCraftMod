@@ -6,6 +6,7 @@ import cn.BiochemistryCraft.GUI.BioGuiHandler;
 import cn.BiochemistryCraft.Register.BCCRegisterEvent;
 import cn.BiochemistryCraft.core.BCCConfig;
 import cn.BiochemistryCraft.core.sick.SickCold;
+import cn.BiochemistryCraft.core.sick.SickHeatIllness;
 import cn.BiochemistryCraft.core.sick.SickRegistry;
 import cn.BiochemistryCraft.proxy.BCCcommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -60,6 +61,7 @@ public class BiochemistryCraft{
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 		
 		SickRegistry.registerSick(new SickCold(), "cold");
+		SickRegistry.registerSick(new SickHeatIllness.HeatExhaustion(), "heatExhaustion");
 		
 		eventRegister.eventRegisterPreLoad();
 	}

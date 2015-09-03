@@ -11,7 +11,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.network.PacketMain;
@@ -36,6 +38,7 @@ public abstract class SSick extends TimerTask {
 	private int infect = SickPlayerInfo.infectValue;
 	public PotionEffect effect;
 	public List<ItemStack> curetiveList;
+	public List<PotionBio> symptomList;
 	
 	public SSick () {
 		
@@ -111,6 +114,8 @@ public abstract class SSick extends TimerTask {
 
 	private void setUp() {
 		this.rand = entity.worldObj.rand;
+		this.curetiveList = new ArrayList<ItemStack>();
+		this.symptomList = new ArrayList<PotionBio>();
 		if (this.entity instanceof EntityPlayer) {
 			List<SSick> a = SickPlayerInfo.read((EntityPlayer) this.entity);
 			if (a == null) {
@@ -140,10 +145,20 @@ public abstract class SSick extends TimerTask {
 	public void playRandomSound(String str, Random rand) {
 		
 	}
-	public void addEffectToPlayer(PotionBio potion,int strong,List<ItemStack> list){
+	public void addEffectToEntity(PotionBio potion,int strong,List<ItemStack> list){
+		this.symptomList.add(potion);
+		this.effect=new PotionEffect(potion.id,Integer.MAX_VALUE,strong,false);
+		effect.getCurativeItems().remove(new ItemStack(Items.milk_bucket));
+		effect.setCurativeItems(list);
+		entity.addPotionEffect(effect);
+	}
+	public void addEffectToPlayer(PotionBio potion,int strong,List<ItemStack> list, EntityPlayer player){
 		this.effect=new PotionEffect(potion.id,Integer.MAX_VALUE,strong,false);
 		effect.getCurativeItems().remove((Object)new ItemStack(Items.milk_bucket));
-		this.getClientPlayerEntity().addPotionEffect(effect);
+		player.addPotionEffect(effect);
+	}
+	public int getID(){
+		return this.sickID;
 	}
 	    enum InfectType{
 	    	

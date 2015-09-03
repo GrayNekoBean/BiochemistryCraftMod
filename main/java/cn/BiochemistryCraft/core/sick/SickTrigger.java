@@ -27,7 +27,6 @@ public class SickTrigger {
 			SSick s;
 			Timer t = new Timer();
 			int i = entity.worldObj.rand.nextInt(25);
-			BCCLogger.info(Integer.toString(i));
 			if(block == BCCRegisterBlock.acid && i == 0){
 				s = new SickCold(entity, t);
 				return s;
@@ -41,7 +40,6 @@ public class SickTrigger {
 			SSick s;
 			Timer t = new Timer();
 			int i = entity.worldObj.rand.nextInt(25);
-			BCCLogger.info(Integer.toString(i));
 			if(pos[1] >= 200 && i == 0){
 				s = new SickCold(entity, t);
 				return s;
@@ -49,6 +47,12 @@ public class SickTrigger {
 			if(BiomeDictionary.isBiomeOfType(entity.worldObj.getBiomeGenForCoords(pos[0], pos[2]),BiomeDictionary.Type.COLD)){
 				if(i == 0){
 					s = new SickCold(entity, t);
+					return s;
+				}
+			}
+			if(BiomeDictionary.isBiomeOfType(entity.worldObj.getBiomeGenForCoords(pos[0], pos[2]),BiomeDictionary.Type.HOT)){
+				if(i == 0){
+					s = new SickHeatIllness.HeatExhaustion(entity, t);
 					return s;
 				}
 			}

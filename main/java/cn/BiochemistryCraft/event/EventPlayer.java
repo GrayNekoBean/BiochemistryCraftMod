@@ -6,8 +6,11 @@ import java.util.List;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
+import cn.BiochemistryCraft.core.BCCLogger;
 import cn.BiochemistryCraft.core.sick.SSick;
+import cn.BiochemistryCraft.core.sick.Sick;
 import cn.BiochemistryCraft.core.sick.SickPlayerInfo;
 import cn.BiochemistryCraft.core.sick.SickTrigger;
 import cn.BiochemistryCraft.core.sick.TriggerType;
@@ -35,17 +38,19 @@ public class EventPlayer {
 		PacketMain.sendToPlayer(new PacketSickInfo(a, SickPlayerInfo.immuneValue, SickPlayerInfo.infectValue), event.player);
     }
     @SubscribeEvent
-    public void living(LivingEvent event){
+    public void onLivingUpdate(LivingUpdateEvent event){
     	if(event.entityLiving instanceof EntityPlayer){
         	SickTrigger.trigger(TriggerType.REACH_POSISION, new int[]{(int) event.entityLiving.posX,(int) event.entityLiving.posY,(int) event.entityLiving.posZ}, (EntityLivingBase)event.entityLiving);
     	}
     }
-    
+    @SubscribeEvent
     public void onEaten(PlayerUseItemEvent.Finish event){
+    	if(SickPlayerInfo.getSickListFromPlayer(event.entityPlayer) != null){
     	for (SSick sick : SickPlayerInfo.read(event.entityPlayer)) {
-			if(sick.curetiveList.contains(event.item)){
+			if(sick.curetiveList != null && sick.curetiveList.contains(event.item)){
 				SickPlayerInfo.removeSick(event.entityPlayer, sick);
 			}
 		}
+    	}
     }
 }

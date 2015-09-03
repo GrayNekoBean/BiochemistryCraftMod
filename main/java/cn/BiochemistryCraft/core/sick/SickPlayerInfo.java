@@ -2,12 +2,15 @@ package cn.BiochemistryCraft.core.sick;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import cn.BiochemistryCraft.network.PacketMain;
 import cn.BiochemistryCraft.network.packet.PacketSickInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.world.World;
 
@@ -32,9 +35,22 @@ public class SickPlayerInfo {
 	public static List<SSick> read(NBTTagCompound tagCompound){
 		List<SSick> result = new ArrayList<SSick>();
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        int[] sick = root.getIntArray(NBT_SICK);
+/*        int[] sick = root.getIntArray(NBT_SICK);
         for(int a: sick){
         	result.add(SickRegistry.getSickFromID(a));
+        }*/
+        if(tagCompound.hasKey(NBT_SICK, 9)){
+            NBTTagList nbttaglist = tagCompound.getTagList(NBT_SICK, 10);
+            for (int i = 0; i < nbttaglist.tagCount(); ++i)
+            {
+                NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+                SSick sick = SickRegistry.readSicknessFromNBT(nbttagcompound1);
+
+                if (sick != null)
+                {
+                    result.add(sick);
+                }
+            }
         }
         immuneValue = root.getInteger("immuneValue");
         infectValue = root.getInteger("InfectValue");
@@ -46,19 +62,27 @@ public class SickPlayerInfo {
         write(persisted, a);
     }
 
-    @SuppressWarnings("static-access")
 	public static void write(NBTTagCompound tagCompound, List<SSick> sick){
         if (!tagCompound.hasKey(NBT_ROOT)){
         	tagCompound.setTag(NBT_ROOT, new NBTTagCompound());
         }
         NBTTagCompound root = tagCompound.getCompoundTag(NBT_ROOT);
-        int[] a = new int[sick.size()];
+        if(!sick.isEmpty()){
+        	NBTTagList list = new NBTTagList();
+        	Iterator it = sick.iterator();
+        	while (it.hasNext()) {
+				SSick sickonly = (SSick) it.next();
+				list.appendTag(SickRegistry.writeSicknessToNBT(sickonly, new NBTTagCompound()));
+			}
+        	root.setTag(NBT_SICK, list);
+        }
+/*        int[] a = new int[sick.size()];
         for(int i = 0; i < sick.size(); i++){
         	a[i] = sick.get(i).sickID;
-        }
+        }*/
         root.setInteger(NBT_IMMUNE, immuneValue);
         root.setInteger(NBT_INFECT, infectValue);
-        root.setIntArray(NBT_SICK, a);
+//        root.setIntArray(NBT_SICK, a);
     }
     
     public static List<SSick> getSickListFromArray(int[] array){

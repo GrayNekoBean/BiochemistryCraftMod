@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import cn.BiochemistryCraft.core.BCCLogger;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class SickRegistry {
 	private static List<SSick> sickclslist = new ArrayList<SSick>();
@@ -21,7 +22,7 @@ public class SickRegistry {
 			BCCLogger.err("The disease %s has been registered as %s", sick, getNameFromID(sickclslist.indexOf(sick)));
 			return;
 		}
-		sick.sickID = sickclslist.size();
+		sick.sickID = (sickclslist.size() - 1);
 		sickclslist.add(sick);
 		sicknmlist.add(name);
 	}
@@ -71,6 +72,10 @@ public class SickRegistry {
 	public static SSick getSickFromID(int i) {
 		return sickclslist.get(i);
 	}
+	
+	public static int getIDFromSick(SSick sick) {
+		return sickclslist.indexOf(sick);
+	}
 
 	public static String getNameFromID(int i) {
 		return sicknmlist.get(i);
@@ -86,4 +91,14 @@ public class SickRegistry {
 		int i = rand.nextInt(id);
 		return getSickFromID(i);
 	}
+	
+	public static NBTTagCompound writeSicknessToNBT(SSick sick, NBTTagCompound tagCompound){
+		tagCompound.setInteger("Id", sick.getID());
+		return tagCompound;
+	}
+    public static SSick readSicknessFromNBT(NBTTagCompound p_82722_0_)
+    {
+        int b0 = p_82722_0_.getInteger("Id");
+        return SickRegistry.getSickFromID(b0);
+    }
 }
