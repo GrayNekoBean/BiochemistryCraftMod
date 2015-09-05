@@ -37,7 +37,7 @@ public class ItemCure extends Item {
         return p_77654_1_;
     }
     protected void onCureTaken(ItemStack itemStack, World world, EntityPlayer player) {
-    	if(SickPlayerInfo.getSickListFromPlayer(player) != null){
+/*    	if(SickPlayerInfo.getSickListFromPlayer(player) != null){
     	for (SSick sick : SickPlayerInfo.read(player)) {
 			if(sick.curetiveList != null && sick.curetiveList.contains(itemStack)){
 				sick.endSick();
@@ -45,7 +45,7 @@ public class ItemCure extends Item {
 
 			}
 		}
-    	}
+    	}*/
 		player.curePotionEffects(itemStack);
 	}
     /**

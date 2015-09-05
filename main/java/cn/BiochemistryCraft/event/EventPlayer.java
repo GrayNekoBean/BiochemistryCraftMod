@@ -43,13 +43,13 @@ public class EventPlayer {
         	SickTrigger.trigger(TriggerType.REACH_POSISION, new int[]{(int) event.entityLiving.posX,(int) event.entityLiving.posY,(int) event.entityLiving.posZ}, (EntityLivingBase)event.entityLiving);
     	}
     }
-    @SubscribeEvent
+//    @SubscribeEvent
     public void onEaten(PlayerUseItemEvent.Finish event){
     	if(SickPlayerInfo.getSickListFromPlayer(event.entityPlayer) != null){
     	for (SSick sick : SickPlayerInfo.read(event.entityPlayer)) {
-			if(sick.curetiveList != null && sick.curetiveList.contains(event.item)){
+//			if(sick.curetiveList != null && sick.curetiveList.contains(event.item)){
 				SickPlayerInfo.removeSick(event.entityPlayer, sick);
-			}
+//			}
 		}
     	}
     }
